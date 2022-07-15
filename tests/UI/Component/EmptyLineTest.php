@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\UI\Component;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\IO\BufferedIO;
 use Webmozart\Console\UI\Component\EmptyLine;
 
@@ -27,7 +27,7 @@ class EmptyLineTest extends PHPUnit_Framework_TestCase
      */
     private $io;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->io = new BufferedIO();
     }

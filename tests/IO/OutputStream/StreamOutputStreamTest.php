@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\IO\OutputStream;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\IO\OutputStream\StreamOutputStream;
 
 /**
@@ -23,14 +23,16 @@ class StreamOutputStreamTest extends PHPUnit_Framework_TestCase
 {
     private $handle;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->handle = fopen('php://memory', 'rw');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
-        @fclose($this->handle);
+        if (is_resource($this->handle)) {
+            @fclose($this->handle);
+        }
     }
 
     public function testWrite()
@@ -63,6 +65,9 @@ class StreamOutputStreamTest extends PHPUnit_Framework_TestCase
         $stream->flush();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testIgnoreDuplicateClose()
     {
         $stream = new StreamOutputStream($this->handle);

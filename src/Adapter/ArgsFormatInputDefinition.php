@@ -127,7 +127,7 @@ class ArgsFormatInputDefinition extends InputDefinition
             $mode |= InputOption::VALUE_REQUIRED;
         }
 
-        return new InputOption($option->getLongName(), $option->getShortName(), $mode, $option->getDescription(), $option->getDefaultValue());
+        return new InputOption($option->getLongName(), $option->getShortName(), $mode, $option->getDescription() ?? '', $option->getDefaultValue());
     }
 
     /**
@@ -153,6 +153,12 @@ class ArgsFormatInputDefinition extends InputDefinition
             $mode |= InputArgument::REQUIRED;
         }
 
-        return new InputArgument($argument->getName(), $mode, $argument->getDescription(), $argument->getDefaultValue());
+        $defaultValue = $argument->getDefaultValue();
+
+        if ($defaultValue === [] && $argument->isRequired()) {
+            $defaultValue = null;
+        }
+
+        return new InputArgument($argument->getName(), $mode, $argument->getDescription() ?? '', $defaultValue);
     }
 }

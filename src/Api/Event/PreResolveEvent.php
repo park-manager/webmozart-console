@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Api\Event;
 
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 use Webmozart\Console\Api\Application\Application;
 use Webmozart\Console\Api\Args\RawArgs;
 use Webmozart\Console\Api\Resolver\ResolvedCommand;

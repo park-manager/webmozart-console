@@ -115,7 +115,7 @@ class ProcessLauncher
         $replacements = array();
 
         foreach ($arguments as $name => $value) {
-            $replacements['%'.$name.'%'] = ProcessUtils::escapeArgument($value);
+            $replacements['%'.$name.'%'] = self::escapeArgument($value);
         }
 
         // Insert quoted arguments
@@ -147,5 +147,33 @@ class ProcessLauncher
         $this->running = false;
 
         return isset($status['exitcode']) ? $status['exitcode'] : 1;
+    }
+
+    /**
+     * Escapes a string to be used as a shell argument.
+     *
+     * @link \Symfony\Component\Process\Process::escapeArgument
+     */
+    private function escapeArgument(?string $argument): string
+    {
+        if ('' === $argument || null === $argument) {
+            return '""';
+        }
+
+        if ('\\' !== \DIRECTORY_SEPARATOR) {
+            return "'" . str_replace("'", "'\\''", $argument) . "'";
+        }
+
+        if (str_contains($argument, "\0")) {
+            $argument = str_replace("\0", '?', $argument);
+        }
+
+        if (! preg_match('/[\/()%!^"<>&|\s]/', $argument)) {
+            return $argument;
+        }
+
+        $arguments = preg_replace('/(\\\\+)$/', '$1$1', $argument);
+
+        return '"' . str_replace(['"', '^', '%', '!', "\n"], ['""', '"^^"', '"^%"', '"^!"', '!LF!'], $arguments) . '"';
     }
 }

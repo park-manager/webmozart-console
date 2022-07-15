@@ -489,7 +489,7 @@ class Command
     {
         if ($this->dispatcher && $this->dispatcher->hasListeners(ConsoleEvents::PRE_HANDLE)) {
             $event = new PreHandleEvent($args, $io, $this);
-            $this->dispatcher->dispatch(ConsoleEvents::PRE_HANDLE, $event);
+            $this->dispatcher->dispatch($event, ConsoleEvents::PRE_HANDLE);
 
             if ($event->isHandled()) {
                 return $event->getStatusCode();

@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\IO\InputStream;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\IO\InputStream\StringInputStream;
 
 /**

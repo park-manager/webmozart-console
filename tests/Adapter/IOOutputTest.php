@@ -11,8 +11,8 @@
 
 namespace Webmozart\Console\Tests\Adapter;
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject as PHPUnit_Framework_MockObject_MockObject;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Console\Output\OutputInterface;
 use Webmozart\Console\Adapter\FormatterAdapter;
 use Webmozart\Console\Adapter\IOOutput;
@@ -40,7 +40,7 @@ class IOOutputTest extends PHPUnit_Framework_TestCase
      */
     private $output;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()

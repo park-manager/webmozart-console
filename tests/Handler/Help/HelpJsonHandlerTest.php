@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Handler\Help;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Application\Application;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Command\Command;
@@ -52,7 +52,7 @@ class HelpJsonHandlerTest extends PHPUnit_Framework_TestCase
      */
     private $handler;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $config = DefaultApplicationConfig::create()
             ->beginCommand('the-command')->end()
@@ -82,7 +82,7 @@ class HelpJsonHandlerTest extends PHPUnit_Framework_TestCase
 
         $status = $this->handler->handle($args, $this->io, $this->command);
 
-        $this->assertStringStartsWith('{"commands":[{"name":"help",', $this->io->fetchOutput());
+        $this->assertStringContainsString('"commands":[{"name":"help",', $this->io->fetchOutput());
         $this->assertSame(0, $status);
     }
 }

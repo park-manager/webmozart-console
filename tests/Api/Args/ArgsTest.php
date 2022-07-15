@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Args;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
 use Webmozart\Console\Api\Args\Format\Argument;

@@ -111,7 +111,7 @@ class IOOutput implements OutputInterface
     /**
      * {@inheritdoc}
      */
-    public function getVerbosity()
+    public function getVerbosity(): int
     {
         if ($this->isQuiet()) {
             return self::VERBOSITY_QUIET;
@@ -135,7 +135,7 @@ class IOOutput implements OutputInterface
     /**
      * {@inheritdoc}
      */
-    public function isQuiet()
+    public function isQuiet(): bool
     {
         return $this->io->isQuiet();
     }
@@ -143,7 +143,7 @@ class IOOutput implements OutputInterface
     /**
      * {@inheritdoc}
      */
-    public function isVerbose()
+    public function isVerbose(): bool
     {
         return $this->io->isVerbose();
     }
@@ -151,7 +151,7 @@ class IOOutput implements OutputInterface
     /**
      * {@inheritdoc}
      */
-    public function isVeryVerbose()
+    public function isVeryVerbose(): bool
     {
         return $this->io->isVeryVerbose();
     }
@@ -159,7 +159,7 @@ class IOOutput implements OutputInterface
     /**
      * {@inheritdoc}
      */
-    public function isDebug()
+    public function isDebug(): bool
     {
         return $this->io->isDebug();
     }
@@ -175,7 +175,7 @@ class IOOutput implements OutputInterface
     /**
      * {@inheritdoc}
      */
-    public function isDecorated()
+    public function isDecorated(): bool
     {
         return $this->decorated;
     }
@@ -190,7 +190,7 @@ class IOOutput implements OutputInterface
     /**
      * {@inheritdoc}
      */
-    public function getFormatter()
+    public function getFormatter(): OutputFormatterInterface
     {
         return new FormatterAdapter($this->io);
     }

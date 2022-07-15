@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\UI\Component;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use RuntimeException;
 use Webmozart\Console\Api\Command\NoSuchCommandException;
 use Webmozart\Console\Api\IO\IO;
@@ -32,7 +32,7 @@ class ExceptionTraceTest extends PHPUnit_Framework_TestCase
 
     private $previousWd;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->io = new BufferedIO();
         $this->previousWd = getcwd();
@@ -41,7 +41,7 @@ class ExceptionTraceTest extends PHPUnit_Framework_TestCase
         chdir(__DIR__.'/../../..');
     }
 
-    protected function tearDown()
+    protected function doTearDown()
     {
         chdir($this->previousWd);
     }

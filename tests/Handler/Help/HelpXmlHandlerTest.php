@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Handler\Help;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Application\Application;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Command\Command;
@@ -52,7 +52,7 @@ class HelpXmlHandlerTest extends PHPUnit_Framework_TestCase
      */
     private $handler;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $config = DefaultApplicationConfig::create()
             ->setDisplayName('The Application')
@@ -76,7 +76,7 @@ class HelpXmlHandlerTest extends PHPUnit_Framework_TestCase
 
         $expected = <<<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
-<command id="the-command" name="the-command">
+<command id="the-command" name="the-command"
 EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());

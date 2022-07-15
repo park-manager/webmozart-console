@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\IO;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\IO\Input;
 use Webmozart\Console\IO\InputStream\StringInputStream;
 
@@ -34,7 +34,7 @@ class InputTest extends PHPUnit_Framework_TestCase
      */
     private $input;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->stream = new StringInputStream();
         $this->input = new Input($this->stream);

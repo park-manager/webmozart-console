@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Adapter;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Adapter\ArgsInput;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
@@ -37,7 +37,7 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
      */
     private $args;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->rawArgs = new StringArgs('');
         $this->args = new Args(new ArgsFormat(array(

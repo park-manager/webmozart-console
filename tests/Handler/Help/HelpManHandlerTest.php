@@ -11,8 +11,8 @@
 
 namespace Webmozart\Console\Tests\Handler\Help;
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject as PHPUnit_Framework_MockObject_MockObject;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Process\ExecutableFinder;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
@@ -64,7 +64,7 @@ class HelpManHandlerTest extends PHPUnit_Framework_TestCase
      */
     private $handler;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->path = __DIR__.'/Fixtures/man/the-command.1';
         $this->command = new Command(new CommandConfig('command'));

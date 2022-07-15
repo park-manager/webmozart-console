@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Config;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Webmozart\Console\Api\Config\ApplicationConfig;
 use Webmozart\Console\Api\Config\CommandConfig;
@@ -32,7 +32,7 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
      */
     private $config;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->config = new ApplicationConfig();
     }
@@ -129,19 +129,15 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
         $this->assertNull($this->config->getDisplayName());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetDisplayNameFailsIfEmpty()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->config->setDisplayName('');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetDisplayNameFailsIfNoString()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->config->setDisplayName(1234);
     }
 

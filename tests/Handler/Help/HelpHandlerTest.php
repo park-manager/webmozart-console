@@ -11,8 +11,8 @@
 
 namespace Webmozart\Console\Tests\Handler\Help;
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject as PHPUnit_Framework_MockObject_MockObject;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Process\ExecutableFinder;
 use Webmozart\Console\Api\Application\Application;
 use Webmozart\Console\Api\Command\Command;
@@ -75,7 +75,7 @@ class HelpHandlerTest extends PHPUnit_Framework_TestCase
      */
     private $handler;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $config = DefaultApplicationConfig::create()
             ->setName('the-app')
@@ -201,7 +201,7 @@ EOF;
 
         $expected = <<<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
-<command id="the-command" name="the-command">
+<command id="the-command" name="the-command"
 EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
@@ -249,7 +249,7 @@ EOF;
 
         $status = $this->handler->handle($args, $this->io, $this->command);
 
-        $this->assertStringStartsWith('{"commands":[{"name":"help",', $this->io->fetchOutput());
+        $this->assertStringContainsString('"commands":[{"name":"help",', $this->io->fetchOutput());
         $this->assertSame(0, $status);
     }
 

@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\UI\Help;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Format\Argument;
 use Webmozart\Console\Api\Args\Format\Option;
 use Webmozart\Console\Api\Config\ApplicationConfig;
@@ -36,7 +36,7 @@ class CommandHelpTest extends PHPUnit_Framework_TestCase
      */
     private $io;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->io = new BufferedIO();
     }

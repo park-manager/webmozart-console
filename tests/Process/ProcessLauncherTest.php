@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Process;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Webmozart\Console\Process\ProcessLauncher;
 
@@ -32,7 +32,7 @@ class ProcessLauncherTest extends PHPUnit_Framework_TestCase
      */
     private $php;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $finder = new PhpExecutableFinder();
         $this->php = escapeshellcmd($finder->find());

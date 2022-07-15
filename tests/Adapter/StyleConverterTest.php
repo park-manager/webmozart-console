@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Adapter;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Webmozart\Console\Adapter\StyleConverter;
 use Webmozart\Console\Api\Formatter\Style;

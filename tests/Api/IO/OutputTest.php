@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\IO;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Formatter\Formatter;
 use Webmozart\Console\Api\IO\IO;
 use Webmozart\Console\Api\IO\Output;
@@ -40,7 +40,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
      */
     private $output;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->formatter = new NullFormatter();
         $this->stream = new BufferedOutputStream();

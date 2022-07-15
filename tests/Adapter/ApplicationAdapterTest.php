@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Adapter;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Console\Helper\HelperSet;
 use Webmozart\Console\Adapter\ApplicationAdapter;
 use Webmozart\Console\Adapter\ArgsFormatInputDefinition;
@@ -41,8 +41,8 @@ class ApplicationAdapterTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame('Test Name', $adapter->getName());
         $this->assertSame('1.2.3', $adapter->getVersion());
-        $this->assertSame('<info>Test Name</info> version <comment>1.2.3</comment>', $adapter->getLongVersion());
-        $this->assertSame('<info>Test Name</info> version <comment>1.2.3</comment>', $adapter->getHelp());
+        $this->assertSame('Test Name <info>1.2.3</info>', $adapter->getLongVersion());
+        $this->assertSame('Test Name <info>1.2.3</info>', $adapter->getHelp());
         $this->assertSame($helperSet, $adapter->getHelperSet());
         $this->assertSame(array(), $adapter->getNamespaces());
         $this->assertEquals(new ArgsFormatInputDefinition($application->getGlobalArgsFormat()), $adapter->getDefinition());

@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Config;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Console\Helper\HelperSet;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
 use Webmozart\Console\Api\Args\Format\Argument;
@@ -41,7 +41,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
      */
     private $config;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->applicationConfig = new ApplicationConfig();
         $this->config = new CommandConfig('command', $this->applicationConfig);
@@ -250,7 +250,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
     {
         // valid name, but invalid alias
         if (null === $alias) {
-            $this->setExpectedException('InvalidArgumentException');
+            $this->expectException('InvalidArgumentException');
         }
 
         $this->config->addAlias($alias);

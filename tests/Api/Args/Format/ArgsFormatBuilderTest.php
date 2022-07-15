@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Args\Format;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
 use Webmozart\Console\Api\Args\Format\ArgsFormatBuilder;
 use Webmozart\Console\Api\Args\Format\Argument;
@@ -41,7 +41,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
      */
     private $builder;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->baseFormatBuilder = new ArgsFormatBuilder();
         $this->baseFormat = new ArgsFormat();

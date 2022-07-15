@@ -71,7 +71,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function getFirstArgument()
+    public function getFirstArgument(): ?string
     {
         $tokens = $this->rawArgs->getTokens();
 
@@ -81,7 +81,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function hasParameterOption($values, $onlyParams = false)
+    public function hasParameterOption($values, $onlyParams = false): bool
     {
         $tokens = $this->rawArgs->getTokens();
 
@@ -158,7 +158,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function getArguments()
+    public function getArguments(): array
     {
         return $this->args ? $this->args->getArguments() : array();
     }
@@ -166,7 +166,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function getArgument($name)
+    public function getArgument($name): ?string
     {
         return $this->args ? $this->args->getArgument($name) : null;
     }
@@ -184,7 +184,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function hasArgument($name)
+    public function hasArgument($name): bool
     {
         return $this->args ? $this->args->isArgumentDefined($name) : false;
     }
@@ -192,7 +192,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return $this->args ? $this->args->getOptions() : array();
     }
@@ -200,7 +200,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function getOption($name)
+    public function getOption($name): mixed
     {
         return $this->args ? $this->args->getOption($name) : null;
     }
@@ -218,7 +218,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function hasOption($name)
+    public function hasOption($name): bool
     {
         return $this->args ? $this->args->isOptionDefined($name) : false;
     }
@@ -226,7 +226,7 @@ class ArgsInput implements InputInterface
     /**
      * {@inheritdoc}
      */
-    public function isInteractive()
+    public function isInteractive(): bool
     {
         return $this->interactive;
     }

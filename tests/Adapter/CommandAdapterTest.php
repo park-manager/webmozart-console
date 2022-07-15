@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Adapter;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Console\Helper\HelperSet;
 use Webmozart\Console\Adapter\ApplicationAdapter;
 use Webmozart\Console\Adapter\ArgsFormatInputDefinition;

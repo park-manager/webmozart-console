@@ -11,8 +11,8 @@
 
 namespace Webmozart\Console\Tests\Api\Command;
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject as PHPUnit_Framework_MockObject_MockObject;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Application\Application;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
@@ -39,7 +39,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
      */
     private $application;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->application = $this->getMock('Webmozart\Console\Api\Application\Application');
         $this->application->expects($this->any())

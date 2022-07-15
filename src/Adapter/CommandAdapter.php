@@ -13,8 +13,6 @@ namespace Webmozart\Console\Adapter;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\HelperSet;
-use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Webmozart\Assert\Assert;
@@ -51,8 +49,8 @@ abstract class AbstractCommandAdapter extends Command
 
         parent::setDefinition(new ArgsFormatInputDefinition($this->adaptedCommand->getArgsFormat()));
         parent::setApplication($application);
-        parent::setDescription($config->getDescription());
-        parent::setHelp($config->getHelp());
+        parent::setDescription($config->getDescription() ?? '');
+        parent::setHelp($config->getHelp() ?? '');
         parent::setAliases($adaptedCommand->getAliases());
 
         if ($helperSet = $config->getHelperSet()) {
@@ -71,145 +69,6 @@ abstract class AbstractCommandAdapter extends Command
     }
 
     /**
-     * Does nothing.
-     *
-     * @param Application $application The application.
-     *
-     * @return static The current instance.
-     */
-    public function setApplication(Application $application = null)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param HelperSet $helperSet The helper set.
-     *
-     * @return static The current instance.
-     */
-    public function setHelperSet(HelperSet $helperSet)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param array|InputDefinition $definition The definition
-     *
-     * @return static The current instance.
-     */
-    public function setDefinition($definition)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param string $name The name.
-     *
-     * @return static The current instance.
-     */
-    public function setName($name)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param string $title The process title.
-     *
-     * @return static The current instance.
-     */
-    public function setProcessTitle($title)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param string $description The description.
-     *
-     * @return static The current instance.
-     */
-    public function setDescription($description)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param string $help The help.
-     *
-     * @return static The current instance.
-     */
-    public function setHelp($help)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param string[] $aliases The aliases.
-     *
-     * @return static The current instance.
-     */
-    public function setAliases($aliases)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param bool $mergeArgs
-     *
-     * @return static The current instance.
-     */
-    public function mergeApplicationDefinition($mergeArgs = true)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param string $name
-     * @param null   $mode
-     * @param string $description
-     * @param null   $default
-     *
-     * @return static The current instance.
-     */
-    public function addArgument($name, $mode = null, $description = '', $default = null)
-    {
-        return $this;
-    }
-
-    /**
-     * Does nothing.
-     *
-     * @param string $name
-     * @param null   $shortcut
-     * @param null   $mode
-     * @param string $description
-     * @param null   $default
-     *
-     * @return static The current instance.
-     */
-    public function addOption($name, $shortcut = null, $mode = null, $description = '', $default = null)
-    {
-        return $this;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function isEnabled()
@@ -225,7 +84,7 @@ abstract class AbstractCommandAdapter extends Command
      *
      * @return int The exit status.
      */
-    public function run(InputInterface $input, OutputInterface $output)
+    public function run(InputInterface $input, OutputInterface $output): int
     {
         /* @var ArgsInput $input */
         /* @var IOOutput $output */
@@ -236,36 +95,17 @@ abstract class AbstractCommandAdapter extends Command
     }
 }
 
-if (method_exists('Symfony\Component\Console\Command\Command', 'asText')) {
-    // Symfony 2.0 compatible definition
-    class CommandAdapter extends AbstractCommandAdapter
+class CommandAdapter extends AbstractCommandAdapter
+{
+    /**
+     * Does nothing.
+     *
+     * @param callable $code The code.
+     *
+     * @return static The current instance.
+     */
+    public function setCode(callable $code): static
     {
-        /**
-         * Does nothing.
-         *
-         * @param callable $code The code.
-         *
-         * @return static The current instance.
-         */
-        public function setCode($code)
-        {
-            return $this;
-        }
-    }
-} else {
-    // Symfony 3.0 compatible definition
-    class CommandAdapter extends AbstractCommandAdapter
-    {
-        /**
-         * Does nothing.
-         *
-         * @param callable $code The code.
-         *
-         * @return static The current instance.
-         */
-        public function setCode(callable $code)
-        {
-            return $this;
-        }
+        return $this;
     }
 }

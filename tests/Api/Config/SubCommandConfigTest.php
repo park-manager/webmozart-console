@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Config;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Symfony\Component\Console\Helper\HelperSet;
 use Webmozart\Console\Api\Config\ApplicationConfig;
 use Webmozart\Console\Api\Config\CommandConfig;
@@ -41,7 +41,7 @@ class SubCommandConfigTest extends PHPUnit_Framework_TestCase
      */
     private $applicationConfig;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->applicationConfig = new ApplicationConfig();
         $this->parentConfig = new CommandConfig('command', $this->applicationConfig);

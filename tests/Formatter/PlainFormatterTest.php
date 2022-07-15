@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Formatter;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Formatter\Style;
 use Webmozart\Console\Api\Formatter\StyleSet;
 use Webmozart\Console\Formatter\PlainFormatter;

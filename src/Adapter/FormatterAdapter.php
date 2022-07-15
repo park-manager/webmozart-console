@@ -66,7 +66,7 @@ class FormatterAdapter implements OutputFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function isDecorated()
+    public function isDecorated(): bool
     {
         return $this->decorated;
     }
@@ -81,21 +81,21 @@ class FormatterAdapter implements OutputFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function hasStyle($name)
+    public function hasStyle($name): bool
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getStyle($name)
+    public function getStyle($name): OutputFormatterStyleInterface
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function format($message)
+    public function format($message): ?string
     {
         if ($this->decorated) {
             return $this->adaptedFormatter->format($message);

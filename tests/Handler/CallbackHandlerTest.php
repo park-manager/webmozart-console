@@ -11,8 +11,8 @@
 
 namespace Webmozart\Console\Tests\Handler;
 
-use PHPUnit_Framework_Assert;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\Assert as PHPUnit_Framework_Assert;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
 use Webmozart\Console\Api\Command\Command;

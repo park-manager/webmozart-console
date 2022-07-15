@@ -276,7 +276,7 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
     /**
      * {@inheritdoc}
      */
-    public function offsetExists($name)
+    public function offsetExists($name): bool
     {
         return $this->contains($name);
     }
@@ -284,7 +284,7 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
     /**
      * {@inheritdoc}
      */
-    public function offsetGet($name)
+    public function offsetGet($name): mixed
     {
         return $this->get($name);
     }
@@ -292,7 +292,7 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
     /**
      * {@inheritdoc}
      */
-    public function offsetSet($offset, $command)
+    public function offsetSet($offset, $command): void
     {
         if ($offset) {
             throw new LogicException('Passing of offsets is not supported');
@@ -304,7 +304,7 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
     /**
      * {@inheritdoc}
      */
-    public function offsetUnset($name)
+    public function offsetUnset($name): void
     {
         $this->remove($name);
     }
@@ -312,7 +312,7 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
     /**
      * {@inheritdoc}
      */
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->commands);
     }
@@ -320,7 +320,7 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         return count($this->commands);
     }

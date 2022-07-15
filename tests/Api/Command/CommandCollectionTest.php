@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Command;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Command\Command;
 use Webmozart\Console\Api\Command\CommandCollection;
 use Webmozart\Console\Api\Config\CommandConfig;
@@ -29,7 +29,7 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
      */
     private $collection;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->collection = new CommandCollection();
     }
@@ -152,6 +152,9 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->collection->contains('ls'));
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRemoveIgnoresNonExistingNames()
     {
         $this->collection->remove('foobar');

@@ -12,6 +12,7 @@
 namespace Webmozart\Console\IO;
 
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Terminal;
 use Webmozart\Console\Api\IO\Input;
 use Webmozart\Console\Api\IO\IO;
 use Webmozart\Console\Api\IO\Output;
@@ -65,9 +66,9 @@ class ConsoleIO extends IO
      */
     protected function getDefaultTerminalDimensions()
     {
-        $application = new Application();
-
-        list($width, $height) = $application->getTerminalDimensions();
+        $terminal = new Terminal();
+        $height = $terminal->getHeight();
+        $width = $terminal->getWidth();
 
         return new Rectangle($width ?: 80, $height ?: 20);
     }

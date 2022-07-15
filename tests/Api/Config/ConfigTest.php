@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Config;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use stdClass;
 use Symfony\Component\Console\Helper\HelperSet;
 use Webmozart\Console\Api\Args\Format\Argument;
@@ -33,7 +33,7 @@ class ConfigTest extends PHPUnit_Framework_TestCase
      */
     private $config;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->config = new ConcreteConfig();
     }

@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Args;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
 use Webmozart\Console\Api\Args\Format\Argument;
 use Webmozart\Console\Api\Args\Format\CommandName;
@@ -32,7 +32,7 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
      */
     private $parser;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->parser = new DefaultArgsParser();
     }

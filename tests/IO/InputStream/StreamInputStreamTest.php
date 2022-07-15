@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\IO\InputStream;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\IO\InputStream\StreamInputStream;
 
 /**
@@ -25,7 +25,7 @@ class StreamInputStreamTest extends PHPUnit_Framework_TestCase
 
     private $handle;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->handle = fopen('php://memory', 'rw');
 
@@ -33,9 +33,11 @@ class StreamInputStreamTest extends PHPUnit_Framework_TestCase
         rewind($this->handle);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
-        @fclose($this->handle);
+        if (is_resource($this->handle)) {
+            @fclose($this->handle);
+        }
     }
 
     public function testRead()
@@ -82,6 +84,9 @@ class StreamInputStreamTest extends PHPUnit_Framework_TestCase
         $stream->readLine();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testIgnoreDuplicateClose()
     {
         $stream = new StreamInputStream($this->handle);

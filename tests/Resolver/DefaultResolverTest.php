@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Resolver;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\Format\Option;
 use Webmozart\Console\Api\Config\ApplicationConfig;
@@ -37,7 +37,7 @@ class DefaultResolverTest extends PHPUnit_Framework_TestCase
      */
     private $resolver;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $config = ApplicationConfig::create()
             ->addOption('option', 'o')
@@ -91,7 +91,7 @@ class DefaultResolverTest extends PHPUnit_Framework_TestCase
         self::$application = new ConsoleApplication($config);
     }
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->resolver = new DefaultResolver('default');
     }

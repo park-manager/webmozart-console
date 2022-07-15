@@ -108,8 +108,7 @@ class ConsoleApplication implements Application
             $dispatcher = $config->getEventDispatcher();
 
             if ($dispatcher && $dispatcher->hasListeners(ConsoleEvents::CONFIG)) {
-                $dispatcher->dispatch(ConsoleEvents::CONFIG,
-                    new ConfigEvent($config));
+                $dispatcher->dispatch(new ConfigEvent($config), ConsoleEvents::CONFIG);
             }
 
             $this->config = $config;
@@ -227,7 +226,7 @@ class ConsoleApplication implements Application
     {
         if ($this->dispatcher && $this->dispatcher->hasListeners(ConsoleEvents::PRE_RESOLVE)) {
             $event = new PreResolveEvent($args, $this);
-            $this->dispatcher->dispatch(ConsoleEvents::PRE_RESOLVE, $event);
+            $this->dispatcher->dispatch($event, ConsoleEvents::PRE_RESOLVE);
 
             if ($resolvedCommand = $event->getResolvedCommand()) {
                 return $resolvedCommand;

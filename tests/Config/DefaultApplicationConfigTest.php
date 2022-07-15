@@ -11,8 +11,8 @@
 
 namespace Webmozart\Console\Tests\Config;
 
-use PHPUnit_Framework_Assert;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\Assert as PHPUnit_Framework_Assert;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\RawArgs;
 use Webmozart\Console\Api\Formatter\Style;
@@ -37,7 +37,7 @@ class DefaultApplicationConfigTest extends PHPUnit_Framework_TestCase
      */
     private $config;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->config = new DefaultApplicationConfig();
         $this->config->setCatchExceptions(false);

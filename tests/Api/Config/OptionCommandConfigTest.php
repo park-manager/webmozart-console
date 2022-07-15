@@ -11,7 +11,7 @@
 
 namespace Webmozart\Console\Tests\Api\Config;
 
-use PHPUnit_Framework_TestCase;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
 use Webmozart\Console\Api\Args\Format\Argument;
 use Webmozart\Console\Api\Args\Format\CommandOption;
@@ -32,7 +32,7 @@ class OptionCommandConfigTest extends PHPUnit_Framework_TestCase
      */
     private $config;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->config = new OptionCommandConfig();
     }

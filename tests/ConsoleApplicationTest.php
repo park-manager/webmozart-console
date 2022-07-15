@@ -11,11 +11,11 @@
 
 namespace Webmozart\Console\Tests;
 
-use PHPUnit_Framework_Assert;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\Assert as PHPUnit_Framework_Assert;
+use Symfony\Component\Process\Process;
+use Webmozart\Console\Tests\TestCase as PHPUnit_Framework_TestCase;
 use stdClass;
 use Symfony\Component\Process\PhpExecutableFinder;
-use Symfony\Component\Process\ProcessUtils;
 use Webmozart\Console\Api\Args\Args;
 use Webmozart\Console\Api\Args\Format\ArgsFormat;
 use Webmozart\Console\Api\Args\Format\Argument;
@@ -49,7 +49,7 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
      */
     private $config;
 
-    protected function setUp()
+    protected function doSetUp()
     {
         $this->config = new ApplicationConfig();
         $this->config->setCatchExceptions(false);
@@ -519,7 +519,7 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
         $phpFinder = new PhpExecutableFinder();
         $php = $phpFinder->find();
 
-        $command = escapeshellcmd($php).' '.ProcessUtils::escapeArgument(__DIR__.'/Fixtures/terminate-after-run.php');
+        $command = (new Process([$php, __DIR__.'/Fixtures/terminate-after-run.php']))->getCommandLine();
 
         exec($command, $output, $status);
 

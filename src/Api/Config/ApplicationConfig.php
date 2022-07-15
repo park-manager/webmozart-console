@@ -821,6 +821,6 @@ class ApplicationConfig extends Config
             return null;
         }
 
-        return ucwords(preg_replace('~[\s-_]+~', ' ', $this->name));
+        return ucwords(preg_replace('~[\s\-_]+~', ' ', $this->name));
     }
 }

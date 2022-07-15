@@ -13,6 +13,9 @@ namespace Webmozart\Console\Adapter;
 
 use Exception;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\HelperSet;
+use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Webmozart\Assert\Assert;
@@ -48,7 +51,7 @@ class ApplicationAdapter extends Application
 
         $config = $application->getConfig();
 
-        parent::__construct($config->getDisplayName(), $config->getVersion());
+        parent::__construct($config->getDisplayName() ?? '', $config->getVersion() ?? 'UNKNOWN');
 
         if ($dispatcher = $config->getEventDispatcher()) {
             $this->setDispatcher($dispatcher);
@@ -102,7 +105,7 @@ class ApplicationAdapter extends Application
     /**
      * {@inheritdoc}
      */
-    protected function getCommandName(InputInterface $input)
+    protected function getCommandName(InputInterface $input): ?string
     {
         // This method must return something, otherwise the base class tries
         // to set the "command" argument which doesn't usually exist
@@ -112,7 +115,7 @@ class ApplicationAdapter extends Application
     /**
      * {@inheritdoc}
      */
-    public function find($name)
+    public function find(string $name): Command
     {
         return $this->currentCommand;
     }
@@ -120,7 +123,7 @@ class ApplicationAdapter extends Application
     /**
      * {@inheritdoc}
      */
-    protected function getDefaultInputDefinition()
+    protected function getDefaultInputDefinition(): InputDefinition
     {
         return new ArgsFormatInputDefinition($this->adaptedApplication->getGlobalArgsFormat());
     }
@@ -128,7 +131,7 @@ class ApplicationAdapter extends Application
     /**
      * {@inheritdoc}
      */
-    protected function getDefaultCommands()
+    protected function getDefaultCommands(): array
     {
         return array();
     }
@@ -136,7 +139,7 @@ class ApplicationAdapter extends Application
     /**
      * {@inheritdoc}
      */
-    protected function getDefaultHelperSet()
+    protected function getDefaultHelperSet(): HelperSet
     {
         return $this->adaptedApplication->getConfig()->getHelperSet();
     }
