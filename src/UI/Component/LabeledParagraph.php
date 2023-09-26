@@ -148,7 +148,7 @@ class LabeledParagraph implements Component
         $labelWidth = $textOffset + $styleTagLength;
 
         $io->write(rtrim(sprintf(
-            "%s%-${labelWidth}s%s",
+            "%s%-{$labelWidth}s%s",
             $linePrefix,
             $this->label,
             rtrim($text)
