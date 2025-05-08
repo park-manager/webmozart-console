@@ -77,19 +77,19 @@ class HelpHandler extends DelegatingHandler
      * @param ProcessLauncher  $processLauncher  The launcher for executing the
      *                                           "less"/"man" binaries.
      */
-    public function __construct(ExecutableFinder $executableFinder = null, ProcessLauncher $processLauncher = null)
+    public function __construct(?ExecutableFinder $executableFinder = null, ?ProcessLauncher $processLauncher = null)
     {
         $this->executableFinder = $executableFinder ?: new ExecutableFinder();
         $this->processLauncher = $processLauncher ?: new ProcessLauncher();
         $this->asciiDocDir = getcwd().'/docs/ascii-doc';
         $this->manDir = getcwd().'/docs/man';
 
-        $this->register('ascii-doc', array($this, 'createAsciiDocHandler'));
-        $this->register('json', array($this, 'createJsonHandler'));
-        $this->register('man', array($this, 'createManHandler'));
-        $this->register('text', array($this, 'createTextHandler'));
-        $this->register('xml', array($this, 'createXmlHandler'));
-        $this->selectHandler(array($this, 'getHandlerToRun'));
+        $this->register('ascii-doc', [$this, 'createAsciiDocHandler']);
+        $this->register('json', [$this, 'createJsonHandler']);
+        $this->register('man', [$this, 'createManHandler']);
+        $this->register('text', [$this, 'createTextHandler']);
+        $this->register('xml', [$this, 'createXmlHandler']);
+        $this->selectHandler([$this, 'getHandlerToRun']);
     }
 
     /**

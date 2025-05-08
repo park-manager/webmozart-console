@@ -49,9 +49,9 @@ class DefaultApplicationConfig extends ApplicationConfig
     protected function configure()
     {
         $this
-            ->setIOFactory(array($this, 'createIO'))
-            ->addEventListener(ConsoleEvents::PRE_RESOLVE, array($this, 'resolveHelpCommand'))
-            ->addEventListener(ConsoleEvents::PRE_HANDLE, array($this, 'printVersion'))
+            ->setIOFactory([$this, 'createIO'])
+            ->addEventListener(ConsoleEvents::PRE_RESOLVE, [$this, 'resolveHelpCommand'])
+            ->addEventListener(ConsoleEvents::PRE_HANDLE, [$this, 'printVersion'])
 
             ->addOption('help', 'h', Option::NO_VALUE, 'Display help about the command')
             ->addOption('quiet', 'q', Option::NO_VALUE, 'Do not output any message')
@@ -75,7 +75,7 @@ class DefaultApplicationConfig extends ApplicationConfig
         ;
     }
 
-    public function createIO(Application $application, RawArgs $args, InputStream $inputStream = null, OutputStream $outputStream = null, OutputStream $errorStream = null)
+    public function createIO(Application $application, RawArgs $args, ?InputStream $inputStream = null, ?OutputStream $outputStream = null, ?OutputStream $errorStream = null)
     {
         $inputStream = $inputStream ?: new StandardInputStream();
         $outputStream = $outputStream ?: new StandardOutputStream();

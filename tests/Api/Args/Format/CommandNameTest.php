@@ -36,10 +36,10 @@ class CommandNameTest extends PHPUnit_Framework_TestCase
      */
     public function testCreateWithAliases($string)
     {
-        $commandName = new CommandName('cmd', array('alias', $string));
+        $commandName = new CommandName('cmd', ['alias', $string]);
 
         $this->assertSame('cmd', $commandName->toString());
-        $this->assertSame(array('alias', $string), $commandName->getAliases());
+        $this->assertSame(['alias', $string], $commandName->getAliases());
     }
 
     public function testToString()
@@ -64,35 +64,35 @@ class CommandNameTest extends PHPUnit_Framework_TestCase
      */
     public function testCreateFailsIfInvalidAlias($string)
     {
-        new CommandName('cmd', array($string));
+        new CommandName('cmd', [$string]);
     }
 
     public function getValidNames()
     {
-        return array(
-            array('command'),
-            array('COMMAND'),
-            array('command-name'),
-            array('c'),
-            array('command1'),
-        );
+        return [
+            ['command'],
+            ['COMMAND'],
+            ['command-name'],
+            ['c'],
+            ['command1'],
+        ];
     }
 
     public function getInvalidNames()
     {
-        return array(
-            array('command_name'),
-            array('command&'),
-            array(''),
-            array(null),
-            array(1234),
-            array(true),
-        );
+        return [
+            ['command_name'],
+            ['command&'],
+            [''],
+            [null],
+            [1234],
+            [true],
+        ];
     }
 
     public function testMatch()
     {
-        $commandName = new CommandName('cmd', array('alias1', 'alias2'));
+        $commandName = new CommandName('cmd', ['alias1', 'alias2']);
 
         $this->assertTrue($commandName->match('cmd'));
         $this->assertTrue($commandName->match('alias1'));

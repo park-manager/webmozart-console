@@ -34,7 +34,7 @@ class BufferedIO extends IO
      * @param string    $inputData The data to return from the input.
      * @param Formatter $formatter The formatter to use.
      */
-    public function __construct($inputData = '', Formatter $formatter = null)
+    public function __construct($inputData = '', ?Formatter $formatter = null)
     {
         $formatter = $formatter ?: new PlainFormatter();
         $input = new Input(new StringInputStream($inputData));

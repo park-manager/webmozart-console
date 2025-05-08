@@ -68,32 +68,32 @@ class ArgsFormatBuilder
     /**
      * @var CommandName[]
      */
-    private $commandNames = array();
+    private $commandNames = [];
 
     /**
      * @var Option[]
      */
-    private $commandOptions = array();
+    private $commandOptions = [];
 
     /**
      * @var Option[]
      */
-    private $commandOptionsByShortName = array();
+    private $commandOptionsByShortName = [];
 
     /**
      * @var Argument[]
      */
-    private $arguments = array();
+    private $arguments = [];
 
     /**
      * @var Option[]
      */
-    private $options = array();
+    private $options = [];
 
     /**
      * @var Option[]
      */
-    private $optionsByShortName = array();
+    private $optionsByShortName = [];
 
     /**
      * @var bool
@@ -113,7 +113,7 @@ class ArgsFormatBuilder
      *
      * @param ArgsFormat $baseFormat The base format.
      */
-    public function __construct(ArgsFormat $baseFormat = null)
+    public function __construct(?ArgsFormat $baseFormat = null)
     {
         $this->baseFormat = $baseFormat;
     }
@@ -137,7 +137,7 @@ class ArgsFormatBuilder
      */
     public function setCommandNames(array $commandNames)
     {
-        $this->commandNames = array();
+        $this->commandNames = [];
 
         $this->addCommandNames($commandNames);
 
@@ -235,8 +235,8 @@ class ArgsFormatBuilder
      */
     public function setCommandOptions(array $commandOptions)
     {
-        $this->commandOptions = array();
-        $this->commandOptionsByShortName = array();
+        $this->commandOptions = [];
+        $this->commandOptionsByShortName = [];
 
         $this->addCommandOptions($commandOptions);
 
@@ -445,7 +445,7 @@ class ArgsFormatBuilder
      */
     public function setArguments(array $arguments)
     {
-        $this->arguments = array();
+        $this->arguments = [];
         $this->hasOptionalArg = false;
         $this->hasMultiValuedArg = false;
 
@@ -727,8 +727,8 @@ class ArgsFormatBuilder
      */
     public function setOptions(array $options)
     {
-        $this->options = array();
-        $this->optionsByShortName = array();
+        $this->options = [];
+        $this->optionsByShortName = [];
 
         $this->addOptions($options);
 

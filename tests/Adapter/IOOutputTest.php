@@ -75,7 +75,7 @@ class IOOutputTest extends PHPUnit_Framework_TestCase
             ->method('write')
             ->with('message2');
 
-        $this->output->write(array('message1', 'message2'));
+        $this->output->write(['message1', 'message2']);
     }
 
     public function testWriteMultipleMessagesWithNewline()
@@ -87,7 +87,7 @@ class IOOutputTest extends PHPUnit_Framework_TestCase
             ->method('writeLine')
             ->with('message2');
 
-        $this->output->write(array('message1', 'message2'), true);
+        $this->output->write(['message1', 'message2'], true);
     }
 
     public function testWritePlain()
@@ -131,7 +131,7 @@ class IOOutputTest extends PHPUnit_Framework_TestCase
             ->method('writeLine')
             ->with('message2');
 
-        $this->output->writeln(array('message1', 'message2'));
+        $this->output->writeln(['message1', 'message2']);
     }
 
     public function testSetVerbosityNormal()

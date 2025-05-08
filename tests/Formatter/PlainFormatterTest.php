@@ -25,18 +25,18 @@ class PlainFormatterTest extends PHPUnit_Framework_TestCase
 {
     public function testFormat()
     {
-        $formatter = new PlainFormatter(new StyleSet(array(
+        $formatter = new PlainFormatter(new StyleSet([
             Style::tag('bold')->bold(),
-        )));
+        ]));
 
         $this->assertSame('<no-style>text</no-style>', $formatter->removeFormat('<bold><no-style>text</no-style></bold>'));
     }
 
     public function testRemoveFormat()
     {
-        $formatter = new PlainFormatter(new StyleSet(array(
+        $formatter = new PlainFormatter(new StyleSet([
             Style::tag('bold')->bold(),
-        )));
+        ]));
 
         $this->assertSame('<no-style>text</no-style>', $formatter->removeFormat('<bold><no-style>text</no-style></bold>'));
     }

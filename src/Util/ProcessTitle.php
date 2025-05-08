@@ -28,7 +28,7 @@ class ProcessTitle
     /**
      * @var string[]
      */
-    private static $processTitles = array();
+    private static $processTitles = [];
 
     /**
      * Returns whether process titles can be set.

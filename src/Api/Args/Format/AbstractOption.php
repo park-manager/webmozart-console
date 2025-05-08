@@ -26,12 +26,12 @@ abstract class AbstractOption
     /**
      * Flag: Prefer usage of the long option name.
      */
-    const PREFER_LONG_NAME = 1;
+    public const PREFER_LONG_NAME = 1;
 
     /**
      * Flag: Prefer usage of the short option name.
      */
-    const PREFER_SHORT_NAME = 2;
+    public const PREFER_SHORT_NAME = 2;
 
     /**
      * @var int

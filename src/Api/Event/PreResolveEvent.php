@@ -93,7 +93,7 @@ class PreResolveEvent extends Event
      *                                         `null` to let the configured
      *                                         resolver decide.
      */
-    public function setResolvedCommand(ResolvedCommand $resolvedCommand = null)
+    public function setResolvedCommand(?ResolvedCommand $resolvedCommand = null)
     {
         $this->resolvedCommand = $resolvedCommand;
     }

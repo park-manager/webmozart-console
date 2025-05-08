@@ -64,42 +64,42 @@ class Argument
     /**
      * Flag: The argument is required.
      */
-    const REQUIRED = 1;
+    public const REQUIRED = 1;
 
     /**
      * Flag: The argument is optional.
      */
-    const OPTIONAL = 2;
+    public const OPTIONAL = 2;
 
     /**
      * Flag: The argument can be repeated multiple times.
      */
-    const MULTI_VALUED = 4;
+    public const MULTI_VALUED = 4;
 
     /**
      * Flag: The value is parsed as string.
      */
-    const STRING = 16;
+    public const STRING = 16;
 
     /**
      * Flag: The value is parsed as boolean.
      */
-    const BOOLEAN = 32;
+    public const BOOLEAN = 32;
 
     /**
      * Flag: The value is parsed as integer.
      */
-    const INTEGER = 64;
+    public const INTEGER = 64;
 
     /**
      * Flag: The value is parsed as float.
      */
-    const FLOAT = 128;
+    public const FLOAT = 128;
 
     /**
      * Flag: The value "null" should be parsed as `null`.
      */
-    const NULLABLE = 256;
+    public const NULLABLE = 256;
 
     /**
      * @var string
@@ -146,7 +146,7 @@ class Argument
         $this->name = $name;
         $this->flags = $flags;
         $this->description = $description;
-        $this->defaultValue = $this->isMultiValued() ? array() : null;
+        $this->defaultValue = $this->isMultiValued() ? [] : null;
 
         if ($this->isOptional() || null !== $defaultValue) {
             $this->setDefaultValue($defaultValue);
@@ -216,7 +216,7 @@ class Argument
 
         if ($this->isMultiValued()) {
             if (null === $defaultValue) {
-                $defaultValue = array();
+                $defaultValue = [];
             } elseif (!is_array($defaultValue)) {
                 throw new InvalidValueException(sprintf(
                     'The default value of a multi-valued argument must be an '.

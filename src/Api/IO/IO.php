@@ -27,22 +27,22 @@ class IO implements Formatter
     /**
      * Flag: Always write data.
      */
-    const NORMAL = 0;
+    public const NORMAL = 0;
 
     /**
      * Flag: Only write if the verbosity is "verbose" or greater.
      */
-    const VERBOSE = 1;
+    public const VERBOSE = 1;
 
     /**
      * Flag: Only write if the verbosity is "very verbose" or greater.
      */
-    const VERY_VERBOSE = 2;
+    public const VERY_VERBOSE = 2;
 
     /**
      * Flag: Only write if the verbosity is "debug".
      */
-    const DEBUG = 4;
+    public const DEBUG = 4;
 
     /**
      * @var Input
@@ -433,7 +433,7 @@ class IO implements Formatter
     /**
      * {@inheritdoc}
      */
-    public function format($string, Style $style = null)
+    public function format($string, ?Style $style = null)
     {
         return $this->output->format($string, $style);
     }

@@ -50,10 +50,10 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $this->config->addArgument('argument1', Argument::REQUIRED, 'Description 1');
         $this->config->addArgument('argument2', Argument::OPTIONAL, 'Description 2', 'Default');
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'argument1' => new Argument('argument1', Argument::REQUIRED, 'Description 1'),
             'argument2' => new Argument('argument2', Argument::OPTIONAL, 'Description 2', 'Default'),
-        ), $this->config->getArguments());
+        ], $this->config->getArguments());
     }
 
     public function testAddOption()
@@ -61,10 +61,10 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $this->config->addOption('option1', 'o', Option::REQUIRED_VALUE, 'Description 1');
         $this->config->addOption('option2', 'p', Option::OPTIONAL_VALUE, 'Description 2', 'Default');
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'option1' => new Option('option1', 'o', Option::REQUIRED_VALUE, 'Description 1'),
             'option2' => new Option('option2', 'p', Option::OPTIONAL_VALUE, 'Description 2', 'Default'),
-        ), $this->config->getOptions());
+        ], $this->config->getOptions());
     }
 
     public function testSetHelperSet()

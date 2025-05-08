@@ -75,11 +75,11 @@ class HelpTextHandlerTest extends PHPUnit_Framework_TestCase
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-USAGE
-  console the-command
+            USAGE
+              console the-command
 
-GLOBAL OPTIONS
-EOF;
+            GLOBAL OPTIONS
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);
@@ -92,11 +92,11 @@ EOF;
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-The Application version 1.2.3
+            The Application version 1.2.3
 
-USAGE
-  console
-EOF;
+            USAGE
+              console
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);

@@ -40,7 +40,7 @@ class Grid implements Component
     /**
      * @var string[]
      */
-    private $cells = array();
+    private $cells = [];
 
     /**
      * @var int
@@ -59,7 +59,7 @@ class Grid implements Component
      *                         rendered with the style
      *                         {@link GridStyle::borderless()}.
      */
-    public function __construct(GridStyle $style = null)
+    public function __construct(?GridStyle $style = null)
     {
         $this->style = $style ?: GridStyle::borderless();
     }
@@ -103,7 +103,7 @@ class Grid implements Component
      */
     public function setCells(array $cells)
     {
-        $this->cells = array();
+        $this->cells = [];
 
         $this->addCells($cells);
 

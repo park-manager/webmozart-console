@@ -109,7 +109,7 @@ class CommandConfig extends Config
     /**
      * @var string[]
      */
-    private $aliases = array();
+    private $aliases = [];
 
     /**
      * @var string
@@ -144,7 +144,7 @@ class CommandConfig extends Config
     /**
      * @var SubCommandConfig[]
      */
-    private $subCommandConfigs = array();
+    private $subCommandConfigs = [];
 
     /**
      * Creates a new configuration.
@@ -154,7 +154,7 @@ class CommandConfig extends Config
      *
      * @return static The created configuration.
      */
-    public static function create($name = null, ApplicationConfig $applicationConfig = null)
+    public static function create($name = null, ?ApplicationConfig $applicationConfig = null)
     {
         return new static($name, $applicationConfig);
     }
@@ -165,7 +165,7 @@ class CommandConfig extends Config
      * @param string            $name              The name of the command.
      * @param ApplicationConfig $applicationConfig The application configuration.
      */
-    public function __construct($name = null, ApplicationConfig $applicationConfig = null)
+    public function __construct($name = null, ?ApplicationConfig $applicationConfig = null)
     {
         $this->applicationConfig = $applicationConfig;
 
@@ -320,7 +320,7 @@ class CommandConfig extends Config
      */
     public function setAliases(array $aliases)
     {
-        $this->aliases = array();
+        $this->aliases = [];
 
         $this->addAliases($aliases);
 
@@ -646,7 +646,7 @@ class CommandConfig extends Config
      *
      * @return ArgsFormat The built format for the console arguments.
      */
-    public function buildArgsFormat(ArgsFormat $baseFormat = null)
+    public function buildArgsFormat(?ArgsFormat $baseFormat = null)
     {
         $formatBuilder = ArgsFormat::build($baseFormat);
 
@@ -880,7 +880,7 @@ class CommandConfig extends Config
      */
     public function setSubCommandConfigs(array $configs)
     {
-        $this->subCommandConfigs = array();
+        $this->subCommandConfigs = [];
 
         $this->addSubCommandConfigs($configs);
 

@@ -61,7 +61,7 @@ class Output implements Formatter
      * @param Formatter|null $formatter The formatter for formatting text
      *                                  written to the output stream.
      */
-    public function __construct(OutputStream $stream, Formatter $formatter = null)
+    public function __construct(OutputStream $stream, ?Formatter $formatter = null)
     {
         $this->stream = $stream;
 
@@ -228,7 +228,7 @@ class Output implements Formatter
      */
     public function setVerbosity($verbosity)
     {
-        Assert::oneOf($verbosity, array(IO::NORMAL, IO::VERBOSE, IO::VERY_VERBOSE, IO::DEBUG), 'The verbosity must be one of IO::NORMAL, IO::VERBOSE, IO::VERY_VERBOSE and IO::DEBUG.');
+        Assert::oneOf($verbosity, [IO::NORMAL, IO::VERBOSE, IO::VERY_VERBOSE, IO::DEBUG], 'The verbosity must be one of IO::NORMAL, IO::VERBOSE, IO::VERY_VERBOSE and IO::DEBUG.');
 
         $this->verbosity = (int) $verbosity;
     }
@@ -301,7 +301,7 @@ class Output implements Formatter
     /**
      * {@inheritdoc}
      */
-    public function format($string, Style $style = null)
+    public function format($string, ?Style $style = null)
     {
         return $this->formatter->format($string, $style);
     }

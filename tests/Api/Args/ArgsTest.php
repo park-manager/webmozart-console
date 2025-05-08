@@ -38,21 +38,21 @@ class ArgsTest extends PHPUnit_Framework_TestCase
 
         $args = new Args($format);
 
-        $this->assertSame(array($server, $add), $args->getCommandNames());
+        $this->assertSame([$server, $add], $args->getCommandNames());
     }
 
     public function testGetCommandOptions()
     {
         $format = ArgsFormat::build()
             ->addCommandOption($server = new CommandOption('server'))
-            ->addCommandOption($add = new CommandOption('add', 'a', array(), CommandOption::PREFER_SHORT_NAME))
+            ->addCommandOption($add = new CommandOption('add', 'a', [], CommandOption::PREFER_SHORT_NAME))
             ->addArgument(new Argument('argument'))
             ->addOption(new Option('option'))
             ->getFormat();
 
         $args = new Args($format);
 
-        $this->assertSame(array($server, $add), $args->getCommandOptions());
+        $this->assertSame([$server, $add], $args->getCommandOptions());
     }
 
     public function testGetOptionReturnsOptionValue()
@@ -140,10 +140,10 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args->setOption('option1');
         $args->setOption('option2', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option1' => true,
             'option2' => 'value',
-        ), $args->getOptions());
+        ], $args->getOptions());
     }
 
     public function testGetOptionsAlwaysReturnsOptionsByLongName()
@@ -155,9 +155,9 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setOption('option', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option' => 'value',
-        ), $args->getOptions());
+        ], $args->getOptions());
     }
 
     public function testGetOptionsIncludesDefaults()
@@ -170,10 +170,10 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setOption('option1', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option1' => 'value',
             'option2' => 'default',
-        ), $args->getOptions());
+        ], $args->getOptions());
     }
 
     public function testGetOptionsDoesNotIncludeDefaultsIfDisabled()
@@ -186,9 +186,9 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setOption('option1', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option1' => 'value',
-        ), $args->getOptions(false));
+        ], $args->getOptions(false));
     }
 
     public function testGetOptionsReturnsFalseForUnsetOptionsWithoutValues()
@@ -201,10 +201,10 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setOption('option1', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option1' => 'value',
             'option2' => false,
-        ), $args->getOptions());
+        ], $args->getOptions());
     }
 
     public function testGetOptionsExcludesUnsetOptionsWithoutValuesIfNoMergeDefault()
@@ -217,9 +217,9 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setOption('option1', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option1' => 'value',
-        ), $args->getOptions(false));
+        ], $args->getOptions(false));
     }
 
     public function testGetOptionsPrefersSetNullOverDefaultValue()
@@ -231,9 +231,9 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setOption('option', null);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option' => null,
-        ), $args->getOptions());
+        ], $args->getOptions());
     }
 
     public function testSetOptionToFalse()
@@ -282,10 +282,10 @@ class ArgsTest extends PHPUnit_Framework_TestCase
             ->getFormat();
 
         $args = new Args($format);
-        $args->setOption('option', array('1', '2'));
+        $args->setOption('option', ['1', '2']);
 
-        $this->assertSame(array(1, 2), $args->getOption('option'));
-        $this->assertSame(array(1, 2), $args->getOption('o'));
+        $this->assertSame([1, 2], $args->getOption('option'));
+        $this->assertSame([1, 2], $args->getOption('o'));
     }
 
     public function testSetOptionCastsValueToArrayIfMultiValued()
@@ -297,8 +297,8 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setOption('option', '1');
 
-        $this->assertSame(array(1), $args->getOption('option'));
-        $this->assertSame(array(1), $args->getOption('o'));
+        $this->assertSame([1], $args->getOption('option'));
+        $this->assertSame([1], $args->getOption('o'));
     }
 
     /**
@@ -322,16 +322,16 @@ class ArgsTest extends PHPUnit_Framework_TestCase
 
         $args = new Args($format);
         $args->setOption('option1');
-        $args->addOptions(array(
+        $args->addOptions([
             'option2' => 'value',
             'option3' => true,
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option1' => true,
             'option2' => 'value',
             'option3' => true,
-        ), $args->getOptions());
+        ], $args->getOptions());
     }
 
     public function testSetOptions()
@@ -344,16 +344,16 @@ class ArgsTest extends PHPUnit_Framework_TestCase
 
         $args = new Args($format);
         $args->setOption('option1');
-        $args->setOptions(array(
+        $args->setOptions([
             'option2' => 'value',
             'option3' => true,
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option2' => 'value',
             'option3' => true,
             'option1' => false,
-        ), $args->getOptions());
+        ], $args->getOptions());
     }
 
     public function testIsOptionSet()
@@ -479,10 +479,10 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args->setArgument('argument1', 'value1');
         $args->setArgument('argument2', 'value2');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => 'value1',
             'argument2' => 'value2',
-        ), $args->getArguments());
+        ], $args->getArguments());
     }
 
     public function testGetArgumentsIncludesDefaultValues()
@@ -495,10 +495,10 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setArgument('argument1', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => 'value',
             'argument2' => 'default',
-        ), $args->getArguments());
+        ], $args->getArguments());
     }
 
     public function testGetArgumentsDoesNotIncludeDefaultValuesIfDisabled()
@@ -511,9 +511,9 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setArgument('argument1', 'value');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => 'value',
-        ), $args->getArguments(false));
+        ], $args->getArguments(false));
     }
 
     public function testGetArgumentsReturnsCorrectOrder()
@@ -527,10 +527,10 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args->setArgument('argument2', 'value2');
         $args->setArgument('argument1', 'value1');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => 'value1',
             'argument2' => 'value2',
-        ), $args->getArguments());
+        ], $args->getArguments());
     }
 
     public function testGetArgumentsPrefersSetNullOverDefaultValue()
@@ -542,9 +542,9 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setArgument('argument', null);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument' => null,
-        ), $args->getArguments());
+        ], $args->getArguments());
     }
 
     public function testSetArgumentByPosition()
@@ -581,9 +581,9 @@ class ArgsTest extends PHPUnit_Framework_TestCase
             ->getFormat();
 
         $args = new Args($format);
-        $args->setArgument('argument', array('1', '2'));
+        $args->setArgument('argument', ['1', '2']);
 
-        $this->assertSame(array(1, 2), $args->getArgument('argument'));
+        $this->assertSame([1, 2], $args->getArgument('argument'));
     }
 
     public function testSetArgumentCastsToArrayIfMultiValued()
@@ -595,7 +595,7 @@ class ArgsTest extends PHPUnit_Framework_TestCase
         $args = new Args($format);
         $args->setArgument('argument', '1');
 
-        $this->assertSame(array(1), $args->getArgument('argument'));
+        $this->assertSame([1], $args->getArgument('argument'));
     }
 
     /**
@@ -619,16 +619,16 @@ class ArgsTest extends PHPUnit_Framework_TestCase
 
         $args = new Args($format);
         $args->setArgument('argument1', 'value1');
-        $args->addArguments(array(
+        $args->addArguments([
             'argument2' => 'value2',
             'argument3' => 'value3',
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => 'value1',
             'argument2' => 'value2',
             'argument3' => 'value3',
-        ), $args->getArguments());
+        ], $args->getArguments());
     }
 
     public function testSetArguments()
@@ -641,16 +641,16 @@ class ArgsTest extends PHPUnit_Framework_TestCase
 
         $args = new Args($format);
         $args->setArgument('argument1', 'value1');
-        $args->setArguments(array(
+        $args->setArguments([
             'argument2' => 'value2',
             'argument3' => 'value3',
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => null,
             'argument2' => 'value2',
             'argument3' => 'value3',
-        ), $args->getArguments());
+        ], $args->getArguments());
     }
 
     public function testIsArgumentSet()

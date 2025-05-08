@@ -56,10 +56,10 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
         $this->assertNull($config->getHelp());
         $this->assertNull($config->getProcessTitle());
         $this->assertNull($config->getApplicationConfig());
-        $this->assertSame(array(), $config->getAliases());
-        $this->assertSame(array(), $config->getArguments());
-        $this->assertSame(array(), $config->getOptions());
-        $this->assertSame(array(), $config->getSubCommandConfigs());
+        $this->assertSame([], $config->getAliases());
+        $this->assertSame([], $config->getArguments());
+        $this->assertSame([], $config->getOptions());
+        $this->assertSame([], $config->getSubCommandConfigs());
     }
 
     public function testCreateWithArguments()
@@ -79,10 +79,10 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
         $this->assertNull($config->getHelp());
         $this->assertNull($config->getProcessTitle());
         $this->assertNull($config->getApplicationConfig());
-        $this->assertSame(array(), $config->getAliases());
-        $this->assertSame(array(), $config->getArguments());
-        $this->assertSame(array(), $config->getOptions());
-        $this->assertSame(array(), $config->getSubCommandConfigs());
+        $this->assertSame([], $config->getAliases());
+        $this->assertSame([], $config->getArguments());
+        $this->assertSame([], $config->getOptions());
+        $this->assertSame([], $config->getSubCommandConfigs());
     }
 
     public function testStaticCreateWithName()
@@ -105,15 +105,15 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
 
     public function getValidNames()
     {
-        return array(
-            array('command'),
-            array('command-name'),
-            array('CommandName'),
-            array('c'),
-            array('cd'),
-            array('command1'),
-            array(null),
-        );
+        return [
+            ['command'],
+            ['command-name'],
+            ['CommandName'],
+            ['c'],
+            ['cd'],
+            ['command1'],
+            [null],
+        ];
     }
 
     /**
@@ -127,15 +127,15 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidNames()
     {
-        return array(
-            array(1234),
-            array(true),
-            array(''),
-            array('command_name'),
-            array('command&'),
-            array('command:name'),
-            array('command name'),
-        );
+        return [
+            [1234],
+            [true],
+            [''],
+            ['command_name'],
+            ['command&'],
+            ['command:name'],
+            ['command name'],
+        ];
     }
 
     public function testSetNameOverwritesPreviousName()
@@ -255,7 +255,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
 
         $this->config->addAlias($alias);
 
-        $this->assertSame(array($alias), $this->config->getAliases());
+        $this->assertSame([$alias], $this->config->getAliases());
     }
 
     public function testAddAliasPreservesExistingAliases()
@@ -263,7 +263,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
         $this->config->addAlias('alias1');
         $this->config->addAlias('alias2');
 
-        $this->assertSame(array('alias1', 'alias2'), $this->config->getAliases());
+        $this->assertSame(['alias1', 'alias2'], $this->config->getAliases());
     }
 
     /**
@@ -302,9 +302,9 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
     public function testAddAliases()
     {
         $this->config->addAlias('alias1');
-        $this->config->addAliases(array('alias2', 'alias3'));
+        $this->config->addAliases(['alias2', 'alias3']);
 
-        $this->assertSame(array('alias1', 'alias2', 'alias3'), $this->config->getAliases());
+        $this->assertSame(['alias1', 'alias2', 'alias3'], $this->config->getAliases());
     }
 
     /**
@@ -312,7 +312,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
      */
     public function testAddAliasesFailsIfNull()
     {
-        $this->config->addAliases(array(null));
+        $this->config->addAliases([null]);
     }
 
     /**
@@ -320,7 +320,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
      */
     public function testAddAliasesFailsIfEmpty()
     {
-        $this->config->addAliases(array(''));
+        $this->config->addAliases(['']);
     }
 
     /**
@@ -328,15 +328,15 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
      */
     public function testAddAliasesFailsIfNoString()
     {
-        $this->config->addAliases(array(1234));
+        $this->config->addAliases([1234]);
     }
 
     public function testSetAliases()
     {
         $this->config->addAlias('alias1');
-        $this->config->setAliases(array('alias2', 'alias3'));
+        $this->config->setAliases(['alias2', 'alias3']);
 
-        $this->assertSame(array('alias2', 'alias3'), $this->config->getAliases());
+        $this->assertSame(['alias2', 'alias3'], $this->config->getAliases());
     }
 
     /**
@@ -344,7 +344,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
      */
     public function testSetAliasesFailsIfNull()
     {
-        $this->config->setAliases(array(null));
+        $this->config->setAliases([null]);
     }
 
     /**
@@ -352,7 +352,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
      */
     public function testSetAliasesFailsIfEmpty()
     {
-        $this->config->setAliases(array(''));
+        $this->config->setAliases(['']);
     }
 
     /**
@@ -360,7 +360,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
      */
     public function testSetAliasesFailsIfNoString()
     {
-        $this->config->setAliases(array(1234));
+        $this->config->setAliases([1234]);
     }
 
     public function testSetProcessTitle()
@@ -400,10 +400,10 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
             ->beginSubCommand('command2')->end()
         ;
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             new SubCommandConfig('command1', $this->config, $this->applicationConfig),
             new SubCommandConfig('command2', $this->config, $this->applicationConfig),
-        ), $this->config->getSubCommandConfigs());
+        ], $this->config->getSubCommandConfigs());
     }
 
     public function testChangeSubCommand()
@@ -418,7 +418,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
         $this->config->addSubCommandConfig($config1 = new SubCommandConfig('command1'));
         $this->config->addSubCommandConfig($config2 = new SubCommandConfig('command2'));
 
-        $this->assertSame(array($config1, $config2), $this->config->getSubCommandConfigs());
+        $this->assertSame([$config1, $config2], $this->config->getSubCommandConfigs());
 
         $this->assertSame($this->applicationConfig, $config1->getApplicationConfig());
         $this->assertSame($this->applicationConfig, $config2->getApplicationConfig());
@@ -427,23 +427,23 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
     public function testAddSubCommandConfigs()
     {
         $this->config->addSubCommandConfig($config1 = new SubCommandConfig('command1'));
-        $this->config->addSubCommandConfigs(array(
+        $this->config->addSubCommandConfigs([
             $config2 = new SubCommandConfig('command2'),
             $config3 = new SubCommandConfig('command3'),
-        ));
+        ]);
 
-        $this->assertSame(array($config1, $config2, $config3), $this->config->getSubCommandConfigs());
+        $this->assertSame([$config1, $config2, $config3], $this->config->getSubCommandConfigs());
     }
 
     public function testSetSubCommandConfigs()
     {
         $this->config->addSubCommandConfig($config1 = new SubCommandConfig('command1'));
-        $this->config->setSubCommandConfigs(array(
+        $this->config->setSubCommandConfigs([
             $config2 = new SubCommandConfig('command2'),
             $config3 = new SubCommandConfig('command3'),
-        ));
+        ]);
 
-        $this->assertSame(array($config2, $config3), $this->config->getSubCommandConfigs());
+        $this->assertSame([$config2, $config3], $this->config->getSubCommandConfigs());
     }
 
     public function testGetSubCommandConfig()
@@ -492,10 +492,10 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
             ->beginOptionCommand('command2', 'b')->end()
         ;
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             new OptionCommandConfig('command1', 'a', $this->config, $this->applicationConfig),
             new OptionCommandConfig('command2', 'b', $this->config, $this->applicationConfig),
-        ), $this->config->getSubCommandConfigs());
+        ], $this->config->getSubCommandConfigs());
     }
 
     public function testEditOptionCommand()
@@ -589,12 +589,12 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
     {
         $baseFormat = new ArgsFormat();
         $this->config->setName('command');
-        $this->config->setAliases(array('alias1', 'alias2'));
+        $this->config->setAliases(['alias1', 'alias2']);
         $this->config->addOption('option');
         $this->config->addArgument('argument');
 
         $expected = ArgsFormat::build($baseFormat)
-            ->addCommandName(new CommandName('command', array('alias1', 'alias2')))
+            ->addCommandName(new CommandName('command', ['alias1', 'alias2']))
             ->addArgument(new Argument('argument'))
             ->addOption(new Option('option'))
             ->getFormat();
@@ -606,7 +606,7 @@ class CommandConfigTest extends PHPUnit_Framework_TestCase
     {
         $baseFormat = new ArgsFormat();
         $this->config->setName('command');
-        $this->config->setAliases(array('alias1', 'alias2'));
+        $this->config->setAliases(['alias1', 'alias2']);
         $this->config->addOption('option');
         $this->config->addArgument('argument');
         $this->config->markAnonymous();

@@ -31,7 +31,7 @@ class CannotAddOptionException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function existsAlready($name, Exception $cause = null)
+    public static function existsAlready($name, ?Exception $cause = null)
     {
         return new static(sprintf(
             'An option named "%s%s" exists already.',

@@ -32,12 +32,12 @@ class LabelAlignment
     /**
      * @var LabeledParagraph[]
      */
-    private $paragraphs = array();
+    private $paragraphs = [];
 
     /**
      * @var int[]
      */
-    private $indentations = array();
+    private $indentations = [];
 
     /**
      * @var int

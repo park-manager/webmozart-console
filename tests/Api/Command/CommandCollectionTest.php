@@ -36,12 +36,12 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testCreateWithCommands()
     {
-        $collection = new CommandCollection(array(
+        $collection = new CommandCollection([
             $ls = new Command(new CommandConfig('ls')),
             $cd = new Command(new CommandConfig('cd')),
-        ));
+        ]);
 
-        $this->assertSame(array('ls' => $ls, 'cd' => $cd), $collection->toArray());
+        $this->assertSame(['ls' => $ls, 'cd' => $cd], $collection->toArray());
     }
 
     public function testAdd()
@@ -50,29 +50,29 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
         $this->collection->add($cd = new Command(new CommandConfig('cd')));
 
         // return sorted result
-        $this->assertSame(array('ls' => $ls, 'cd' => $cd), $this->collection->toArray());
+        $this->assertSame(['ls' => $ls, 'cd' => $cd], $this->collection->toArray());
     }
 
     public function testMerge()
     {
         $this->collection->add($ls = new Command(new CommandConfig('ls')));
-        $this->collection->merge(array(
+        $this->collection->merge([
             $cd = new Command(new CommandConfig('cd')),
             $cat = new Command(new CommandConfig('cat')),
-        ));
+        ]);
 
-        $this->assertSame(array('ls' => $ls, 'cd' => $cd, 'cat' => $cat), $this->collection->toArray());
+        $this->assertSame(['ls' => $ls, 'cd' => $cd, 'cat' => $cat], $this->collection->toArray());
     }
 
     public function testReplace()
     {
         $this->collection->add($ls = new Command(new CommandConfig('ls')));
-        $this->collection->replace(array(
+        $this->collection->replace([
             $cd = new Command(new CommandConfig('cd')),
             $cat = new Command(new CommandConfig('cat')),
-        ));
+        ]);
 
-        $this->assertSame(array('cd' => $cd, 'cat' => $cat), $this->collection->toArray());
+        $this->assertSame(['cd' => $cd, 'cat' => $cat], $this->collection->toArray());
     }
 
     public function testGet()
@@ -254,7 +254,7 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
         $this->collection->add($ls);
         $this->collection->add($cd);
 
-        $this->assertSame(array('cd', 'ls'), $this->collection->getNames());
+        $this->assertSame(['cd', 'ls'], $this->collection->getNames());
     }
 
     public function testGetNamesWithAliases()
@@ -265,7 +265,7 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
         $this->collection->add($ls);
         $this->collection->add($cd);
 
-        $this->assertSame(array('cd', 'cd-alias', 'ls', 'ls-alias'), $this->collection->getNames(true));
+        $this->assertSame(['cd', 'cd-alias', 'ls', 'ls-alias'], $this->collection->getNames(true));
     }
 
     public function testGetAliases()
@@ -276,7 +276,7 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
         $this->collection->add($ls);
         $this->collection->add($cd);
 
-        $this->assertSame(array('cd-alias' => 'cd', 'ls-alias' => 'ls'), $this->collection->getAliases());
+        $this->assertSame(['cd-alias' => 'cd', 'ls-alias' => 'ls'], $this->collection->getAliases());
     }
 
     public function testCount()
@@ -323,6 +323,6 @@ class CommandCollectionTest extends PHPUnit_Framework_TestCase
 
         $result = iterator_to_array($this->collection);
 
-        $this->assertSame(array('ls' => $ls, 'cd' => $cd), $result);
+        $this->assertSame(['ls' => $ls, 'cd' => $cd], $result);
     }
 }

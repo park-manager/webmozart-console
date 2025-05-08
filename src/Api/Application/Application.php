@@ -153,5 +153,5 @@ interface Application
      *
      * @return int The exit status.
      */
-    public function run(RawArgs $args = null, InputStream $inputStream = null, OutputStream $outputStream = null, OutputStream $errorStream = null);
+    public function run(?RawArgs $args = null, ?InputStream $inputStream = null, ?OutputStream $outputStream = null, ?OutputStream $errorStream = null);
 }

@@ -33,12 +33,12 @@ class BlockLayout implements Component
     /**
      * @var Component[]
      */
-    private $elements = array();
+    private $elements = [];
 
     /**
      * @var int[]
      */
-    private $indentations = array();
+    private $indentations = [];
 
     /**
      * @var LabelAlignment
@@ -111,6 +111,6 @@ class BlockLayout implements Component
             $element->render($io, $this->indentations[$i] + $indentation);
         }
 
-        $this->elements = array();
+        $this->elements = [];
     }
 }

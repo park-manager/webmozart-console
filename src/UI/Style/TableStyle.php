@@ -56,7 +56,7 @@ class TableStyle
     /**
      * @var string
      */
-    private $columnAlignments = array();
+    private $columnAlignments = [];
 
     /**
      * @var string
@@ -231,9 +231,8 @@ class TableStyle
      */
     public function getColumnAlignment($column)
     {
-        return isset($this->columnAlignments[$column])
-            ? $this->columnAlignments[$column]
-            : $this->defaultColumnAlignment;
+        return $this->columnAlignments[$column]
+            ?? $this->defaultColumnAlignment;
     }
 
     /**
@@ -246,7 +245,7 @@ class TableStyle
      */
     public function setColumnAlignments(array $alignments)
     {
-        $this->columnAlignments = array();
+        $this->columnAlignments = [];
 
         foreach ($alignments as $column => $alignment) {
             $this->setColumnAlignment($column, $alignment);
@@ -339,7 +338,7 @@ class TableStyle
      *
      * @return static The current instance.
      */
-    public function setHeaderCellStyle(Style $style = null)
+    public function setHeaderCellStyle(?Style $style = null)
     {
         $this->headerCellStyle = $style;
 

@@ -43,7 +43,7 @@ class OptionCommandConfig extends SubCommandConfig
      * @param CommandConfig     $parentConfig      The parent configuration.
      * @param ApplicationConfig $applicationConfig The application configuration.
      */
-    public function __construct($name = null, $shortName = null, CommandConfig $parentConfig = null, ApplicationConfig $applicationConfig = null)
+    public function __construct($name = null, $shortName = null, ?CommandConfig $parentConfig = null, ?ApplicationConfig $applicationConfig = null)
     {
         parent::__construct($name, $parentConfig, $applicationConfig);
 
@@ -218,7 +218,7 @@ class OptionCommandConfig extends SubCommandConfig
     /**
      * {@inheritdoc}
      */
-    public function buildArgsFormat(ArgsFormat $baseFormat = null)
+    public function buildArgsFormat(?ArgsFormat $baseFormat = null)
     {
         $formatBuilder = ArgsFormat::build($baseFormat);
 

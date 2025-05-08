@@ -58,25 +58,25 @@ class ApplicationHelpTest extends PHPUnit_Framework_TestCase
         $help->render($this->io);
 
         $expected = <<<'EOF'
-The Application
+            The Application
 
-USAGE
-  test-bin [--global-option] <command> [<arg1>] ... [<argN>]
+            USAGE
+              test-bin [--global-option] <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>        The command to execute
-  <arg>            The arguments of the command
+            ARGUMENTS
+              <command>        The command to execute
+              <arg>            The arguments of the command
 
-GLOBAL OPTIONS
-  --global-option  Description of "global-option"
+            GLOBAL OPTIONS
+              --global-option  Description of "global-option"
 
-AVAILABLE COMMANDS
-  command1         Description of "command1"
-  command2         Description of "command2"
-  longer-command3  Description of "longer-command3"
+            AVAILABLE COMMANDS
+              command1         Description of "command1"
+              command2         Description of "command2"
+              longer-command3  Description of "longer-command3"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -96,22 +96,22 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-The Application
+            The Application
 
-USAGE
-  test-bin <command> [<arg1>] ... [<argN>]
+            USAGE
+              test-bin <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>  The command to execute
-  <arg>      The arguments of the command
+            ARGUMENTS
+              <command>  The command to execute
+              <arg>      The arguments of the command
 
-AVAILABLE COMMANDS
-  command1
-  command2
-  command3
+            AVAILABLE COMMANDS
+              command1
+              command2
+              command3
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -129,17 +129,17 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-The Application version 1.2.3
+            The Application version 1.2.3
 
-USAGE
-  test-bin <command> [<arg1>] ... [<argN>]
+            USAGE
+              test-bin <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>  The command to execute
-  <arg>      The arguments of the command
+            ARGUMENTS
+              <command>  The command to execute
+              <arg>      The arguments of the command
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -155,17 +155,17 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-Test Bin
+            Test Bin
 
-USAGE
-  test-bin <command> [<arg1>] ... [<argN>]
+            USAGE
+              test-bin <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>  The command to execute
-  <arg>      The arguments of the command
+            ARGUMENTS
+              <command>  The command to execute
+              <arg>      The arguments of the command
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -179,17 +179,17 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-Console Tool
+            Console Tool
 
-USAGE
-  console <command> [<arg1>] ... [<argN>]
+            USAGE
+              console <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>  The command to execute
-  <arg>      The arguments of the command
+            ARGUMENTS
+              <command>  The command to execute
+              <arg>      The arguments of the command
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -205,20 +205,20 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-Console Tool
+            Console Tool
 
-USAGE
-  console [-g] <command> [<arg1>] ... [<argN>]
+            USAGE
+              console [-g] <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>             The command to execute
-  <arg>                 The arguments of the command
+            ARGUMENTS
+              <command>             The command to execute
+              <arg>                 The arguments of the command
 
-GLOBAL OPTIONS
-  -g (--global-option)  Description of "global-option"
+            GLOBAL OPTIONS
+              -g (--global-option)  Description of "global-option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -234,20 +234,20 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-Console Tool
+            Console Tool
 
-USAGE
-  console [--global-option] <command> [<arg1>] ... [<argN>]
+            USAGE
+              console [--global-option] <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>             The command to execute
-  <arg>                 The arguments of the command
+            ARGUMENTS
+              <command>             The command to execute
+              <arg>                 The arguments of the command
 
-GLOBAL OPTIONS
-  --global-option (-g)  Description of "global-option"
+            GLOBAL OPTIONS
+              --global-option (-g)  Description of "global-option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -263,20 +263,20 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-Console Tool
+            Console Tool
 
-USAGE
-  console <command> [<arg1>] ... [<argN>]
+            USAGE
+              console <command> [<arg1>] ... [<argN>]
 
-ARGUMENTS
-  <command>  The command to execute
-  <arg>      The arguments of the command
+            ARGUMENTS
+              <command>  The command to execute
+              <arg>      The arguments of the command
 
-DESCRIPTION
-  The help
+            DESCRIPTION
+              The help
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }

@@ -51,7 +51,7 @@ class HelpManHandler
      * @param ProcessLauncher  $processLauncher  The launcher for executing the
      *                                           "man" binary.
      */
-    public function __construct($path, ExecutableFinder $executableFinder = null, ProcessLauncher $processLauncher = null)
+    public function __construct($path, ?ExecutableFinder $executableFinder = null, ?ProcessLauncher $processLauncher = null)
     {
         Assert::file($path);
 
@@ -79,7 +79,7 @@ class HelpManHandler
 
         return $this->processLauncher->launchProcess(
             escapeshellcmd($this->manBinary).' -l %path%',
-            array('path' => $this->path),
+            ['path' => $this->path],
             false
         );
     }

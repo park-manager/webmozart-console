@@ -45,7 +45,7 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
         $this->assertNull($config->getDisplayName());
         $this->assertNull($config->getVersion());
         $this->assertNull($config->getEventDispatcher());
-        $this->assertSame(array(), $config->getCommandConfigs());
+        $this->assertSame([], $config->getCommandConfigs());
     }
 
     public function testCreateWithArguments()
@@ -64,7 +64,7 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
         $this->assertNull($config->getDisplayName());
         $this->assertNull($config->getVersion());
         $this->assertNull($config->getEventDispatcher());
-        $this->assertSame(array(), $config->getCommandConfigs());
+        $this->assertSame([], $config->getCommandConfigs());
     }
 
     public function testStaticCreateWithArguments()
@@ -411,7 +411,7 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
         $style1 = Style::tag('custom1');
         $style2 = Style::tag('custom2');
 
-        $this->config->addStyles(array($style1, $style2));
+        $this->config->addStyles([$style1, $style2]);
 
         $styleSet = new DefaultStyleSet();
         $styleSet->add($style1);
@@ -425,7 +425,7 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
         $style1 = Style::tag('custom1');
         $style2 = Style::tag('custom2');
 
-        $this->config->addStyles(array($style1, $style2));
+        $this->config->addStyles([$style1, $style2]);
         $this->config->removeStyle('custom1');
 
         $styleSet = new DefaultStyleSet();
@@ -441,10 +441,10 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
             ->beginCommand('command2')->end()
         ;
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             new CommandConfig('command1', $this->config),
             new CommandConfig('command2', $this->config),
-        ), $this->config->getCommandConfigs());
+        ], $this->config->getCommandConfigs());
     }
 
     public function testEditCommand()
@@ -459,29 +459,29 @@ class ApplicationConfigTest extends PHPUnit_Framework_TestCase
         $this->config->addCommandConfig($config1 = new CommandConfig('command1'));
         $this->config->addCommandConfig($config2 = new CommandConfig('command2'));
 
-        $this->assertSame(array($config1, $config2), $this->config->getCommandConfigs());
+        $this->assertSame([$config1, $config2], $this->config->getCommandConfigs());
     }
 
     public function testAddCommandConfigs()
     {
         $this->config->addCommandConfig($config1 = new CommandConfig('command1'));
-        $this->config->addCommandConfigs(array(
+        $this->config->addCommandConfigs([
             $config2 = new CommandConfig('command2'),
             $config3 = new CommandConfig('command3'),
-        ));
+        ]);
 
-        $this->assertSame(array($config1, $config2, $config3), $this->config->getCommandConfigs());
+        $this->assertSame([$config1, $config2, $config3], $this->config->getCommandConfigs());
     }
 
     public function testSetCommandConfigs()
     {
         $this->config->addCommandConfig($config1 = new CommandConfig('command1'));
-        $this->config->setCommandConfigs(array(
+        $this->config->setCommandConfigs([
             $config2 = new CommandConfig('command2'),
             $config3 = new CommandConfig('command3'),
-        ));
+        ]);
 
-        $this->assertSame(array($config2, $config3), $this->config->getCommandConfigs());
+        $this->assertSame([$config2, $config3], $this->config->getCommandConfigs());
     }
 
     public function testGetCommandConfig()

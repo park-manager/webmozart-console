@@ -40,12 +40,12 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
     protected function doSetUp()
     {
         $this->rawArgs = new StringArgs('');
-        $this->args = new Args(new ArgsFormat(array(
+        $this->args = new Args(new ArgsFormat([
             new Argument('argument1'),
             new Argument('argument2', 0, null, 'default'),
             new Option('option1', 'o', Option::NO_VALUE),
             new Option('option2', null, Option::OPTIONAL_VALUE, null, 'default'),
-        )));
+        ]));
     }
 
     public function testCreate()
@@ -94,13 +94,13 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
     {
         $input = new ArgsInput(new StringArgs('-o --option --value=value -- --foo=bar'));
 
-        $this->assertTrue($input->hasParameterOption(array('-o', '--option')));
+        $this->assertTrue($input->hasParameterOption(['-o', '--option']));
         // sufficient if any of the options exists
-        $this->assertTrue($input->hasParameterOption(array('-o', '--foo')));
-        $this->assertFalse($input->hasParameterOption(array('--bar', '--baz')));
+        $this->assertTrue($input->hasParameterOption(['-o', '--foo']));
+        $this->assertFalse($input->hasParameterOption(['--bar', '--baz']));
         // only check real parameters, skip those following an end of options (--) signal
-        $this->assertTrue($input->hasParameterOption(array('--foo', '--bar')));
-        $this->assertFalse($input->hasParameterOption(array('--foo', '--bar'), true));
+        $this->assertTrue($input->hasParameterOption(['--foo', '--bar']));
+        $this->assertFalse($input->hasParameterOption(['--foo', '--bar'], true));
     }
 
     public function testGetParameterOption()
@@ -121,16 +121,16 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
         $inputArgs = new ArgsInput($this->rawArgs, $this->args);
         $inputNoArgs = new ArgsInput($this->rawArgs);
 
-        $this->args->setArguments(array(
+        $this->args->setArguments([
             'argument1' => 'value1',
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => 'value1',
             'argument2' => 'default',
-        ), $inputArgs->getArguments());
+        ], $inputArgs->getArguments());
 
-        $this->assertSame(array(), $inputNoArgs->getArguments());
+        $this->assertSame([], $inputNoArgs->getArguments());
     }
 
     public function testGetArgument()
@@ -138,9 +138,9 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
         $inputArgs = new ArgsInput($this->rawArgs, $this->args);
         $inputNoArgs = new ArgsInput($this->rawArgs);
 
-        $this->args->setArguments(array(
+        $this->args->setArguments([
             'argument1' => 'value1',
-        ));
+        ]);
 
         $this->assertSame('value1', $inputArgs->getArgument('argument1'));
         $this->assertSame('default', $inputArgs->getArgument('argument2'));
@@ -164,9 +164,9 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
         $inputArgs = new ArgsInput($this->rawArgs, $this->args);
         $inputNoArgs = new ArgsInput($this->rawArgs);
 
-        $this->args->setArguments(array(
+        $this->args->setArguments([
             'argument1' => 'value1',
-        ));
+        ]);
 
         $this->assertTrue($inputArgs->hasArgument('argument1'));
         $this->assertTrue($inputArgs->hasArgument('argument2'));
@@ -179,16 +179,16 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
         $inputArgs = new ArgsInput($this->rawArgs, $this->args);
         $inputNoArgs = new ArgsInput($this->rawArgs);
 
-        $this->args->setOptions(array(
+        $this->args->setOptions([
             'option1' => true,
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option1' => true,
             'option2' => 'default',
-        ), $inputArgs->getOptions());
+        ], $inputArgs->getOptions());
 
-        $this->assertSame(array(), $inputNoArgs->getOptions());
+        $this->assertSame([], $inputNoArgs->getOptions());
     }
 
     public function testGetOption()
@@ -196,9 +196,9 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
         $inputArgs = new ArgsInput($this->rawArgs, $this->args);
         $inputNoArgs = new ArgsInput($this->rawArgs);
 
-        $this->args->setOptions(array(
+        $this->args->setOptions([
             'option1' => true,
-        ));
+        ]);
 
         $this->assertTrue($inputArgs->getOption('option1'));
         $this->assertSame('default', $inputArgs->getOption('option2'));
@@ -222,9 +222,9 @@ class ArgsInputTest extends PHPUnit_Framework_TestCase
         $inputArgs = new ArgsInput($this->rawArgs, $this->args);
         $inputNoArgs = new ArgsInput($this->rawArgs);
 
-        $this->args->setOptions(array(
+        $this->args->setOptions([
             'option1' => true,
-        ));
+        ]);
 
         $this->assertTrue($inputArgs->hasOption('option1'));
         $this->assertTrue($inputArgs->hasOption('option2'));

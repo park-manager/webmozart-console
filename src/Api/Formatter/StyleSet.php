@@ -26,14 +26,14 @@ class StyleSet
     /**
      * @var Style[]
      */
-    private $styles = array();
+    private $styles = [];
 
     /**
      * Creates a new style set.
      *
      * @param Style[] $styles The styles to add.
      */
-    public function __construct(array $styles = array())
+    public function __construct(array $styles = [])
     {
         $this->replace($styles);
     }
@@ -77,7 +77,7 @@ class StyleSet
      */
     public function replace(array $styles)
     {
-        $this->styles = array();
+        $this->styles = [];
 
         $this->merge($styles);
     }
@@ -99,7 +99,7 @@ class StyleSet
      */
     public function clear()
     {
-        $this->styles = array();
+        $this->styles = [];
     }
 
     /**

@@ -239,7 +239,7 @@ class ConsoleApplication implements Application
     /**
      * {@inheritdoc}
      */
-    public function run(RawArgs $args = null, InputStream $inputStream = null, OutputStream $outputStream = null, OutputStream $errorStream = null)
+    public function run(?RawArgs $args = null, ?InputStream $inputStream = null, ?OutputStream $outputStream = null, ?OutputStream $errorStream = null)
     {
         // Render errors to the preliminary IO until the final IO is created
         $io = $this->preliminaryIo;

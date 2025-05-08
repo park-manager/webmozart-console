@@ -77,15 +77,15 @@ class ExceptionTraceTest extends PHPUnit_Framework_TestCase
         $expected = <<<EOF
 
 
-$box
+            $box
 
 
-Exception trace:
-  ()
-    src/Api/Command/NoSuchCommandException.php:??
-  Webmozart\Console\Api\Command\NoSuchCommandException::forCommandName()
-    tests/UI/Component/ExceptionTraceTest.php
-EOF;
+            Exception trace:
+              ()
+                src/Api/Command/NoSuchCommandException.php:??
+              Webmozart\Console\Api\Command\NoSuchCommandException::forCommandName()
+                tests/UI/Component/ExceptionTraceTest.php
+            EOF;
 
         $actual = $this->io->fetchErrors();
 
@@ -93,7 +93,7 @@ EOF;
         $actual = preg_replace('~(NoSuchCommandException.php:)\d+~', '$1??', $actual);
 
         // Normalize slashes across OS
-        $expected = str_replace(array("\n", '/'), array(PHP_EOL, DIRECTORY_SEPARATOR), $expected);
+        $expected = str_replace(["\n", '/'], [PHP_EOL, DIRECTORY_SEPARATOR], $expected);
 
         // Use to debug issues invisible to the diff output:
         //echo PHP_EOL.unpack('H*', substr($actual, 0, strlen($expected)))[1].PHP_EOL;
@@ -122,15 +122,15 @@ EOF;
         $expected1 = <<<EOF
 
 
-$box1
+            $box1
 
 
-Exception trace:
-  ()
-    src/Api/Command/NoSuchCommandException.php:??
-  Webmozart\Console\Api\Command\NoSuchCommandException::forCommandName()
-    tests/UI/Component/ExceptionTraceTest.php
-EOF;
+            Exception trace:
+              ()
+                src/Api/Command/NoSuchCommandException.php:??
+              Webmozart\Console\Api\Command\NoSuchCommandException::forCommandName()
+                tests/UI/Component/ExceptionTraceTest.php
+            EOF;
 
         $box2 = '                             '."\n".
                 '  [RuntimeException]         '."\n".
@@ -140,16 +140,16 @@ EOF;
         $expected2 = <<<EOF
 
 
-Caused by:
+            Caused by:
 
 
-$box2
+            $box2
 
 
-Exception trace:
-  ()
-    tests/UI/Component/ExceptionTraceTest.php
-EOF;
+            Exception trace:
+              ()
+                tests/UI/Component/ExceptionTraceTest.php
+            EOF;
 
         $actual = $this->io->fetchErrors();
 
@@ -157,8 +157,8 @@ EOF;
         $actual = preg_replace('~(NoSuchCommandException.php:)\d+~', '$1??', $actual);
 
         // Normalize slashes across OS
-        $expected1 = str_replace(array("\n", '/'), array(PHP_EOL, DIRECTORY_SEPARATOR), $expected1);
-        $expected2 = str_replace(array("\n", '/'), array(PHP_EOL, DIRECTORY_SEPARATOR), $expected2);
+        $expected1 = str_replace(["\n", '/'], [PHP_EOL, DIRECTORY_SEPARATOR], $expected1);
+        $expected2 = str_replace(["\n", '/'], [PHP_EOL, DIRECTORY_SEPARATOR], $expected2);
 
         $this->assertStringStartsWith($expected1, $actual);
         $this->assertContains($expected2, $actual);

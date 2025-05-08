@@ -54,12 +54,12 @@ class DelegatingHandlerTest extends PHPUnit_Framework_TestCase
     {
         $handler = new DelegatingHandler();
 
-        $this->assertSame(array(), $handler->getRegisteredNames());
+        $this->assertSame([], $handler->getRegisteredNames());
 
         $handler->register('handler1', new CallbackHandler(function () {}));
         $handler->register('handler2', new CallbackHandler(function () {}));
 
-        $this->assertSame(array('handler1', 'handler2'), $handler->getRegisteredNames());
+        $this->assertSame(['handler1', 'handler2'], $handler->getRegisteredNames());
     }
 
     /**
@@ -108,7 +108,7 @@ class DelegatingHandlerTest extends PHPUnit_Framework_TestCase
 
         $handler->unregister('handler2');
 
-        $this->assertSame(array('handler1', 'handler3'), $handler->getRegisteredNames());
+        $this->assertSame(['handler1', 'handler3'], $handler->getRegisteredNames());
     }
 
     /**
@@ -151,7 +151,7 @@ class DelegatingHandlerTest extends PHPUnit_Framework_TestCase
     public function testDelegateToFirstHandlerByDefault()
     {
         $handler = new DelegatingHandler();
-        $delegate = $this->getMock('stdClass', array('handle'));
+        $delegate = $this->getMock('stdClass', ['handle']);
 
         $delegate->expects($this->once())
             ->method('handle')
@@ -167,7 +167,7 @@ class DelegatingHandlerTest extends PHPUnit_Framework_TestCase
     public function testDelegateToSelectedHandler()
     {
         $handler = new DelegatingHandler();
-        $delegate = $this->getMock('stdClass', array('handle'));
+        $delegate = $this->getMock('stdClass', ['handle']);
 
         $delegate->expects($this->once())
             ->method('handle')
@@ -185,7 +185,7 @@ class DelegatingHandlerTest extends PHPUnit_Framework_TestCase
     public function testDelegateToFirstHandlerIfSelectedHandlerUnregistered()
     {
         $handler = new DelegatingHandler();
-        $delegate = $this->getMock('stdClass', array('handle'));
+        $delegate = $this->getMock('stdClass', ['handle']);
 
         $delegate->expects($this->once())
             ->method('handle')
@@ -208,7 +208,7 @@ class DelegatingHandlerTest extends PHPUnit_Framework_TestCase
         $io = $this->io;
 
         $handler = new DelegatingHandler();
-        $delegate = $this->getMock('stdClass', array('handle'));
+        $delegate = $this->getMock('stdClass', ['handle']);
 
         $delegate->expects($this->once())
             ->method('handle')
@@ -236,7 +236,7 @@ class DelegatingHandlerTest extends PHPUnit_Framework_TestCase
         $io = $this->io;
 
         $handler = new DelegatingHandler();
-        $delegate = $this->getMock('stdClass', array('handle'));
+        $delegate = $this->getMock('stdClass', ['handle']);
 
         $delegate->expects($this->once())
             ->method('handle')

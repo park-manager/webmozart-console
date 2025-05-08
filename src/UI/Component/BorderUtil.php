@@ -114,7 +114,7 @@ class BorderUtil
      * @param string      $paddingChar   The character used to pad cells.
      * @param int         $indentation   The number of spaces to indent.
      */
-    public static function drawRow(IO $io, BorderStyle $style, array $row, array $columnLengths, array $alignments, $cellFormat, Style $cellStyle = null, $paddingChar, $indentation = 0)
+    public static function drawRow(IO $io, BorderStyle $style, array $row, array $columnLengths, array $alignments, $cellFormat, ?Style $cellStyle = null, $paddingChar, $indentation = 0)
     {
         $totalLines = 0;
 
@@ -140,7 +140,7 @@ class BorderUtil
                 $paddingRight = '';
 
                 if ($totalPadLength > 0) {
-                    $alignment = isset($alignments[$col]) ? $alignments[$col] : Alignment::LEFT;
+                    $alignment = $alignments[$col] ?? Alignment::LEFT;
 
                     switch ($alignment) {
                         case Alignment::LEFT:
@@ -166,7 +166,7 @@ class BorderUtil
         }
     }
 
-    private static function drawBorder(IO $io, array $columnLengths, $indentation, $lineChar, $crossingLChar, $crossingCChar, $crossingRChar, Style $style = null)
+    private static function drawBorder(IO $io, array $columnLengths, $indentation, $lineChar, $crossingLChar, $crossingCChar, $crossingRChar, ?Style $style = null)
     {
         $line = str_repeat(' ', $indentation);
         $line .= $crossingLChar;

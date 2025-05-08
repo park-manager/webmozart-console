@@ -44,7 +44,7 @@ class ApplicationAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertSame('Test Name <info>1.2.3</info>', $adapter->getLongVersion());
         $this->assertSame('Test Name <info>1.2.3</info>', $adapter->getHelp());
         $this->assertSame($helperSet, $adapter->getHelperSet());
-        $this->assertSame(array(), $adapter->getNamespaces());
+        $this->assertSame([], $adapter->getNamespaces());
         $this->assertEquals(new ArgsFormatInputDefinition($application->getGlobalArgsFormat()), $adapter->getDefinition());
 
         $commandAdapter = new CommandAdapter($application->getCommand('command'), $adapter);

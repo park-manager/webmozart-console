@@ -84,7 +84,7 @@ class CommandHelp extends AbstractHelp
      */
     protected function renderUsage(BlockLayout $layout, Command $command)
     {
-        $formatsToPrint = array();
+        $formatsToPrint = [];
 
         // Start with the default commands
         if ($command->hasDefaultSubCommands()) {
@@ -95,18 +95,18 @@ class CommandHelp extends AbstractHelp
                 // anonymous
                 $nameOptional = !$subCommand->getConfig()->isAnonymous();
 
-                $formatsToPrint[] = array($subCommand->getArgsFormat(), $nameOptional);
+                $formatsToPrint[] = [$subCommand->getArgsFormat(), $nameOptional];
             }
         } else {
             // Otherwise print the command's usage itself
-            $formatsToPrint[] = array($command->getArgsFormat(), false);
+            $formatsToPrint[] = [$command->getArgsFormat(), false];
         }
 
         // Add remaining sub-commands
         foreach ($command->getSubCommands() as $subCommand) {
             // Don't duplicate default commands
             if (!$subCommand->getConfig()->isDefault()) {
-                $formatsToPrint[$subCommand->getName()] = array($subCommand->getArgsFormat(), false);
+                $formatsToPrint[$subCommand->getName()] = [$subCommand->getArgsFormat(), false];
             }
         }
 

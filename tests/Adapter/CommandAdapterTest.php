@@ -52,7 +52,7 @@ class CommandAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(new ArgsFormatInputDefinition($command->getArgsFormat()), $adapter->getDefinition());
         $this->assertEquals(new ArgsFormatInputDefinition($command->getArgsFormat()), $adapter->getNativeDefinition());
         $this->assertSame($command, $adapter->getAdaptedCommand());
-        $this->assertSame(array('alias1', 'alias2'), $adapter->getAliases());
+        $this->assertSame(['alias1', 'alias2'], $adapter->getAliases());
         $this->assertSame($applicationAdapter, $adapter->getApplication());
         $this->assertSame('Description of the command', $adapter->getDescription());
         $this->assertSame('The help for %command.name%', $adapter->getHelp());

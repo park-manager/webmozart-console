@@ -25,21 +25,21 @@ final class ConsoleEvents
      *
      * @see PreResolveEvent
      */
-    const PRE_RESOLVE = 'pre-resolve';
+    public const PRE_RESOLVE = 'pre-resolve';
 
     /**
      * Dispatched before a command is handled.
      *
      * @see PreHandleEvent
      */
-    const PRE_HANDLE = 'pre-handle';
+    public const PRE_HANDLE = 'pre-handle';
 
     /**
      * Dispatched after building the configuration.
      *
      * @see ConfigEvent
      */
-    const CONFIG = 'config';
+    public const CONFIG = 'config';
 
     /**
      * May not be instantiated.

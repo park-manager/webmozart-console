@@ -36,7 +36,7 @@ class AnsiFormatter implements Formatter
      *
      * @param StyleSet $styleSet The style set to use.
      */
-    public function __construct(StyleSet $styleSet = null)
+    public function __construct(?StyleSet $styleSet = null)
     {
         $this->innerFormatter = new OutputFormatter(true);
 
@@ -52,7 +52,7 @@ class AnsiFormatter implements Formatter
     /**
      * {@inheritdoc}
      */
-    public function format($string, Style $style = null)
+    public function format($string, ?Style $style = null)
     {
         if (null !== $style) {
             $this->innerFormatter->getStyleStack()->push(StyleConverter::convert($style));

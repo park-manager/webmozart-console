@@ -28,7 +28,7 @@ interface Formatter
      *
      * @return string The formatted string.
      */
-    public function format($string, Style $style = null);
+    public function format($string, ?Style $style = null);
 
     /**
      * Removes the format tags from the given string.

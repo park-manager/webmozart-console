@@ -133,7 +133,7 @@ class ApplicationAdapter extends Application
      */
     protected function getDefaultCommands(): array
     {
-        return array();
+        return [];
     }
 
     /**

@@ -33,7 +33,7 @@ class SimilarCommandName
     public static function find($commandName, CommandCollection $commands)
     {
         $threshold = 1e3;
-        $distancesByName = array();
+        $distancesByName = [];
 
         // Include aliases in the search
         $actualNames = $commands->getNames(true);
@@ -65,7 +65,7 @@ class SimilarCommandName
 
     private static function filterDuplicates(array $names, CommandCollection $commands)
     {
-        $filteredNames = array();
+        $filteredNames = [];
 
         foreach ($names as $nameToFilter) {
             // Check all existing names for duplicates

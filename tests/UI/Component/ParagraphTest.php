@@ -22,7 +22,7 @@ use Webmozart\Console\UI\Component\Paragraph;
  */
 class ParagraphTest extends PHPUnit_Framework_TestCase
 {
-    const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt';
+    public const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt';
 
     /**
      * @var BufferedIO
@@ -40,10 +40,10 @@ class ParagraphTest extends PHPUnit_Framework_TestCase
         $para->render($this->io);
 
         $expected = <<<'EOF'
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+            tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -54,10 +54,10 @@ EOF;
         $para->render($this->io, 6);
 
         $expected = <<<'EOF'
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-      eirmod tempor invidunt
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                  eirmod tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -68,13 +68,13 @@ EOF;
         $para->render($this->io, 6);
 
         $expected = <<<'EOF'
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-      eirmod tempor invidunt
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                  eirmod tempor invidunt
 
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-      eirmod tempor invidunt
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                  eirmod tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }

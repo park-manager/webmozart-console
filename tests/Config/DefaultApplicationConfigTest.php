@@ -65,13 +65,13 @@ class DefaultApplicationConfigTest extends PHPUnit_Framework_TestCase
 
     public function getApplicationHelpArgs()
     {
-        return array(
-            array(new StringArgs('')),
-            array(new StringArgs('help')),
-            array(new StringArgs('-h')),
-            array(new StringArgs('--help')),
-            array(new StringArgs('--help --foo')),
-        );
+        return [
+            [new StringArgs('')],
+            [new StringArgs('help')],
+            [new StringArgs('-h')],
+            [new StringArgs('--help')],
+            [new StringArgs('--help --foo')],
+        ];
     }
 
     /**
@@ -101,14 +101,14 @@ class DefaultApplicationConfigTest extends PHPUnit_Framework_TestCase
 
     public function getCommandHelpArgs()
     {
-        return array(
-            array(new StringArgs('help command')),
-            array(new StringArgs('command -h')),
-            array(new StringArgs('command --help')),
-            array(new StringArgs('-h command')),
-            array(new StringArgs('--help command')),
-            array(new StringArgs('--help command --foo')),
-        );
+        return [
+            [new StringArgs('help command')],
+            [new StringArgs('command -h')],
+            [new StringArgs('command --help')],
+            [new StringArgs('-h command')],
+            [new StringArgs('--help command')],
+            [new StringArgs('--help command --foo')],
+        ];
     }
 
     public function testCreateAnsiFormatterIfOutputSupportsAnsi()
@@ -421,10 +421,10 @@ class DefaultApplicationConfigTest extends PHPUnit_Framework_TestCase
 
     public function getQuietArgs()
     {
-        return array(
-            array(new StringArgs('command -q')),
-            array(new StringArgs('command --quiet')),
-        );
+        return [
+            [new StringArgs('command -q')],
+            [new StringArgs('command --quiet')],
+        ];
     }
 
     /**
@@ -454,10 +454,10 @@ class DefaultApplicationConfigTest extends PHPUnit_Framework_TestCase
 
     public function getNonInteractiveArgs()
     {
-        return array(
-            array(new StringArgs('command -n')),
-            array(new StringArgs('command --no-interaction')),
-        );
+        return [
+            [new StringArgs('command -n')],
+            [new StringArgs('command --no-interaction')],
+        ];
     }
 
     /**
@@ -485,12 +485,12 @@ class DefaultApplicationConfigTest extends PHPUnit_Framework_TestCase
 
     public function getVersionArgs()
     {
-        return array(
-            array(new StringArgs('-V')),
-            array(new StringArgs('--version')),
-            array(new StringArgs('command -V')),
-            array(new StringArgs('command --version')),
-        );
+        return [
+            [new StringArgs('-V')],
+            [new StringArgs('--version')],
+            [new StringArgs('command -V')],
+            [new StringArgs('command --version')],
+        ];
     }
 
     public function testUseConfiguredStyleSet()

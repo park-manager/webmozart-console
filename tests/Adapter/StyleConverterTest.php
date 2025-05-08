@@ -33,103 +33,103 @@ class StyleConverterTest extends PHPUnit_Framework_TestCase
 
     public function getTestCases()
     {
-        return array(
-            array(
+        return [
+            [
                 Style::tag('tag'),
                 new OutputFormatterStyle(),
-            ),
-            array(
+            ],
+            [
                 Style::noTag(),
                 new OutputFormatterStyle(),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgBlack(),
                 new OutputFormatterStyle('black'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgBlue(),
                 new OutputFormatterStyle('blue'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgCyan(),
                 new OutputFormatterStyle('cyan'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgGreen(),
                 new OutputFormatterStyle('green'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgMagenta(),
                 new OutputFormatterStyle('magenta'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgRed(),
                 new OutputFormatterStyle('red'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgWhite(),
                 new OutputFormatterStyle('white'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->fgYellow(),
                 new OutputFormatterStyle('yellow'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgBlack(),
                 new OutputFormatterStyle(null, 'black'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgBlue(),
                 new OutputFormatterStyle(null, 'blue'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgCyan(),
                 new OutputFormatterStyle(null, 'cyan'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgGreen(),
                 new OutputFormatterStyle(null, 'green'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgMagenta(),
                 new OutputFormatterStyle(null, 'magenta'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgRed(),
                 new OutputFormatterStyle(null, 'red'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgWhite(),
                 new OutputFormatterStyle(null, 'white'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bgYellow(),
                 new OutputFormatterStyle(null, 'yellow'),
-            ),
-            array(
+            ],
+            [
                 Style::noTag()->bold(),
-                new OutputFormatterStyle(null, null, array('bold')),
-            ),
-            array(
+                new OutputFormatterStyle(null, null, ['bold']),
+            ],
+            [
                 Style::noTag()->underlined(),
-                new OutputFormatterStyle(null, null, array('underscore')),
-            ),
-            array(
+                new OutputFormatterStyle(null, null, ['underscore']),
+            ],
+            [
                 Style::noTag()->inverse(),
-                new OutputFormatterStyle(null, null, array('reverse')),
-            ),
-            array(
+                new OutputFormatterStyle(null, null, ['reverse']),
+            ],
+            [
                 Style::noTag()->blinking(),
-                new OutputFormatterStyle(null, null, array('blink')),
-            ),
-            array(
+                new OutputFormatterStyle(null, null, ['blink']),
+            ],
+            [
                 Style::noTag()->hidden(),
-                new OutputFormatterStyle(null, null, array('conceal')),
-            ),
-            array(
+                new OutputFormatterStyle(null, null, ['conceal']),
+            ],
+            [
                 Style::noTag()->fgWhite()->bgBlack()->bold()->hidden(),
-                new OutputFormatterStyle('white', 'black', array('bold', 'conceal')),
-            ),
-        );
+                new OutputFormatterStyle('white', 'black', ['bold', 'conceal']),
+            ],
+        ];
     }
 }

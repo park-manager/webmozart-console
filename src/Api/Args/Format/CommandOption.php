@@ -39,12 +39,12 @@ class CommandOption extends AbstractOption
     /**
      * @var string[]
      */
-    private $longAliases = array();
+    private $longAliases = [];
 
     /**
      * @var string[]
      */
-    private $shortAliases = array();
+    private $shortAliases = [];
 
     /**
      * Creates the command option.
@@ -58,7 +58,7 @@ class CommandOption extends AbstractOption
      *
      * @throws InvalidValueException If the default value is invalid.
      */
-    public function __construct($longName, $shortName = null, array $aliases = array(), $flags = 0, $description = null)
+    public function __construct($longName, $shortName = null, array $aliases = [], $flags = 0, $description = null)
     {
         parent::__construct($longName, $shortName, $flags, $description);
 

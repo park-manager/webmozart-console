@@ -105,7 +105,7 @@ class DefaultArgsParser extends ArgvInput implements ArgsParser
     {
         // Start with the default values of the arguments.
         $inputArguments = $inputDefinition->getArguments();
-        $fixedValues = array();
+        $fixedValues = [];
         $commandNames = $inputDefinition->getCommandNamesByArgumentName();
 
         // Flatten the actual arguments, in case they contain a multi-valued
@@ -142,7 +142,7 @@ class DefaultArgsParser extends ArgvInput implements ArgsParser
         }
     }
 
-    private function flatten(array $arguments, array &$result = array())
+    private function flatten(array $arguments, array &$result = [])
     {
         foreach ($arguments as $value) {
             if (is_array($value)) {
@@ -213,7 +213,7 @@ class DefaultArgsParser extends ArgvInput implements ArgsParser
             // Append the value to multi-valued arguments
             if ($argument->isArray()) {
                 if (!isset($fixedValues[$name])) {
-                    $fixedValues[$name] = array();
+                    $fixedValues[$name] = [];
                 }
 
                 $fixedValues[$name][] = $value;

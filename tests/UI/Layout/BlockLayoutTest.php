@@ -25,7 +25,7 @@ use Webmozart\Console\UI\Layout\BlockLayout;
  */
 class BlockLayoutTest extends PHPUnit_Framework_TestCase
 {
-    const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt';
+    public const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt';
 
     /**
      * @var BufferedIO
@@ -61,23 +61,23 @@ class BlockLayoutTest extends PHPUnit_Framework_TestCase
         $layout->render($this->io);
 
         $expected = <<<'EOF'
-HEADING 1
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt
+            HEADING 1
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+            tempor invidunt
 
-Not Aligned Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt
+            Not Aligned Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                        nonumy eirmod tempor invidunt
 
-HEADING 2
-  Label 1       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt
-  Label 2       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt
-HEADING 3
-  Longer Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt
+            HEADING 2
+              Label 1       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            diam nonumy eirmod tempor invidunt
+              Label 2       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            diam nonumy eirmod tempor invidunt
+            HEADING 3
+              Longer Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            diam nonumy eirmod tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -106,23 +106,23 @@ EOF;
         $layout->render($this->io, 4);
 
         $expected = <<<'EOF'
-    HEADING 1
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-    eirmod tempor invidunt
+                HEADING 1
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                eirmod tempor invidunt
 
-    Not Aligned Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt
+                Not Aligned Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            diam nonumy eirmod tempor invidunt
 
-    HEADING 2
-      Label 1       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt
-      Label 2       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt
-    HEADING 3
-      Longer Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt
+                HEADING 2
+                  Label 1       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                sed diam nonumy eirmod tempor invidunt
+                  Label 2       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                sed diam nonumy eirmod tempor invidunt
+                HEADING 3
+                  Longer Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                sed diam nonumy eirmod tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }

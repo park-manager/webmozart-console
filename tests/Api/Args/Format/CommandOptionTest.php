@@ -27,8 +27,8 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame('delete', $option->getLongName());
         $this->assertNull($option->getShortName());
-        $this->assertSame(array(), $option->getLongAliases());
-        $this->assertSame(array(), $option->getShortAliases());
+        $this->assertSame([], $option->getLongAliases());
+        $this->assertSame([], $option->getShortAliases());
         $this->assertNull($option->getDescription());
         $this->assertTrue($option->isLongNamePreferred());
         $this->assertFalse($option->isShortNamePreferred());
@@ -40,8 +40,8 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame('delete', $option->getLongName());
         $this->assertSame('d', $option->getShortName());
-        $this->assertSame(array(), $option->getLongAliases());
-        $this->assertSame(array(), $option->getShortAliases());
+        $this->assertSame([], $option->getLongAliases());
+        $this->assertSame([], $option->getShortAliases());
         $this->assertNull($option->getDescription());
         $this->assertFalse($option->isLongNamePreferred());
         $this->assertTrue($option->isShortNamePreferred());
@@ -49,12 +49,12 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
 
     public function testCreateWithDescription()
     {
-        $option = new CommandOption('delete', null, array(), 0, 'Description');
+        $option = new CommandOption('delete', null, [], 0, 'Description');
 
         $this->assertSame('delete', $option->getLongName());
         $this->assertNull($option->getShortName());
-        $this->assertSame(array(), $option->getLongAliases());
-        $this->assertSame(array(), $option->getShortAliases());
+        $this->assertSame([], $option->getLongAliases());
+        $this->assertSame([], $option->getShortAliases());
         $this->assertSame('Description', $option->getDescription());
         $this->assertTrue($option->isLongNamePreferred());
         $this->assertFalse($option->isShortNamePreferred());
@@ -62,12 +62,12 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
 
     public function testCreatePreferShortName()
     {
-        $option = new CommandOption('delete', 'd', array(), CommandOption::PREFER_SHORT_NAME);
+        $option = new CommandOption('delete', 'd', [], CommandOption::PREFER_SHORT_NAME);
 
         $this->assertSame('delete', $option->getLongName());
         $this->assertSame('d', $option->getShortName());
-        $this->assertSame(array(), $option->getLongAliases());
-        $this->assertSame(array(), $option->getShortAliases());
+        $this->assertSame([], $option->getLongAliases());
+        $this->assertSame([], $option->getShortAliases());
         $this->assertNull($option->getDescription());
         $this->assertFalse($option->isLongNamePreferred());
         $this->assertTrue($option->isShortNamePreferred());
@@ -75,12 +75,12 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
 
     public function testCreateWithAliases()
     {
-        $option = new CommandOption('delete', null, array('alias', 'a', 'A'));
+        $option = new CommandOption('delete', null, ['alias', 'a', 'A']);
 
         $this->assertSame('delete', $option->getLongName());
         $this->assertNull($option->getShortName());
-        $this->assertSame(array('alias'), $option->getLongAliases());
-        $this->assertSame(array('a', 'A'), $option->getShortAliases());
+        $this->assertSame(['alias'], $option->getLongAliases());
+        $this->assertSame(['a', 'A'], $option->getShortAliases());
         $this->assertNull($option->getDescription());
         $this->assertTrue($option->isLongNamePreferred());
         $this->assertFalse($option->isShortNamePreferred());
@@ -88,12 +88,12 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
 
     public function testCreateWithAliasesDashes()
     {
-        $option = new CommandOption('delete', null, array('--alias', '-a', '-A'));
+        $option = new CommandOption('delete', null, ['--alias', '-a', '-A']);
 
         $this->assertSame('delete', $option->getLongName());
         $this->assertNull($option->getShortName());
-        $this->assertSame(array('alias'), $option->getLongAliases());
-        $this->assertSame(array('a', 'A'), $option->getShortAliases());
+        $this->assertSame(['alias'], $option->getLongAliases());
+        $this->assertSame(['a', 'A'], $option->getShortAliases());
         $this->assertNull($option->getDescription());
         $this->assertTrue($option->isLongNamePreferred());
         $this->assertFalse($option->isShortNamePreferred());
@@ -104,7 +104,7 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
      */
     public function testValidAliases($alias, array $longAliases, array $shortAliases)
     {
-        $option = new CommandOption('delete', null, array($alias));
+        $option = new CommandOption('delete', null, [$alias]);
 
         $this->assertSame($longAliases, $option->getLongAliases());
         $this->assertSame($shortAliases, $option->getShortAliases());
@@ -112,16 +112,16 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
 
     public function getValidAliases()
     {
-        return array(
-            array('a', array(), array('a')),
-            array('-a', array(), array('a')),
-            array('A', array(), array('A')),
-            array('-A', array(), array('A')),
-            array('alias', array('alias'), array()),
-            array('--alias', array('alias'), array()),
-            array('alias-name', array('alias-name'), array()),
-            array('--alias-name', array('alias-name'), array()),
-        );
+        return [
+            ['a', [], ['a']],
+            ['-a', [], ['a']],
+            ['A', [], ['A']],
+            ['-A', [], ['A']],
+            ['alias', ['alias'], []],
+            ['--alias', ['alias'], []],
+            ['alias-name', ['alias-name'], []],
+            ['--alias-name', ['alias-name'], []],
+        ];
     }
 
     /**
@@ -130,20 +130,20 @@ class CommandOptionTest extends PHPUnit_Framework_TestCase
      */
     public function testFailIfAliasInvalid($alias)
     {
-        new CommandOption('delete', null, array($alias));
+        new CommandOption('delete', null, [$alias]);
     }
 
     public function getInvalidAliases()
     {
-        return array(
-            array(null),
-            array(1234),
-            array(''),
-            array('1'),
-            array('-1'),
-            array('&'),
-            array('_alias'),
-            array('alias&'),
-        );
+        return [
+            [null],
+            [1234],
+            [''],
+            ['1'],
+            ['-1'],
+            ['&'],
+            ['_alias'],
+            ['alias&'],
+        ];
     }
 }

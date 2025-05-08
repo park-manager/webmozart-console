@@ -38,7 +38,7 @@ class SubCommandConfig extends CommandConfig
      * @param CommandConfig $parentConfig The command configuration that
      *                                    contains this configuration.
      */
-    public function __construct($name = null, CommandConfig $parentConfig = null)
+    public function __construct($name = null, ?CommandConfig $parentConfig = null)
     {
         parent::__construct($name);
 

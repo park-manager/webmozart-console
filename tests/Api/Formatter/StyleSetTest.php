@@ -24,15 +24,15 @@ class StyleSetTest extends PHPUnit_Framework_TestCase
 {
     public function testCreate()
     {
-        $styleSet = new StyleSet(array(
+        $styleSet = new StyleSet([
             $style1 = Style::tag('style1')->fgBlue(),
             $style2 = Style::tag('style2')->bgMagenta(),
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'style1' => $style1,
             'style2' => $style2,
-        ), $styleSet->toArray());
+        ], $styleSet->toArray());
     }
 
     public function testAdd()
@@ -41,10 +41,10 @@ class StyleSetTest extends PHPUnit_Framework_TestCase
         $styleSet->add($style1 = Style::tag('style1')->fgBlue());
         $styleSet->add($style2 = Style::tag('style2')->bgMagenta());
 
-        $this->assertSame(array(
+        $this->assertSame([
             'style1' => $style1,
             'style2' => $style2,
-        ), $styleSet->toArray());
+        ], $styleSet->toArray());
     }
 
     /**
@@ -63,9 +63,9 @@ class StyleSetTest extends PHPUnit_Framework_TestCase
         $styleSet->add($style2 = Style::tag('style2')->bgMagenta());
         $styleSet->remove('style1');
 
-        $this->assertSame(array(
+        $this->assertSame([
             'style2' => $style2,
-        ), $styleSet->toArray());
+        ], $styleSet->toArray());
     }
 
     public function testRemoveIgnoresNonExistingTag()
@@ -73,38 +73,38 @@ class StyleSetTest extends PHPUnit_Framework_TestCase
         $styleSet = new StyleSet();
         $styleSet->remove('style');
 
-        $this->assertSame(array(), $styleSet->toArray());
+        $this->assertSame([], $styleSet->toArray());
     }
 
     public function testMerge()
     {
         $styleSet = new StyleSet();
         $styleSet->add($style1 = Style::tag('style1')->fgBlue());
-        $styleSet->merge(array(
+        $styleSet->merge([
             $style2 = Style::tag('style2')->bgMagenta(),
             $style3 = Style::tag('style3')->bold(),
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'style1' => $style1,
             'style2' => $style2,
             'style3' => $style3,
-        ), $styleSet->toArray());
+        ], $styleSet->toArray());
     }
 
     public function testReplace()
     {
         $styleSet = new StyleSet();
         $styleSet->add($style1 = Style::tag('style1')->fgBlue());
-        $styleSet->replace(array(
+        $styleSet->replace([
             $style2 = Style::tag('style2')->bgMagenta(),
             $style3 = Style::tag('style3')->bold(),
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'style2' => $style2,
             'style3' => $style3,
-        ), $styleSet->toArray());
+        ], $styleSet->toArray());
     }
 
     public function testContains()
@@ -122,10 +122,10 @@ class StyleSetTest extends PHPUnit_Framework_TestCase
 
     public function testGet()
     {
-        $styleSet = new StyleSet(array(
+        $styleSet = new StyleSet([
             $style1 = Style::tag('style1')->fgBlue(),
             $style2 = Style::tag('style2')->bgMagenta(),
-        ));
+        ]);
 
         $this->assertSame($style1, $styleSet->get('style1'));
         $this->assertSame($style2, $styleSet->get('style2'));
@@ -148,7 +148,7 @@ class StyleSetTest extends PHPUnit_Framework_TestCase
         $styleSet->add(Style::tag('style1'));
         $styleSet->clear();
 
-        $this->assertSame(array(), $styleSet->toArray());
+        $this->assertSame([], $styleSet->toArray());
     }
 
     public function testIsEmpty()

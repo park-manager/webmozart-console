@@ -167,7 +167,7 @@ class DefaultResolver implements CommandResolver
 
     private function getArgumentsToTest(array &$tokens)
     {
-        $argumentsToTest = array();
+        $argumentsToTest = [];
 
         for (; null !== key($tokens); next($tokens)) {
             $token = current($tokens);
@@ -201,7 +201,7 @@ class DefaultResolver implements CommandResolver
 
     private function getOptionsToTest(array &$tokens)
     {
-        $optionsToTest = array();
+        $optionsToTest = [];
 
         for (; null !== key($tokens); next($tokens)) {
             $token = current($tokens);

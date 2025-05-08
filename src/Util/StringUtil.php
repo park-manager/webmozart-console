@@ -107,7 +107,7 @@ class StringUtil
         ));
     }
 
-    public static function getLength($string, Formatter $formatter = null)
+    public static function getLength($string, ?Formatter $formatter = null)
     {
         if ($formatter) {
             $string = $formatter->removeFormat($string);
@@ -124,7 +124,7 @@ class StringUtil
         return mb_strwidth($string, $encoding);
     }
 
-    public static function getMaxWordLength($string, Formatter $formatter = null)
+    public static function getMaxWordLength($string, ?Formatter $formatter = null)
     {
         if ($formatter) {
             $string = $formatter->removeFormat($string);
@@ -142,7 +142,7 @@ class StringUtil
         return $maxLength;
     }
 
-    public static function getMaxLineLength($string, Formatter $formatter = null)
+    public static function getMaxLineLength($string, ?Formatter $formatter = null)
     {
         if ($formatter) {
             $string = $formatter->removeFormat($string);

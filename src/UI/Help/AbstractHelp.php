@@ -181,8 +181,8 @@ abstract class AbstractHelp implements Component
      */
     protected function renderSynopsis(BlockLayout $layout, ArgsFormat $argsFormat, $appName, $prefix = '', $lastOptional = false)
     {
-        $nameParts = array();
-        $argumentParts = array();
+        $nameParts = [];
+        $argumentParts = [];
 
         $nameParts[] = '<u>'.($appName ?: 'console').'</u>';
 

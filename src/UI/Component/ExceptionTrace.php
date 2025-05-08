@@ -78,7 +78,7 @@ class ExceptionTrace implements Component
         $boxWidth = 0;
 
         $boxLines = array_merge(
-            array(sprintf('[%s]', get_class($exception))),
+            [sprintf('[%s]', get_class($exception))],
             // TODO replace by implementation that is aware of format codes
             explode("\n", wordwrap($exception->getMessage(), $screenWidth - 4))
         );
@@ -110,10 +110,10 @@ class ExceptionTrace implements Component
         $cwd = getcwd().DIRECTORY_SEPARATOR;
         $cwdLength = strlen($cwd);
 
-        $lastTrace = array(
+        $lastTrace = [
             'function' => '',
-            'args' => array(),
-        );
+            'args' => [],
+        ];
 
         if (null !== $exception->getFile()) {
             $lastTrace['file'] = $exception->getFile();
@@ -150,8 +150,8 @@ class ExceptionTrace implements Component
             }
 
             // class, operator, function
-            $signature = $class.(isset($trace['type']) ? $trace['type'] : '').$trace['function'];
-            $location .= ':'.(isset($trace['line']) ? $trace['line'] : 'n/a');
+            $signature = $class.($trace['type'] ?? '').$trace['function'];
+            $location .= ':'.($trace['line'] ?? 'n/a');
 
             $io->errorLineRaw(sprintf('  %s%s()', $namespace, $io->format('<u>'.$signature.'</u>')));
             $io->errorLineRaw(sprintf('    %s', $io->format('<c1>'.$location.'</c1>')));

@@ -56,9 +56,9 @@ class ProcessLauncherTest extends PHPUnit_Framework_TestCase
             return;
         }
 
-        $status = $this->launcher->launchProcess($this->php.' -r %command%', array(
+        $status = $this->launcher->launchProcess($this->php.' -r %command%', [
             'command' => 'exit(0);',
-        ));
+        ]);
 
         $this->assertSame(0, $status);
     }
@@ -77,9 +77,9 @@ class ProcessLauncherTest extends PHPUnit_Framework_TestCase
             return;
         }
 
-        $status = $this->launcher->launchProcess($this->php.' -r %command%', array(
+        $status = $this->launcher->launchProcess($this->php.' -r %command%', [
             'command' => 'exit(123);',
-        ));
+        ]);
 
         $this->assertSame(123, $status);
     }

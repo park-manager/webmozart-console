@@ -72,14 +72,14 @@ class OptionCommandConfigTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidNames()
     {
-        return array(
-            array('a'),
-            array('A'),
-            array('1'),
-            array(1234),
-            array(true),
-            array(''),
-        );
+        return [
+            ['a'],
+            ['A'],
+            ['1'],
+            [1234],
+            [true],
+            [''],
+        ];
     }
 
     public function testSetLongName()
@@ -102,12 +102,12 @@ class OptionCommandConfigTest extends PHPUnit_Framework_TestCase
 
     public function getValidShortNames()
     {
-        return array(
-            array(null),
-            array('a'),
-            array('A'),
-            array('z'),
-        );
+        return [
+            [null],
+            ['a'],
+            ['A'],
+            ['z'],
+        ];
     }
 
     /**
@@ -121,17 +121,17 @@ class OptionCommandConfigTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidShortNames()
     {
-        return array(
-            array(1234),
-            array(true),
-            array(''),
-            array('ab'),
-            array('&'),
-            array('-'),
-            array('_'),
-            array('1'),
-            array('9'),
-        );
+        return [
+            [1234],
+            [true],
+            [''],
+            ['ab'],
+            ['&'],
+            ['-'],
+            ['_'],
+            ['1'],
+            ['9'],
+        ];
     }
 
     public function testSetShortNameOverwritesPreviousShortName()
@@ -196,12 +196,12 @@ class OptionCommandConfigTest extends PHPUnit_Framework_TestCase
         $baseFormat = new ArgsFormat();
         $this->config->setName('command');
         $this->config->setShortName('c');
-        $this->config->setAliases(array('alias1', 'alias2'));
+        $this->config->setAliases(['alias1', 'alias2']);
         $this->config->addOption('option');
         $this->config->addArgument('argument');
 
         $expected = ArgsFormat::build($baseFormat)
-            ->addCommandOption(new CommandOption('command', 'c', array('alias1', 'alias2')))
+            ->addCommandOption(new CommandOption('command', 'c', ['alias1', 'alias2']))
             ->addArgument(new Argument('argument'))
             ->addOption(new Option('option'))
             ->getFormat();
@@ -214,7 +214,7 @@ class OptionCommandConfigTest extends PHPUnit_Framework_TestCase
         $baseFormat = new ArgsFormat();
         $this->config->setName('command');
         $this->config->setShortName('c');
-        $this->config->setAliases(array('alias1', 'alias2'));
+        $this->config->setAliases(['alias1', 'alias2']);
         $this->config->addOption('option');
         $this->config->addArgument('argument');
         $this->config->markAnonymous();

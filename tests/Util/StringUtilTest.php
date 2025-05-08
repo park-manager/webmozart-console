@@ -31,28 +31,28 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
 
     public function getParseStringTests()
     {
-        return array(
-            array('', ''),
-            array('string', 'string'),
-            array('null', null),
-            array('null', 'null', false),
-            array('false', 'false'),
-            array('true', 'true'),
-            array('no', 'no'),
-            array('yes', 'yes'),
-            array('off', 'off'),
-            array('on', 'on'),
-            array('0', '0'),
-            array('1', '1'),
-            array('1.23', '1.23'),
-            array(null, null),
-            array(null, 'null', false),
-            array(true, 'true'),
-            array(false, 'false'),
-            array(0, '0'),
-            array(1, '1'),
-            array(1.23, '1.23'),
-        );
+        return [
+            ['', ''],
+            ['string', 'string'],
+            ['null', null],
+            ['null', 'null', false],
+            ['false', 'false'],
+            ['true', 'true'],
+            ['no', 'no'],
+            ['yes', 'yes'],
+            ['off', 'off'],
+            ['on', 'on'],
+            ['0', '0'],
+            ['1', '1'],
+            ['1.23', '1.23'],
+            [null, null],
+            [null, 'null', false],
+            [true, 'true'],
+            [false, 'false'],
+            [0, '0'],
+            [1, '1'],
+            [1.23, '1.23'],
+        ];
     }
 
     /**
@@ -65,23 +65,23 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
 
     public function getValidParseBooleanTests()
     {
-        return array(
-            array('', false),
-            array('null', null),
-            array('false', false),
-            array('true', true),
-            array('no', false),
-            array('yes', true),
-            array('off', false),
-            array('on', true),
-            array('0', false),
-            array('1', true),
-            array(null, null),
-            array(true, true),
-            array(false, false),
-            array(0, false),
-            array(1, true),
-        );
+        return [
+            ['', false],
+            ['null', null],
+            ['false', false],
+            ['true', true],
+            ['no', false],
+            ['yes', true],
+            ['off', false],
+            ['on', true],
+            ['0', false],
+            ['1', true],
+            [null, null],
+            [true, true],
+            [false, false],
+            [0, false],
+            [1, true],
+        ];
     }
 
     /**
@@ -95,13 +95,13 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidParseBooleanTests()
     {
-        return array(
-            array('string'),
-            array('null', false),
-            array('1.23'),
-            array(null, false),
-            array(1.23),
-        );
+        return [
+            ['string'],
+            ['null', false],
+            ['1.23'],
+            [null, false],
+            [1.23],
+        ];
     }
 
     /**
@@ -114,18 +114,18 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
 
     public function getValidParseIntegerTests()
     {
-        return array(
-            array('null', null),
-            array('0', 0),
-            array('1', 1),
-            array('1.23', 1),
-            array(null, null),
-            array(true, 1),
-            array(false, 0),
-            array(0, 0),
-            array(1, 1),
-            array(1.23, 1),
-        );
+        return [
+            ['null', null],
+            ['0', 0],
+            ['1', 1],
+            ['1.23', 1],
+            [null, null],
+            [true, 1],
+            [false, 0],
+            [0, 0],
+            [1, 1],
+            [1.23, 1],
+        ];
     }
 
     /**
@@ -139,18 +139,18 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidParseIntegerTests()
     {
-        return array(
-            array(''),
-            array('string'),
-            array('null', false),
-            array('false'),
-            array('true'),
-            array('no'),
-            array('yes'),
-            array('off'),
-            array('on'),
-            array(null, false),
-        );
+        return [
+            [''],
+            ['string'],
+            ['null', false],
+            ['false'],
+            ['true'],
+            ['no'],
+            ['yes'],
+            ['off'],
+            ['on'],
+            [null, false],
+        ];
     }
 
     /**
@@ -163,18 +163,18 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
 
     public function getValidParseFloatTests()
     {
-        return array(
-            array('null', null),
-            array('0', 0.0),
-            array('1', 1.0),
-            array('1.23', 1.23),
-            array(null, null),
-            array(true, 1.0),
-            array(false, 0.0),
-            array(0, 0.0),
-            array(1, 1.0),
-            array(1.23, 1.23),
-        );
+        return [
+            ['null', null],
+            ['0', 0.0],
+            ['1', 1.0],
+            ['1.23', 1.23],
+            [null, null],
+            [true, 1.0],
+            [false, 0.0],
+            [0, 0.0],
+            [1, 1.0],
+            [1.23, 1.23],
+        ];
     }
 
     /**
@@ -188,17 +188,17 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidParseFloatTests()
     {
-        return array(
-            array(''),
-            array('string'),
-            array('null', false),
-            array('false'),
-            array('true'),
-            array('no'),
-            array('yes'),
-            array('off'),
-            array('on'),
-            array(null, false),
-        );
+        return [
+            [''],
+            ['string'],
+            ['null', false],
+            ['false'],
+            ['true'],
+            ['no'],
+            ['yes'],
+            ['off'],
+            ['on'],
+            [null, false],
+        ];
     }
 }

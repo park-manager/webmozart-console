@@ -29,17 +29,17 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
     /**
      * @var Command[]
      */
-    private $commands = array();
+    private $commands = [];
 
     /**
      * @var string[]
      */
-    private $shortNameIndex = array();
+    private $shortNameIndex = [];
 
     /**
      * @var string[]
      */
-    private $aliasIndex = array();
+    private $aliasIndex = [];
 
     /**
      * Creates a new command collection.
@@ -47,7 +47,7 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
      * @param Command[] $commands The commands to initially add to the
      *                            collection.
      */
-    public function __construct(array $commands = array())
+    public function __construct(array $commands = [])
     {
         $this->merge($commands);
     }
@@ -192,9 +192,9 @@ class CommandCollection implements ArrayAccess, IteratorAggregate, Countable
      */
     public function clear()
     {
-        $this->commands = array();
-        $this->shortNameIndex = array();
-        $this->aliasIndex = array();
+        $this->commands = [];
+        $this->shortNameIndex = [];
+        $this->aliasIndex = [];
     }
 
     /**

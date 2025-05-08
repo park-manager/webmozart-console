@@ -25,7 +25,7 @@ class DefaultStyleSet extends StyleSet
 {
     public function __construct()
     {
-        $this->replace(array(
+        $this->replace([
             // Default styles
             Style::tag('b')->bold(),
             Style::tag('u')->underlined(),
@@ -39,6 +39,6 @@ class DefaultStyleSet extends StyleSet
             Style::tag('info')->fgCyan(),
             Style::tag('comment')->fgCyan(),
             Style::tag('question')->fgBlack()->bgCyan(),
-        ));
+        ]);
     }
 }

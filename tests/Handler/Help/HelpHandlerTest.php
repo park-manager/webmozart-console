@@ -103,46 +103,46 @@ class HelpHandlerTest extends PHPUnit_Framework_TestCase
 
     public function getArgsForTextHelp()
     {
-        return array(
-            array('-h'),
+        return [
+            ['-h'],
             // "-h" overrides everything
-            array('-h --xml'),
-            array('--text'),
-            array('--help --text'),
-        );
+            ['-h --xml'],
+            ['--text'],
+            ['--help --text'],
+        ];
     }
 
     public function getArgsForXmlHelp()
     {
-        return array(
-            array('--xml'),
-            array('--help --xml'),
-        );
+        return [
+            ['--xml'],
+            ['--help --xml'],
+        ];
     }
 
     public function getArgsForJsonHelp()
     {
-        return array(
-            array('--json'),
-            array('--help --json'),
-        );
+        return [
+            ['--json'],
+            ['--help --json'],
+        ];
     }
 
     public function getArgsForManHelp()
     {
-        return array(
-            array('--help'),
-            array('--man'),
-            array('--help --man'),
-        );
+        return [
+            ['--help'],
+            ['--man'],
+            ['--help --man'],
+        ];
     }
 
     public function getArgsForAsciiDocHelp()
     {
-        return array(
-            array('--ascii-doc'),
-            array('--help --ascii-doc'),
-        );
+        return [
+            ['--ascii-doc'],
+            ['--help --ascii-doc'],
+        ];
     }
 
     /**
@@ -156,11 +156,11 @@ class HelpHandlerTest extends PHPUnit_Framework_TestCase
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-USAGE
-  the-app the-command
+            USAGE
+              the-app the-command
 
-GLOBAL OPTIONS
-EOF;
+            GLOBAL OPTIONS
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);
@@ -176,14 +176,14 @@ EOF;
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-The Application version 1.2.3
+            The Application version 1.2.3
 
-USAGE
-  the-app [-h] [-q] [-v [<level>]] [-V] [--ansi] [--no-ansi] [-n] <command>
-          [<arg1>] ... [<argN>]
+            USAGE
+              the-app [-h] [-q] [-v [<level>]] [-V] [--ansi] [--no-ansi] [-n] <command>
+                      [<arg1>] ... [<argN>]
 
-ARGUMENTS
-EOF;
+            ARGUMENTS
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);
@@ -200,9 +200,9 @@ EOF;
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<command id="the-command" name="the-command"
-EOF;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <command id="the-command" name="the-command"
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);
@@ -218,9 +218,9 @@ EOF;
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<symfony name="The Application" version="1.2.3">
-EOF;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <symfony name="The Application" version="1.2.3">
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);
@@ -272,9 +272,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('man-binary -l %path%', array(
+            ->with('man-binary -l %path%', [
                 'path' => $this->manDir.'/the-command.1',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $status = $this->handler->handle($args, $this->io, $this->command);
@@ -301,9 +301,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('man-binary -l %path%', array(
+            ->with('man-binary -l %path%', [
                 'path' => $this->manDir.'/prefix-the-command.1',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $this->handler->setCommandPagePrefix('prefix-');
@@ -331,9 +331,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('man-binary -l %path%', array(
+            ->with('man-binary -l %path%', [
                 'path' => $this->manDir.'/the-app.1',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $status = $this->handler->handle($args, $this->io, $this->command);
@@ -359,9 +359,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('man-binary -l %path%', array(
+            ->with('man-binary -l %path%', [
                 'path' => $this->manDir.'/custom-app.1',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $this->handler->setApplicationPage('custom-app');
@@ -390,9 +390,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('less-binary %path%', array(
+            ->with('less-binary %path%', [
                 'path' => $this->asciiDocDir.'/the-command.txt',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $status = $this->handler->handle($args, $this->io, $this->command);
@@ -419,9 +419,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('less-binary %path%', array(
+            ->with('less-binary %path%', [
                 'path' => $this->asciiDocDir.'/prefix-the-command.txt',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $this->handler->setCommandPagePrefix('prefix-');
@@ -451,9 +451,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('less-binary %path%', array(
+            ->with('less-binary %path%', [
                 'path' => $this->asciiDocDir.'/the-app.txt',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $status = $this->handler->handle($args, $this->io, $this->command);
@@ -479,9 +479,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('less-binary %path%', array(
+            ->with('less-binary %path%', [
                 'path' => $this->asciiDocDir.'/custom-app.txt',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $this->handler->setApplicationPage('custom-app');
@@ -506,9 +506,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('man-binary -l %path%', array(
+            ->with('man-binary -l %path%', [
                 'path' => $this->manDir.'/the-app.1',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $status = $this->handler->handle($args, $this->io, $this->command);
@@ -536,9 +536,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('less-binary %path%', array(
+            ->with('less-binary %path%', [
                 'path' => $this->asciiDocDir.'/the-app.txt',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $status = $this->handler->handle($args, $this->io, $this->command);
@@ -561,9 +561,9 @@ EOF;
 
         $this->processLauncher->expects($this->once())
             ->method('launchProcess')
-            ->with('less-binary %path%', array(
+            ->with('less-binary %path%', [
                 'path' => $this->asciiDocDir.'/man-not-found.txt',
-            ), false)
+            ], false)
             ->will($this->returnValue(123));
 
         $this->handler->setApplicationPage('man-not-found');
@@ -612,11 +612,11 @@ EOF;
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-The Application version 1.2.3
+            The Application version 1.2.3
 
-USAGE
-  the-app
-EOF;
+            USAGE
+              the-app
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);

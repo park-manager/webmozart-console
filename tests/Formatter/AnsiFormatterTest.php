@@ -25,29 +25,29 @@ class AnsiFormatterTest extends PHPUnit_Framework_TestCase
 {
     public function testFormat()
     {
-        $formatter = new AnsiFormatter(new StyleSet(array(
+        $formatter = new AnsiFormatter(new StyleSet([
             Style::tag('bold')->bold(),
             Style::tag('yellow')->fgYellow(),
-        )));
+        ]));
 
         $this->assertSame("\033[1mtext\033[22m", $formatter->format('<bold>text</bold>'));
     }
 
     public function testFormatWithStyle()
     {
-        $formatter = new AnsiFormatter(new StyleSet(array(
+        $formatter = new AnsiFormatter(new StyleSet([
             Style::tag('yellow')->fgYellow(),
-        )));
+        ]));
 
         $this->assertSame("\033[1mtext\033[22m", $formatter->format('text', Style::noTag()->bold()));
     }
 
     public function testRemoveFormat()
     {
-        $formatter = new AnsiFormatter(new StyleSet(array(
+        $formatter = new AnsiFormatter(new StyleSet([
             Style::tag('bold')->bold(),
             Style::tag('yellow')->fgYellow(),
-        )));
+        ]));
 
         $this->assertSame('<no-style>text</no-style>', $formatter->removeFormat('<no-style>text</no-style>'));
     }

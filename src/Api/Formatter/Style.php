@@ -25,47 +25,47 @@ class Style
     /**
      * Color: black.
      */
-    const BLACK = 'black';
+    public const BLACK = 'black';
 
     /**
      * Color: red.
      */
-    const RED = 'red';
+    public const RED = 'red';
 
     /**
      * Color: green.
      */
-    const GREEN = 'green';
+    public const GREEN = 'green';
 
     /**
      * Color: yellow.
      */
-    const YELLOW = 'yellow';
+    public const YELLOW = 'yellow';
 
     /**
      * Color: blue.
      */
-    const BLUE = 'blue';
+    public const BLUE = 'blue';
 
     /**
      * Color: magenta.
      */
-    const MAGENTA = 'magenta';
+    public const MAGENTA = 'magenta';
 
     /**
      * Color: cyan.
      */
-    const CYAN = 'cyan';
+    public const CYAN = 'cyan';
 
     /**
      * Color: white.
      */
-    const WHITE = 'white';
+    public const WHITE = 'white';
 
     /**
      * @var string[]
      */
-    private static $colors = array(
+    private static $colors = [
         self::BLACK,
         self::RED,
         self::GREEN,
@@ -74,7 +74,7 @@ class Style
         self::MAGENTA,
         self::CYAN,
         self::WHITE,
-    );
+    ];
 
     /**
      * @var string

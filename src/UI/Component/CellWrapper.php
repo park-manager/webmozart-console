@@ -31,17 +31,17 @@ class CellWrapper
     /**
      * @var string[]
      */
-    private $cells = array();
+    private $cells = [];
 
     /**
      * @var int[][]
      */
-    private $cellLengths = array();
+    private $cellLengths = [];
 
     /**
      * @var string[][]
      */
-    private $wrappedRows = array();
+    private $wrappedRows = [];
 
     /**
      * @var int
@@ -102,7 +102,7 @@ class CellWrapper
      */
     public function setCells(array $cells)
     {
-        $this->cells = array();
+        $this->cells = [];
 
         $this->addCells($cells);
     }
@@ -261,9 +261,9 @@ class CellWrapper
 
     private function resetState($maxTotalWidth, $nbColumns)
     {
-        $this->wrappedRows = array();
+        $this->wrappedRows = [];
         $this->nbColumns = $nbColumns;
-        $this->cellLengths = array();
+        $this->cellLengths = [];
         $this->columnLengths = array_fill(0, $nbColumns, 0);
         $this->wordWraps = false;
         $this->wordCuts = false;
@@ -278,8 +278,8 @@ class CellWrapper
 
         foreach ($this->cells as $i => $cell) {
             if (0 === $col) {
-                $this->wrappedRows[] = array();
-                $this->cellLengths[] = array();
+                $this->wrappedRows[] = [];
+                $this->cellLengths[] = [];
 
                 $row = &$this->wrappedRows[count($this->wrappedRows) - 1];
                 $cellLengths = &$this->cellLengths[count($this->cellLengths) - 1];

@@ -32,7 +32,7 @@ class NoSuchCommandException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function forCommandName($name, $code = 0, Exception $cause = null)
+    public static function forCommandName($name, $code = 0, ?Exception $cause = null)
     {
         return new static(sprintf(
             'The command "%s" does not exist.',

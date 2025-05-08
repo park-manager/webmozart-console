@@ -54,7 +54,7 @@ class ApplicationConfig extends Config
     /**
      * @var CommandConfig[]
      */
-    private $commandConfigs = array();
+    private $commandConfigs = [];
 
     /**
      * @var EventDispatcherInterface
@@ -263,7 +263,7 @@ class ApplicationConfig extends Config
      *
      * @return static The current instance.
      */
-    public function setEventDispatcher(EventDispatcherInterface $dispatcher = null)
+    public function setEventDispatcher(?EventDispatcherInterface $dispatcher = null)
     {
         $this->dispatcher = $dispatcher;
 
@@ -735,7 +735,7 @@ class ApplicationConfig extends Config
      */
     public function setCommandConfigs(array $configs)
     {
-        $this->commandConfigs = array();
+        $this->commandConfigs = [];
 
         $this->addCommandConfigs($configs);
 

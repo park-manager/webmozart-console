@@ -26,7 +26,7 @@ class NullFormatter implements Formatter
     /**
      * {@inheritdoc}
      */
-    public function format($string, Style $style = null)
+    public function format($string, ?Style $style = null)
     {
         return $string;
     }

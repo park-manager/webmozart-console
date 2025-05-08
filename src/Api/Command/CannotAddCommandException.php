@@ -26,17 +26,17 @@ class CannotAddCommandException extends RuntimeException
     /**
      * Code: A command with the same name exists.
      */
-    const NAME_EXISTS = 1;
+    public const NAME_EXISTS = 1;
 
     /**
      * Code: An option with the same name exists.
      */
-    const OPTION_EXISTS = 2;
+    public const OPTION_EXISTS = 2;
 
     /**
      * Code: The command name is empty.
      */
-    const NAME_EMPTY = 3;
+    public const NAME_EMPTY = 3;
 
     /**
      * Creates an exception for the code {@link NAME_EXISTS}.
@@ -46,7 +46,7 @@ class CannotAddCommandException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function nameExists($name, Exception $cause = null)
+    public static function nameExists($name, ?Exception $cause = null)
     {
         return new static(sprintf(
             'A command named "%s" exists already.',
@@ -62,7 +62,7 @@ class CannotAddCommandException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function optionExists($name, Exception $cause = null)
+    public static function optionExists($name, ?Exception $cause = null)
     {
         return new static(sprintf(
             'An option named "%s%s" exists already.',
@@ -78,7 +78,7 @@ class CannotAddCommandException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function nameEmpty(Exception $cause = null)
+    public static function nameEmpty(?Exception $cause = null)
     {
         return new static('The command name must be set.', self::NAME_EMPTY, $cause);
     }

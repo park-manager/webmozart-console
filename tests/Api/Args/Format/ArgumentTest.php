@@ -92,15 +92,15 @@ class ArgumentTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidFlagCombinations()
     {
-        return array(
-            array(Argument::REQUIRED | Argument::OPTIONAL),
-            array(Argument::STRING | Argument::BOOLEAN),
-            array(Argument::STRING | Argument::INTEGER),
-            array(Argument::STRING | Argument::FLOAT),
-            array(Argument::BOOLEAN | Argument::INTEGER),
-            array(Argument::BOOLEAN | Argument::FLOAT),
-            array(Argument::INTEGER | Argument::FLOAT),
-        );
+        return [
+            [Argument::REQUIRED | Argument::OPTIONAL],
+            [Argument::STRING | Argument::BOOLEAN],
+            [Argument::STRING | Argument::INTEGER],
+            [Argument::STRING | Argument::FLOAT],
+            [Argument::BOOLEAN | Argument::INTEGER],
+            [Argument::BOOLEAN | Argument::FLOAT],
+            [Argument::INTEGER | Argument::FLOAT],
+        ];
     }
 
     public function testRequiredArgument()
@@ -155,7 +155,7 @@ class ArgumentTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($argument->isRequired());
         $this->assertTrue($argument->isOptional());
         $this->assertTrue($argument->isMultiValued());
-        $this->assertSame(array(), $argument->getDefaultValue());
+        $this->assertSame([], $argument->getDefaultValue());
         $this->assertNull($argument->getDescription());
     }
 
@@ -167,7 +167,7 @@ class ArgumentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($argument->isRequired());
         $this->assertFalse($argument->isOptional());
         $this->assertTrue($argument->isMultiValued());
-        $this->assertSame(array(), $argument->getDefaultValue());
+        $this->assertSame([], $argument->getDefaultValue());
         $this->assertNull($argument->getDescription());
     }
 
@@ -179,19 +179,19 @@ class ArgumentTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($argument->isRequired());
         $this->assertTrue($argument->isOptional());
         $this->assertTrue($argument->isMultiValued());
-        $this->assertSame(array(), $argument->getDefaultValue());
+        $this->assertSame([], $argument->getDefaultValue());
         $this->assertNull($argument->getDescription());
     }
 
     public function testMultiValuedArgumentWithDefaultValue()
     {
-        $argument = new Argument('argument', Argument::MULTI_VALUED, null, array('one', 'two'));
+        $argument = new Argument('argument', Argument::MULTI_VALUED, null, ['one', 'two']);
 
         $this->assertSame('argument', $argument->getName());
         $this->assertFalse($argument->isRequired());
         $this->assertTrue($argument->isOptional());
         $this->assertTrue($argument->isMultiValued());
-        $this->assertSame(array('one', 'two'), $argument->getDefaultValue());
+        $this->assertSame(['one', 'two'], $argument->getDefaultValue());
         $this->assertNull($argument->getDescription());
     }
 
@@ -246,39 +246,39 @@ class ArgumentTest extends PHPUnit_Framework_TestCase
 
     public function getValidParseValueTests()
     {
-        return array(
-            array(0, '', ''),
-            array(0, 'string', 'string'),
-            array(0, '1', '1'),
-            array(0, '1.23', '1.23'),
-            array(0, 'null', 'null'),
-            array(Argument::NULLABLE, 'null', null),
-            array(0, 'true', 'true'),
-            array(0, 'false', 'false'),
+        return [
+            [0, '', ''],
+            [0, 'string', 'string'],
+            [0, '1', '1'],
+            [0, '1.23', '1.23'],
+            [0, 'null', 'null'],
+            [Argument::NULLABLE, 'null', null],
+            [0, 'true', 'true'],
+            [0, 'false', 'false'],
 
-            array(Argument::STRING, '', ''),
-            array(Argument::STRING, 'string', 'string'),
-            array(Argument::STRING, '1', '1'),
-            array(Argument::STRING, '1.23', '1.23'),
-            array(Argument::STRING, 'null', 'null'),
-            array(Argument::STRING | Argument::NULLABLE, 'null', null),
-            array(Argument::STRING, 'true', 'true'),
-            array(Argument::STRING, 'false', 'false'),
+            [Argument::STRING, '', ''],
+            [Argument::STRING, 'string', 'string'],
+            [Argument::STRING, '1', '1'],
+            [Argument::STRING, '1.23', '1.23'],
+            [Argument::STRING, 'null', 'null'],
+            [Argument::STRING | Argument::NULLABLE, 'null', null],
+            [Argument::STRING, 'true', 'true'],
+            [Argument::STRING, 'false', 'false'],
 
-            array(Argument::BOOLEAN, 'true', true),
-            array(Argument::BOOLEAN, 'false', false),
-            array(Argument::BOOLEAN | Argument::NULLABLE, 'null', null),
+            [Argument::BOOLEAN, 'true', true],
+            [Argument::BOOLEAN, 'false', false],
+            [Argument::BOOLEAN | Argument::NULLABLE, 'null', null],
 
-            array(Argument::INTEGER, '1', 1),
-            array(Argument::INTEGER, '1.23', 1),
-            array(Argument::INTEGER, '0', 0),
-            array(Argument::INTEGER | Argument::NULLABLE, 'null', null),
+            [Argument::INTEGER, '1', 1],
+            [Argument::INTEGER, '1.23', 1],
+            [Argument::INTEGER, '0', 0],
+            [Argument::INTEGER | Argument::NULLABLE, 'null', null],
 
-            array(Argument::FLOAT, '1', 1.0),
-            array(Argument::FLOAT, '1.23', 1.23),
-            array(Argument::FLOAT, '0', 0.0),
-            array(Argument::FLOAT | Argument::NULLABLE, 'null', null),
-        );
+            [Argument::FLOAT, '1', 1.0],
+            [Argument::FLOAT, '1.23', 1.23],
+            [Argument::FLOAT, '0', 0.0],
+            [Argument::FLOAT | Argument::NULLABLE, 'null', null],
+        ];
     }
 
     /**
@@ -294,10 +294,10 @@ class ArgumentTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidParseValueTests()
     {
-        return array(
-            array(Argument::BOOLEAN, 'null'),
-            array(Argument::INTEGER, 'null'),
-            array(Argument::FLOAT, 'null'),
-        );
+        return [
+            [Argument::BOOLEAN, 'null'],
+            [Argument::INTEGER, 'null'],
+            [Argument::FLOAT, 'null'],
+        ];
     }
 }

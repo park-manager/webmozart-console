@@ -53,29 +53,29 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addCommandName($server = new CommandName('server'));
         $this->builder->addCommandName($add = new CommandName('add'));
 
-        $this->assertSame(array($server, $add), $this->builder->getCommandNames());
+        $this->assertSame([$server, $add], $this->builder->getCommandNames());
     }
 
     public function testAddCommandNames()
     {
         $this->builder->addCommandName($cluster = new CommandName('cluster'));
-        $this->builder->addCommandNames(array(
+        $this->builder->addCommandNames([
             $server = new CommandName('server'),
             $add = new CommandName('add'),
-        ));
+        ]);
 
-        $this->assertSame(array($cluster, $server, $add), $this->builder->getCommandNames());
+        $this->assertSame([$cluster, $server, $add], $this->builder->getCommandNames());
     }
 
     public function testSetCommandNames()
     {
         $this->builder->addCommandName($cluster = new CommandName('cluster'));
-        $this->builder->setCommandNames(array(
+        $this->builder->setCommandNames([
             $server = new CommandName('server'),
             $add = new CommandName('add'),
-        ));
+        ]);
 
-        $this->assertSame(array($server, $add), $this->builder->getCommandNames());
+        $this->assertSame([$server, $add], $this->builder->getCommandNames());
     }
 
     public function testHasCommandNames()
@@ -117,8 +117,8 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addCommandName($server = new CommandName('server'));
         $this->builder->addCommandName($add = new CommandName('add'));
 
-        $this->assertSame(array($server, $add), $this->builder->getCommandNames());
-        $this->assertSame(array($server, $add), $this->builder->getCommandNames(false));
+        $this->assertSame([$server, $add], $this->builder->getCommandNames());
+        $this->assertSame([$server, $add], $this->builder->getCommandNames(false));
     }
 
     public function testGetCommandNamesWithBaseDefinition()
@@ -128,8 +128,8 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder = new ArgsFormatBuilder($this->baseFormatBuilder->getFormat());
         $this->builder->addCommandName($add = new CommandName('add'));
 
-        $this->assertSame(array($server, $add), $this->builder->getCommandNames());
-        $this->assertSame(array($add), $this->builder->getCommandNames(false));
+        $this->assertSame([$server, $add], $this->builder->getCommandNames());
+        $this->assertSame([$add], $this->builder->getCommandNames(false));
     }
 
     /**
@@ -144,7 +144,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     {
         $this->builder->addCommandOption($option = new CommandOption('option'));
 
-        $this->assertSame(array($option), $this->builder->getCommandOptions());
+        $this->assertSame([$option], $this->builder->getCommandOptions());
     }
 
     public function testAddCommandOptionPreservesExistingOptions()
@@ -152,7 +152,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addCommandOption($option1 = new CommandOption('option1'));
         $this->builder->addCommandOption($option2 = new CommandOption('option2'));
 
-        $this->assertSame(array($option1, $option2), $this->builder->getCommandOptions());
+        $this->assertSame([$option1, $option2], $this->builder->getCommandOptions());
     }
 
     /**
@@ -179,7 +179,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     public function testFailIfAddingCommandOptionWithSameLongAliasAsOtherOption()
     {
         $this->builder->addOption(new Option('alias', 'a'));
-        $this->builder->addCommandOption(new CommandOption('option', 'b', array('alias')));
+        $this->builder->addCommandOption(new CommandOption('option', 'b', ['alias']));
     }
 
     /**
@@ -217,7 +217,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     public function testFailIfAddingCommandOptionWithSameShortAliasAsOtherOption()
     {
         $this->builder->addOption(new Option('option1', 'a'));
-        $this->builder->addCommandOption(new CommandOption('option2', 'o', array('a')));
+        $this->builder->addCommandOption(new CommandOption('option2', 'o', ['a']));
     }
 
     /**
@@ -234,23 +234,23 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     public function testAddCommandOptions()
     {
         $this->builder->addCommandOption($option1 = new CommandOption('option1'));
-        $this->builder->addCommandOptions(array(
+        $this->builder->addCommandOptions([
             $option2 = new CommandOption('option2'),
             $option3 = new CommandOption('option3'),
-        ));
+        ]);
 
-        $this->assertSame(array($option1, $option2, $option3), $this->builder->getCommandOptions());
+        $this->assertSame([$option1, $option2, $option3], $this->builder->getCommandOptions());
     }
 
     public function testSetCommandOptions()
     {
         $this->builder->addCommandOption($option1 = new CommandOption('option1'));
-        $this->builder->setCommandOptions(array(
+        $this->builder->setCommandOptions([
             $option2 = new CommandOption('option2'),
             $option3 = new CommandOption('option3'),
-        ));
+        ]);
 
-        $this->assertSame(array($option2, $option3), $this->builder->getCommandOptions());
+        $this->assertSame([$option2, $option3], $this->builder->getCommandOptions());
     }
 
     public function testGetCommandOptions()
@@ -258,7 +258,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addCommandOption($option1 = new CommandOption('option1'));
         $this->builder->addCommandOption($option2 = new CommandOption('option2'));
 
-        $this->assertSame(array($option1, $option2), $this->builder->getCommandOptions());
+        $this->assertSame([$option1, $option2], $this->builder->getCommandOptions());
     }
 
     public function testGetCommandOptionsWithBaseDefinition()
@@ -269,8 +269,8 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addCommandOption($option2 = new CommandOption('option2'));
         $this->builder->addCommandOption($option3 = new CommandOption('option3'));
 
-        $this->assertSame(array($option1, $option2, $option3), $this->builder->getCommandOptions());
-        $this->assertSame(array($option2, $option3), $this->builder->getCommandOptions(false));
+        $this->assertSame([$option1, $option2, $option3], $this->builder->getCommandOptions());
+        $this->assertSame([$option2, $option3], $this->builder->getCommandOptions(false));
     }
 
     /**
@@ -458,14 +458,14 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     {
         $this->builder->addArgument($argument = new Argument('argument'));
 
-        $this->assertSame(array('argument' => $argument), $this->builder->getArguments());
+        $this->assertSame(['argument' => $argument], $this->builder->getArguments());
     }
 
     public function testAddRequiredArgument()
     {
         $this->builder->addArgument($argument = new Argument('argument', Argument::REQUIRED));
 
-        $this->assertSame(array('argument' => $argument), $this->builder->getArguments());
+        $this->assertSame(['argument' => $argument], $this->builder->getArguments());
     }
 
     public function testAddArgumentPreservesExistingArguments()
@@ -473,7 +473,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addArgument($argument1 = new Argument('argument1'));
         $this->builder->addArgument($argument2 = new Argument('argument2'));
 
-        $this->assertSame(array('argument1' => $argument1, 'argument2' => $argument2), $this->builder->getArguments());
+        $this->assertSame(['argument1' => $argument1, 'argument2' => $argument2], $this->builder->getArguments());
     }
 
     /**
@@ -559,23 +559,23 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     public function testAddArguments()
     {
         $this->builder->addArgument($argument1 = new Argument('argument1'));
-        $this->builder->addArguments(array(
+        $this->builder->addArguments([
             $argument2 = new Argument('argument2'),
             $argument3 = new Argument('argument3'),
-        ));
+        ]);
 
-        $this->assertSame(array('argument1' => $argument1, 'argument2' => $argument2, 'argument3' => $argument3), $this->builder->getArguments());
+        $this->assertSame(['argument1' => $argument1, 'argument2' => $argument2, 'argument3' => $argument3], $this->builder->getArguments());
     }
 
     public function testSetArguments()
     {
         $this->builder->addArgument($argument1 = new Argument('argument1'));
-        $this->builder->setArguments(array(
+        $this->builder->setArguments([
             $argument2 = new Argument('argument2'),
             $argument3 = new Argument('argument3'),
-        ));
+        ]);
 
-        $this->assertSame(array('argument2' => $argument2, 'argument3' => $argument3), $this->builder->getArguments());
+        $this->assertSame(['argument2' => $argument2, 'argument3' => $argument3], $this->builder->getArguments());
     }
 
     public function testGetArgument()
@@ -679,10 +679,10 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addArgument($argument1 = new Argument('argument1'));
         $this->builder->addArgument($argument2 = new Argument('argument2'));
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => $argument1,
             'argument2' => $argument2,
-        ), $this->builder->getArguments());
+        ], $this->builder->getArguments());
     }
 
     public function testGetArgumentsWithBaseArguments()
@@ -692,14 +692,14 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
 
         $this->builder->addArgument($argument2 = new Argument('argument2'));
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => $argument1,
             'argument2' => $argument2,
-        ), $this->builder->getArguments());
+        ], $this->builder->getArguments());
 
-        $this->assertSame(array(
+        $this->assertSame([
             'argument2' => $argument2,
-        ), $this->builder->getArguments(false));
+        ], $this->builder->getArguments(false));
     }
 
     /**
@@ -923,7 +923,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     {
         $this->builder->addOption($option = new Option('option'));
 
-        $this->assertSame(array('option' => $option), $this->builder->getOptions());
+        $this->assertSame(['option' => $option], $this->builder->getOptions());
     }
 
     public function testAddOptionPreservesExistingOptions()
@@ -931,7 +931,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addOption($option1 = new Option('option1'));
         $this->builder->addOption($option2 = new Option('option2'));
 
-        $this->assertSame(array('option1' => $option1, 'option2' => $option2), $this->builder->getOptions());
+        $this->assertSame(['option1' => $option1, 'option2' => $option2], $this->builder->getOptions());
     }
 
     /**
@@ -957,7 +957,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
      */
     public function testFailIfAddingOptionWithSameLongNameAsCommandOptionAlias()
     {
-        $this->builder->addCommandOption(new CommandOption('option', 'a', array('alias')));
+        $this->builder->addCommandOption(new CommandOption('option', 'a', ['alias']));
         $this->builder->addOption(new Option('alias', 'b'));
     }
 
@@ -995,7 +995,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
      */
     public function testFailIfAddingOptionWithSameShortNameAsCommandOptionAlias()
     {
-        $this->builder->addCommandOption(new CommandOption('option1', 'o', array('a')));
+        $this->builder->addCommandOption(new CommandOption('option1', 'o', ['a']));
         $this->builder->addOption(new Option('option2', 'a'));
     }
 
@@ -1013,23 +1013,23 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
     public function testAddOptions()
     {
         $this->builder->addOption($option1 = new Option('option1'));
-        $this->builder->addOptions(array(
+        $this->builder->addOptions([
             $option2 = new Option('option2'),
             $option3 = new Option('option3'),
-        ));
+        ]);
 
-        $this->assertSame(array('option1' => $option1, 'option2' => $option2, 'option3' => $option3), $this->builder->getOptions());
+        $this->assertSame(['option1' => $option1, 'option2' => $option2, 'option3' => $option3], $this->builder->getOptions());
     }
 
     public function testSetOptions()
     {
         $this->builder->addOption($option1 = new Option('option1'));
-        $this->builder->setOptions(array(
+        $this->builder->setOptions([
             $option2 = new Option('option2'),
             $option3 = new Option('option3'),
-        ));
+        ]);
 
-        $this->assertSame(array('option2' => $option2, 'option3' => $option3), $this->builder->getOptions());
+        $this->assertSame(['option2' => $option2, 'option3' => $option3], $this->builder->getOptions());
     }
 
     public function testGetOptions()
@@ -1037,7 +1037,7 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addOption($option1 = new Option('option1'));
         $this->builder->addOption($option2 = new Option('option2'));
 
-        $this->assertSame(array('option1' => $option1, 'option2' => $option2), $this->builder->getOptions());
+        $this->assertSame(['option1' => $option1, 'option2' => $option2], $this->builder->getOptions());
     }
 
     public function testGetOptionsWithBaseDefinition()
@@ -1048,16 +1048,16 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->builder->addOption($option2 = new Option('option2'));
         $this->builder->addOption($option3 = new Option('option3'));
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option2' => $option2,
             'option3' => $option3,
             'option1' => $option1,
-        ), $this->builder->getOptions());
+        ], $this->builder->getOptions());
 
-        $this->assertSame(array(
+        $this->assertSame([
             'option2' => $option2,
             'option3' => $option3,
-        ), $this->builder->getOptions(false));
+        ], $this->builder->getOptions(false));
     }
 
     /**
@@ -1250,9 +1250,9 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $definition = $this->builder->getFormat();
 
         $this->assertSame($this->baseFormat, $definition->getBaseFormat());
-        $this->assertSame(array($server), $definition->getCommandNames());
-        $this->assertSame(array('argument' => $argument), $definition->getArguments());
-        $this->assertSame(array('option' => $option), $definition->getOptions());
+        $this->assertSame([$server], $definition->getCommandNames());
+        $this->assertSame(['argument' => $argument], $definition->getArguments());
+        $this->assertSame(['option' => $option], $definition->getOptions());
     }
 
     public function testGetDefinitionWithBaseDefinition()
@@ -1273,21 +1273,21 @@ class ArgsFormatBuilderTest extends PHPUnit_Framework_TestCase
         $this->assertSame($baseDefinition, $definition->getBaseFormat());
 
         // base command names are returned first
-        $this->assertSame(array($server, $add), $definition->getCommandNames());
+        $this->assertSame([$server, $add], $definition->getCommandNames());
 
         // base arguments are returned first
-        $this->assertSame(array(
+        $this->assertSame([
             'argument1' => $argument1,
             'argument2' => $argument2,
             'argument3' => $argument3,
-        ), $definition->getArguments());
+        ], $definition->getArguments());
 
         // base options are returned last
-        $this->assertSame(array(
+        $this->assertSame([
             'option2' => $option2,
             'option3' => $option3,
             'option1' => $option1,
-        ), $definition->getOptions());
+        ], $definition->getOptions());
     }
 
     public function testBuildEmptyDefinition()

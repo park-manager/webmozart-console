@@ -22,7 +22,7 @@ use Webmozart\Console\IO\InputStream\StringInputStream;
  */
 class InputTest extends PHPUnit_Framework_TestCase
 {
-    const LOREM_IPSUM = "Lorem ipsum dolor sit amet,\nconsetetur sadipscing elitr,\nsed diam nonumy eirmod tempor invidunt";
+    public const LOREM_IPSUM = "Lorem ipsum dolor sit amet,\nconsetetur sadipscing elitr,\nsed diam nonumy eirmod tempor invidunt";
 
     /**
      * @var StringInputStream

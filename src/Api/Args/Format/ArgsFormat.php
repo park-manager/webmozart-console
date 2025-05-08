@@ -103,12 +103,12 @@ class ArgsFormat
     /**
      * @var CommandOption[]
      */
-    private $commandOptions = array();
+    private $commandOptions = [];
 
     /**
      * @var CommandOption[]
      */
-    private $commandOptionsByShortName = array();
+    private $commandOptionsByShortName = [];
 
     /**
      * @var Argument[]
@@ -123,7 +123,7 @@ class ArgsFormat
     /**
      * @var Option[]
      */
-    private $optionsByShortName = array();
+    private $optionsByShortName = [];
 
     /**
      * @var bool
@@ -145,7 +145,7 @@ class ArgsFormat
      *
      * @return ArgsFormatBuilder The created builder.
      */
-    public static function build(ArgsFormat $baseFormat = null)
+    public static function build(?ArgsFormat $baseFormat = null)
     {
         return new ArgsFormatBuilder($baseFormat);
     }
@@ -160,7 +160,7 @@ class ArgsFormat
      *                                            builder instance.
      * @param ArgsFormat              $baseFormat The format.
      */
-    public function __construct($elements = array(), ArgsFormat $baseFormat = null)
+    public function __construct($elements = [], ?ArgsFormat $baseFormat = null)
     {
         if ($elements instanceof ArgsFormatBuilder) {
             $builder = $elements;
@@ -721,7 +721,7 @@ class ArgsFormat
      *
      * @return ArgsFormatBuilder The created builder.
      */
-    private function createBuilderForElements(array $elements, ArgsFormat $baseFormat = null)
+    private function createBuilderForElements(array $elements, ?ArgsFormat $baseFormat = null)
     {
         $builder = new ArgsFormatBuilder($baseFormat);
 

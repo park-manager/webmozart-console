@@ -51,8 +51,8 @@ class TokenParser
     {
         $this->string = $string;
         $this->cursor = 0;
-        $this->current = isset($this->string[0]) ? $this->string[0] : null;
-        $this->next = isset($this->string[1]) ? $this->string[1] : null;
+        $this->current = $this->string[0] ?? null;
+        $this->next = $this->string[1] ?? null;
 
         // Unify result of ctype_space() across systems
         $previousLocale = setlocale(LC_CTYPE, 0);
@@ -74,7 +74,7 @@ class TokenParser
 
         ++$this->cursor;
         $this->current = $this->next;
-        $this->next = isset($this->string[$this->cursor + 1]) ? $this->string[$this->cursor + 1] : null;
+        $this->next = $this->string[$this->cursor + 1] ?? null;
     }
 
     /**
@@ -95,7 +95,7 @@ class TokenParser
      */
     private function doParseTokens()
     {
-        $tokens = array();
+        $tokens = [];
 
         while ($this->valid()) {
             while (ctype_space($this->current)) {

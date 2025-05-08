@@ -141,10 +141,10 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $config->addSubCommandConfig($subConfig2 = new OptionCommandConfig('sub2'));
         $command = new Command($config, $this->application);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             'sub1' => new Command($subConfig1, $this->application, $command),
             'sub2' => new Command($subConfig2, $this->application, $command),
-        )), $command->getSubCommands());
+        ]), $command->getSubCommands());
     }
 
     public function testIgnoreDisabledSubCommands()
@@ -158,9 +158,9 @@ class CommandTest extends PHPUnit_Framework_TestCase
 
         $command = new Command($config, $this->application);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             'sub1' => new Command($subConfig1, $this->application, $command),
-        )), $command->getSubCommands());
+        ]), $command->getSubCommands());
     }
 
     public function testGetSubCommand()
@@ -234,10 +234,10 @@ class CommandTest extends PHPUnit_Framework_TestCase
 
         $command = new Command($config);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             new Command($subConfig1, null, $command),
             new Command($subConfig3, null, $command),
-        )), $command->getNamedSubCommands());
+        ]), $command->getNamedSubCommands());
     }
 
     public function testHasNamedSubCommands()
@@ -275,10 +275,10 @@ class CommandTest extends PHPUnit_Framework_TestCase
 
         $command = new Command($config);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             new Command($subConfig1, null, $command),
             new Command($subConfig3, null, $command),
-        )), $command->getDefaultSubCommands());
+        ]), $command->getDefaultSubCommands());
     }
 
     public function testHasDefaultSubCommands()
@@ -422,7 +422,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()
             ->getMock();
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $config = new CommandConfig('command');
         $config->setHandler($handler);
@@ -442,7 +442,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()
             ->getMock();
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $this->application->getConfig()->addEventListener(ConsoleEvents::PRE_HANDLE, function (PreHandleEvent $event) {
             $event->setHandled(true);
@@ -465,7 +465,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()
             ->getMock();
-        $handler = $this->getMock('stdClass', array('handleFoo'));
+        $handler = $this->getMock('stdClass', ['handleFoo']);
 
         $config = new CommandConfig('command');
         $config->setHandler($handler);
@@ -486,7 +486,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()
             ->getMock();
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $config = new CommandConfig('command');
         $config->setHandler($handler);
@@ -506,7 +506,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()
             ->getMock();
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $config = new CommandConfig('command');
         $config->setHandler($handler);
@@ -527,7 +527,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()
             ->getMock();
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $config = new CommandConfig('command');
         $config->setHandler($handler);
@@ -547,7 +547,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
         $io = $this->getMockBuilder('Webmozart\Console\Api\IO\IO')
             ->disableOriginalConstructor()
             ->getMock();
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $config = new CommandConfig('command');
         $config->setHandler($handler);
@@ -569,7 +569,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $parser = $this->getMock('Webmozart\Console\Api\Args\ArgsParser');
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $config = new CommandConfig('command');
         $config->setArgsParser($parser);
@@ -598,7 +598,7 @@ class CommandTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $parser = $this->getMock('Webmozart\Console\Api\Args\ArgsParser');
-        $handler = $this->getMock('stdClass', array('handle'));
+        $handler = $this->getMock('stdClass', ['handle']);
 
         $config = new CommandConfig('command');
         $config->setArgsParser($parser);

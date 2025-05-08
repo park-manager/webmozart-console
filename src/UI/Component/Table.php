@@ -41,12 +41,12 @@ class Table implements Component
     /**
      * @var string[]
      */
-    private $headerRow = array();
+    private $headerRow = [];
 
     /**
      * @var string[][]
      */
-    private $rows = array();
+    private $rows = [];
 
     /**
      * @var int
@@ -60,7 +60,7 @@ class Table implements Component
      *                          rendered with the style
      *                          {@link TableStyle::asciiBorder()}.
      */
-    public function __construct(TableStyle $style = null)
+    public function __construct(?TableStyle $style = null)
     {
         $this->style = $style ?: TableStyle::asciiBorder();
     }
@@ -150,7 +150,7 @@ class Table implements Component
      */
     public function setRows(array $rows)
     {
-        $this->rows = array();
+        $this->rows = [];
 
         $this->addRows($rows);
 

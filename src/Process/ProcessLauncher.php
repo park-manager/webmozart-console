@@ -79,7 +79,7 @@ class ProcessLauncher
      *
      * @return int The exit status of the process.
      */
-    public function launchProcess($command, array $arguments = array(), $killable = true)
+    public function launchProcess($command, array $arguments = [], $killable = true)
     {
         $this->installSignalHandlers($killable);
 
@@ -112,7 +112,7 @@ class ProcessLauncher
             throw new RuntimeException('The "proc_open" function is not available.');
         }
 
-        $replacements = array();
+        $replacements = [];
 
         foreach ($arguments as $name => $value) {
             $replacements['%'.$name.'%'] = self::escapeArgument($value);
@@ -121,11 +121,11 @@ class ProcessLauncher
         // Insert quoted arguments
         $command = strtr($command, $replacements);
 
-        $dspec = array(
+        $dspec = [
             0 => STDIN,
             1 => STDOUT,
             2 => STDERR,
-        );
+        ];
 
         $this->running = true;
         $proc = proc_open($command, $dspec, $pipes, null, null);
@@ -146,7 +146,7 @@ class ProcessLauncher
 
         $this->running = false;
 
-        return isset($status['exitcode']) ? $status['exitcode'] : 1;
+        return $status['exitcode'] ?? 1;
     }
 
     /**

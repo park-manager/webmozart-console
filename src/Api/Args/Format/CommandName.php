@@ -52,7 +52,7 @@ class CommandName
      * @param string   $string  The command name.
      * @param string[] $aliases The alias names.
      */
-    public function __construct($string, array $aliases = array())
+    public function __construct($string, array $aliases = [])
     {
         Assert::string($string, 'The command name must be a string. Got: %s');
         Assert::notEmpty($string, 'The command name must not be empty.');

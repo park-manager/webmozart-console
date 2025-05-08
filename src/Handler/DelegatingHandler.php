@@ -60,7 +60,7 @@ class DelegatingHandler
     /**
      * @var object[]|callable[]
      */
-    private $handlers = array();
+    private $handlers = [];
 
     /**
      * @var string|callable

@@ -29,7 +29,7 @@ class SimilarCommandNameTest extends PHPUnit_Framework_TestCase
      */
     public function testFindSimilarNames($input, array $suggestions)
     {
-        $commands = new CommandCollection(array(
+        $commands = new CommandCollection([
             new Command(
                 CommandConfig::create('package')->addAlias('package-alias')
             ),
@@ -37,31 +37,31 @@ class SimilarCommandNameTest extends PHPUnit_Framework_TestCase
                 CommandConfig::create('pack')->addAlias('pack-alias')
             ),
             new Command(CommandConfig::create('pack')),
-        ));
+        ]);
 
         $this->assertSame($suggestions, SimilarCommandName::find($input, $commands));
     }
 
     public function getInputOutput()
     {
-        return array(
-            array('pac', array('pack', 'package')),
-            array('pack', array('pack', 'package')),
-            array('pack-', array('pack')),
-            array('pack-a', array('pack')),
-            array('pack-al', array('pack-alias')),
-            array('pack-ali', array('pack-alias')),
-            array('pack-alia', array('pack-alias')),
-            array('pack-alias', array('pack-alias', 'package-alias')),
-            array('packa', array('pack', 'package')),
-            array('packag', array('package', 'pack')),
-            array('package', array('package')),
-            array('package-', array('package')),
-            array('package-a', array('package')),
-            array('package-al', defined('HHVM_VERSION') || PHP_VERSION_ID >= 70000 ? array('package') : array('package-alias')),
-            array('package-ali', array('package-alias')),
-            array('package-alia', array('package-alias', 'pack-alias')),
-            array('package-alias', array('package-alias', 'pack-alias')),
-        );
+        return [
+            ['pac', ['pack', 'package']],
+            ['pack', ['pack', 'package']],
+            ['pack-', ['pack']],
+            ['pack-a', ['pack']],
+            ['pack-al', ['pack-alias']],
+            ['pack-ali', ['pack-alias']],
+            ['pack-alia', ['pack-alias']],
+            ['pack-alias', ['pack-alias', 'package-alias']],
+            ['packa', ['pack', 'package']],
+            ['packag', ['package', 'pack']],
+            ['package', ['package']],
+            ['package-', ['package']],
+            ['package-a', ['package']],
+            ['package-al', defined('HHVM_VERSION') || PHP_VERSION_ID >= 70000 ? ['package'] : ['package-alias']],
+            ['package-ali', ['package-alias']],
+            ['package-alia', ['package-alias', 'pack-alias']],
+            ['package-alias', ['package-alias', 'pack-alias']],
+        ];
     }
 }

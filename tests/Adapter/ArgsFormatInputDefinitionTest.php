@@ -38,12 +38,12 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'cmd1' => new InputArgument('cmd1', InputArgument::REQUIRED),
             'cmd3' => new InputArgument('cmd3', InputArgument::REQUIRED),
             'cmd2' => new InputArgument('cmd2', InputArgument::OPTIONAL),
-        ), $adapter->getArguments());
-        $this->assertEquals(array(), $adapter->getOptions());
+        ], $adapter->getArguments());
+        $this->assertEquals([], $adapter->getOptions());
     }
 
     public function testAdaptCommandOptions()
@@ -55,11 +55,11 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(), $adapter->getArguments());
-        $this->assertEquals(array(
+        $this->assertEquals([], $adapter->getArguments());
+        $this->assertEquals([
             'server' => new InputOption('server'),
             'add' => new InputOption('add', 'a'),
-        ), $adapter->getOptions());
+        ], $adapter->getOptions());
     }
 
     public function testAdaptOptionalArgument()
@@ -70,10 +70,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'argument' => new InputArgument('argument', InputArgument::OPTIONAL),
-        ), $adapter->getArguments());
-        $this->assertEquals(array(), $adapter->getOptions());
+        ], $adapter->getArguments());
+        $this->assertEquals([], $adapter->getOptions());
     }
 
     public function testAdaptOptionalMultiValuedArgument()
@@ -84,10 +84,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'argument' => new InputArgument('argument', InputArgument::OPTIONAL | InputArgument::IS_ARRAY),
-        ), $adapter->getArguments());
-        $this->assertEquals(array(), $adapter->getOptions());
+        ], $adapter->getArguments());
+        $this->assertEquals([], $adapter->getOptions());
     }
 
     public function testAdaptRequiredArgument()
@@ -98,10 +98,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'argument' => new InputArgument('argument', InputArgument::REQUIRED),
-        ), $adapter->getArguments());
-        $this->assertEquals(array(), $adapter->getOptions());
+        ], $adapter->getArguments());
+        $this->assertEquals([], $adapter->getOptions());
     }
 
     public function testAdaptRequiredMultiValuedArgument()
@@ -112,10 +112,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'argument' => new InputArgument('argument', InputArgument::REQUIRED | InputArgument::IS_ARRAY),
-        ), $adapter->getArguments());
-        $this->assertEquals(array(), $adapter->getOptions());
+        ], $adapter->getArguments());
+        $this->assertEquals([], $adapter->getOptions());
     }
 
     public function testAdaptArgumentWithDescriptionAndDefault()
@@ -126,10 +126,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             'argument' => new InputArgument('argument', InputArgument::OPTIONAL, 'The description', 'The default'),
-        ), $adapter->getArguments());
-        $this->assertEquals(array(), $adapter->getOptions());
+        ], $adapter->getArguments());
+        $this->assertEquals([], $adapter->getOptions());
     }
 
     public function testAdaptOptionWithoutValue()
@@ -140,10 +140,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(), $adapter->getArguments());
-        $this->assertEquals(array(
+        $this->assertEquals([], $adapter->getArguments());
+        $this->assertEquals([
             'option' => new InputOption('option', null, InputOption::VALUE_NONE),
-        ), $adapter->getOptions());
+        ], $adapter->getOptions());
     }
 
     public function testAdaptOptionWithOptionalValue()
@@ -154,10 +154,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(), $adapter->getArguments());
-        $this->assertEquals(array(
+        $this->assertEquals([], $adapter->getArguments());
+        $this->assertEquals([
             'option' => new InputOption('option', null, InputOption::VALUE_OPTIONAL),
-        ), $adapter->getOptions());
+        ], $adapter->getOptions());
     }
 
     public function testAdaptOptionWithRequiredValue()
@@ -168,10 +168,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(), $adapter->getArguments());
-        $this->assertEquals(array(
+        $this->assertEquals([], $adapter->getArguments());
+        $this->assertEquals([
             'option' => new InputOption('option', null, InputOption::VALUE_REQUIRED),
-        ), $adapter->getOptions());
+        ], $adapter->getOptions());
     }
 
     public function testAdaptOptionWithRequiredMultiValuedValue()
@@ -182,10 +182,10 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(), $adapter->getArguments());
-        $this->assertEquals(array(
+        $this->assertEquals([], $adapter->getArguments());
+        $this->assertEquals([
             'option' => new InputOption('option', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY),
-        ), $adapter->getOptions());
+        ], $adapter->getOptions());
     }
 
     public function testAdaptOptionWithDescriptionAndDefault()
@@ -196,9 +196,9 @@ class ArgsFormatInputDefinitionTest extends PHPUnit_Framework_TestCase
 
         $adapter = new ArgsFormatInputDefinition($argsFormat);
 
-        $this->assertEquals(array(), $adapter->getArguments());
-        $this->assertEquals(array(
+        $this->assertEquals([], $adapter->getArguments());
+        $this->assertEquals([
             'option' => new InputOption('option', 'o', InputOption::VALUE_OPTIONAL, 'The description', 'The default'),
-        ), $adapter->getOptions());
+        ], $adapter->getOptions());
     }
 }

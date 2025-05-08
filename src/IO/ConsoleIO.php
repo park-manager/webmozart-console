@@ -39,7 +39,7 @@ class ConsoleIO extends IO
      * @param Output $output      The standard output.
      * @param Output $errorOutput The error output.
      */
-    public function __construct(Input $input = null, Output $output = null, Output $errorOutput = null)
+    public function __construct(?Input $input = null, ?Output $output = null, ?Output $errorOutput = null)
     {
         if (null === $input) {
             $inputStream = new StandardInputStream();

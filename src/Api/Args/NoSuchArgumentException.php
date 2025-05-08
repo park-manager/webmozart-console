@@ -32,7 +32,7 @@ class NoSuchArgumentException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function forArgumentName($name, $code = 0, Exception $cause = null)
+    public static function forArgumentName($name, $code = 0, ?Exception $cause = null)
     {
         return new static(sprintf(
             'The argument "%s" does not exist.',
@@ -49,7 +49,7 @@ class NoSuchArgumentException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function forPosition($position, $code = 0, Exception $cause = null)
+    public static function forPosition($position, $code = 0, ?Exception $cause = null)
     {
         return new static(sprintf(
             'The argument at position %s does not exist.',

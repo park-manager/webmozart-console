@@ -71,12 +71,12 @@ class Args
     /**
      * @var array
      */
-    private $options = array();
+    private $options = [];
 
     /**
      * @var array
      */
-    private $arguments = array();
+    private $arguments = [];
 
     /**
      * Creates the console arguments.
@@ -85,7 +85,7 @@ class Args
      *                            adhere to.
      * @param RawArgs    $rawArgs The raw console arguments.
      */
-    public function __construct(ArgsFormat $format, RawArgs $rawArgs = null)
+    public function __construct(ArgsFormat $format, ?RawArgs $rawArgs = null)
     {
         $this->format = $format;
         $this->rawArgs = $rawArgs;
@@ -262,7 +262,7 @@ class Args
      */
     public function setOptions(array $options)
     {
-        $this->options = array();
+        $this->options = [];
 
         $this->addOptions($options);
 
@@ -333,7 +333,7 @@ class Args
      */
     public function getArguments($includeDefaults = true)
     {
-        $arguments = array();
+        $arguments = [];
 
         foreach ($this->format->getArguments() as $argument) {
             $name = $argument->getName();
@@ -415,7 +415,7 @@ class Args
      */
     public function setArguments(array $arguments)
     {
-        $this->arguments = array();
+        $this->arguments = [];
 
         $this->addArguments($arguments);
 

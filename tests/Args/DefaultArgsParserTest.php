@@ -46,21 +46,21 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server add'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseCommandNameAliases()
     {
         $format = ArgsFormat::build()
-            ->addCommandName(new CommandName('server', array('server-alias')))
-            ->addCommandName(new CommandName('add', array('add-alias')))
+            ->addCommandName(new CommandName('server', ['server-alias']))
+            ->addCommandName(new CommandName('add', ['add-alias']))
             ->getFormat();
 
         $args = $this->parser->parseArgs(new StringArgs('server-alias add-alias'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseIgnoresMissingCommandNames()
@@ -72,8 +72,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs(''), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseCommandOptionsLongName()
@@ -85,8 +85,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('--server --add'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseCommandOptionsShortName()
@@ -98,8 +98,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('--server -a'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseIgnoresMissingCommandOptions()
@@ -111,8 +111,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs(''), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseArguments()
@@ -126,8 +126,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add foo bar'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo', 'argument2' => 'bar'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo', 'argument2' => 'bar'], $args->getArguments(false));
     }
 
     public function testParseArgumentsIgnoresMissingCommandNames()
@@ -141,23 +141,23 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server foo bar'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo', 'argument2' => 'bar'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo', 'argument2' => 'bar'], $args->getArguments(false));
     }
 
     public function testParseArgumentsIgnoresMissingCommandNameAliases()
     {
         $format = ArgsFormat::build()
-            ->addCommandName(new CommandName('server', array('server-alias')))
-            ->addCommandName(new CommandName('add', array('add-alias')))
+            ->addCommandName(new CommandName('server', ['server-alias']))
+            ->addCommandName(new CommandName('add', ['add-alias']))
             ->addArgument(new Argument('argument1'))
             ->addArgument(new Argument('argument2'))
             ->getFormat();
 
         $args = $this->parser->parseArgs(new StringArgs('server-alias foo bar'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo', 'argument2' => 'bar'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo', 'argument2' => 'bar'], $args->getArguments(false));
     }
 
     public function testParseArgumentsIgnoresMissingCommandOptions()
@@ -171,8 +171,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server foo bar'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo', 'argument2' => 'bar'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo', 'argument2' => 'bar'], $args->getArguments(false));
     }
 
     public function testParseIgnoresMissingOptionalArguments()
@@ -186,8 +186,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add foo'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo'], $args->getArguments(false));
     }
 
     /**
@@ -217,8 +217,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add foo'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo'], $args->getArguments(false));
     }
 
     /**
@@ -248,8 +248,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server foo'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo'], $args->getArguments(false));
     }
 
     /**
@@ -279,8 +279,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server foo'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument1' => 'foo'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument1' => 'foo'], $args->getArguments(false));
     }
 
     /**
@@ -308,8 +308,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add foo bar'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument' => 'foo'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument' => 'foo'], $args->getArguments(false));
     }
 
     /**
@@ -337,8 +337,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server foo bar'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument' => 'foo'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument' => 'foo'], $args->getArguments(false));
     }
 
     /**
@@ -366,8 +366,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server foo bar'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument' => 'foo'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument' => 'foo'], $args->getArguments(false));
     }
 
     public function testParseMultiValuedArgument()
@@ -380,8 +380,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add one two three'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('multi' => array('one', 'two', 'three')), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['multi' => ['one', 'two', 'three']], $args->getArguments(false));
     }
 
     public function testParseMultiValuedArgumentIgnoresMissingCommandNames()
@@ -394,8 +394,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server one two three'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('multi' => array('one', 'two', 'three')), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['multi' => ['one', 'two', 'three']], $args->getArguments(false));
     }
 
     public function testParseMultiValuedArgumentIgnoresMissingCommandOptions()
@@ -408,8 +408,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server one two three'), $format);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('multi' => array('one', 'two', 'three')), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['multi' => ['one', 'two', 'three']], $args->getArguments(false));
     }
 
     public function testParseLongOptionWithoutValue()
@@ -422,8 +422,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add --option'), $format);
 
-        $this->assertSame(array('option' => true), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame(['option' => true], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseLongOptionWithValue()
@@ -436,8 +436,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add --option foo'), $format);
 
-        $this->assertSame(array('option' => 'foo'), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame(['option' => 'foo'], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseLongOptionWithValue2()
@@ -450,8 +450,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add --option=foo'), $format);
 
-        $this->assertSame(array('option' => 'foo'), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame(['option' => 'foo'], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     /**
@@ -479,8 +479,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add -o'), $format);
 
-        $this->assertSame(array('option' => true), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame(['option' => true], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseShortOptionWithValue()
@@ -493,8 +493,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add -o foo'), $format);
 
-        $this->assertSame(array('option' => 'foo'), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame(['option' => 'foo'], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseShortOptionWithValue2()
@@ -507,8 +507,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add -ofoo'), $format);
 
-        $this->assertSame(array('option' => 'foo'), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame(['option' => 'foo'], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     /**
@@ -550,8 +550,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add --foo bar'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array(), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame([], $args->getArguments(false));
     }
 
     public function testParseOptionParsesUpToInvalidOptionIfLenient()
@@ -564,8 +564,8 @@ class DefaultArgsParserTest extends PHPUnit_Framework_TestCase
 
         $args = $this->parser->parseArgs(new StringArgs('server --add bar --foo'), $format, true);
 
-        $this->assertSame(array(), $args->getOptions(false));
-        $this->assertSame(array('argument' => 'bar'), $args->getArguments(false));
+        $this->assertSame([], $args->getOptions(false));
+        $this->assertSame(['argument' => 'bar'], $args->getArguments(false));
     }
 
     public function testParseSetsRawArgs()

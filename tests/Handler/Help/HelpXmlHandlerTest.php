@@ -75,9 +75,9 @@ class HelpXmlHandlerTest extends PHPUnit_Framework_TestCase
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<command id="the-command" name="the-command"
-EOF;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <command id="the-command" name="the-command"
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);
@@ -90,9 +90,9 @@ EOF;
         $status = $this->handler->handle($args, $this->io, $this->command);
 
         $expected = <<<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<symfony name="The Application" version="1.2.3">
-EOF;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <symfony name="The Application" version="1.2.3">
+            EOF;
 
         $this->assertStringStartsWith($expected, $this->io->fetchOutput());
         $this->assertSame(0, $status);

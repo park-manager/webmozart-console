@@ -113,7 +113,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
     public function testWriteSupportsAnsiFormats()
     {
         $stream = $this->getMockBuilder('Webmozart\Console\IO\OutputStream\BufferedOutputStream')
-            ->setMethods(array('supportsAnsi'))
+            ->setMethods(['supportsAnsi'])
             ->getMock();
 
         $stream->expects($this->any())
@@ -121,7 +121,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
             ->willReturn(true);
 
         $ansiFormatter = $this->getMockBuilder('Webmozart\Console\Formatter\AnsiFormatter')
-            ->setMethods(array('format', 'removeFormat'))
+            ->setMethods(['format', 'removeFormat'])
             ->getMock();
 
         $ansiFormatter->expects($this->once())
@@ -139,7 +139,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
     public function testWriteRemovesTagsIfAnsiNotSupported()
     {
         $stream = $this->getMockBuilder('Webmozart\Console\IO\OutputStream\BufferedOutputStream')
-            ->setMethods(array('supportsAnsi'))
+            ->setMethods(['supportsAnsi'])
             ->getMock();
 
         $stream->expects($this->any())
@@ -147,7 +147,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
             ->willReturn(false);
 
         $ansiFormatter = $this->getMockBuilder('Webmozart\Console\Formatter\AnsiFormatter')
-            ->setMethods(array('format', 'removeFormat'))
+            ->setMethods(['format', 'removeFormat'])
             ->getMock();
 
         $ansiFormatter->expects($this->once())
@@ -242,7 +242,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
     public function testWriteLineSupportsAnsiFormats()
     {
         $stream = $this->getMockBuilder('Webmozart\Console\IO\OutputStream\BufferedOutputStream')
-            ->setMethods(array('supportsAnsi'))
+            ->setMethods(['supportsAnsi'])
             ->getMock();
 
         $stream->expects($this->any())
@@ -250,7 +250,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
             ->willReturn(true);
 
         $ansiFormatter = $this->getMockBuilder('Webmozart\Console\Formatter\AnsiFormatter')
-            ->setMethods(array('format', 'removeFormat'))
+            ->setMethods(['format', 'removeFormat'])
             ->getMock();
 
         $ansiFormatter->expects($this->once())
@@ -268,7 +268,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
     public function testWriteLineRemovesTagsIfAnsiNotSupported()
     {
         $stream = $this->getMockBuilder('Webmozart\Console\IO\OutputStream\BufferedOutputStream')
-            ->setMethods(array('supportsAnsi'))
+            ->setMethods(['supportsAnsi'])
             ->getMock();
 
         $stream->expects($this->any())
@@ -276,7 +276,7 @@ class OutputTest extends PHPUnit_Framework_TestCase
             ->willReturn(false);
 
         $ansiFormatter = $this->getMockBuilder('Webmozart\Console\Formatter\AnsiFormatter')
-            ->setMethods(array('format', 'removeFormat'))
+            ->setMethods(['format', 'removeFormat'])
             ->getMock();
 
         $ansiFormatter->expects($this->once())

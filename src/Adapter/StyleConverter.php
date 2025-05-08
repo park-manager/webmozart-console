@@ -32,7 +32,7 @@ class StyleConverter
      */
     public static function convert(Style $style)
     {
-        $options = array();
+        $options = [];
 
         if ($style->isBold()) {
             $options[] = 'bold';

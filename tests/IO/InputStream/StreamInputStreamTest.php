@@ -21,7 +21,7 @@ use Webmozart\Console\IO\InputStream\StreamInputStream;
  */
 class StreamInputStreamTest extends PHPUnit_Framework_TestCase
 {
-    const LOREM_IPSUM = "Lorem ipsum dolor sit amet,\nconsetetur sadipscing elitr,\nsed diam nonumy eirmod tempor invidunt";
+    public const LOREM_IPSUM = "Lorem ipsum dolor sit amet,\nconsetetur sadipscing elitr,\nsed diam nonumy eirmod tempor invidunt";
 
     private $handle;
 

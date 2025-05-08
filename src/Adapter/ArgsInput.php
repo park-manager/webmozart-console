@@ -46,7 +46,7 @@ class ArgsInput implements InputInterface
      * @param RawArgs $rawArgs The unparsed console arguments.
      * @param Args    $args    The parsed console arguments.
      */
-    public function __construct(RawArgs $rawArgs, Args $args = null)
+    public function __construct(RawArgs $rawArgs, ?Args $args = null)
     {
         $this->rawArgs = $rawArgs;
         $this->args = $args;
@@ -160,7 +160,7 @@ class ArgsInput implements InputInterface
      */
     public function getArguments(): array
     {
-        return $this->args ? $this->args->getArguments() : array();
+        return $this->args ? $this->args->getArguments() : [];
     }
 
     /**
@@ -194,7 +194,7 @@ class ArgsInput implements InputInterface
      */
     public function getOptions(): array
     {
-        return $this->args ? $this->args->getOptions() : array();
+        return $this->args ? $this->args->getOptions() : [];
     }
 
     /**

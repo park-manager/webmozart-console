@@ -68,10 +68,10 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame($this->config, $application->getConfig());
 
-        $this->assertEquals(new ArgsFormat(array(
+        $this->assertEquals(new ArgsFormat([
             new Argument('argument'),
             new Option('option', 'o'),
-        )), $application->getGlobalArgsFormat());
+        ]), $application->getGlobalArgsFormat());
     }
 
     public function testCreateWithConfigClosure()
@@ -88,10 +88,10 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame($this->config, $application->getConfig());
 
-        $this->assertEquals(new ArgsFormat(array(
+        $this->assertEquals(new ArgsFormat([
             new Argument('argument'),
             new Option('option', 'o'),
-        )), $application->getGlobalArgsFormat());
+        ]), $application->getGlobalArgsFormat());
     }
 
     /**
@@ -109,10 +109,10 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
 
         $application = new ConsoleApplication($this->config);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             new Command($config1, $application),
             new Command($config2, $application),
-        )), $application->getCommands());
+        ]), $application->getCommands());
     }
 
     public function testGetCommandsExcludesDisabledCommands()
@@ -122,9 +122,9 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
 
         $application = new ConsoleApplication($this->config);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             new Command($enabled, $application),
-        )), $application->getCommands());
+        ]), $application->getCommands());
     }
 
     public function testGetCommand()
@@ -184,10 +184,10 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
 
         $application = new ConsoleApplication($this->config);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             new Command($config1, $application),
             new Command($config3, $application),
-        )), $application->getNamedCommands());
+        ]), $application->getNamedCommands());
     }
 
     public function testHasNamedCommands()
@@ -222,10 +222,10 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
 
         $application = new ConsoleApplication($this->config);
 
-        $this->assertEquals(new CommandCollection(array(
+        $this->assertEquals(new CommandCollection([
             new Command($config1, $application),
             new Command($config3, $application),
-        )), $application->getDefaultCommands());
+        ]), $application->getDefaultCommands());
     }
 
     public function testHasDefaultCommands()
@@ -334,9 +334,9 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
 
     public function getRunConfigurations()
     {
-        return array(
+        return [
             // Simple command
-            array(
+            [
                 'list',
                 function (ApplicationConfig $config, $callback) {
                     $config
@@ -345,9 +345,9 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
                         ->end()
                     ;
                 },
-            ),
+            ],
             // Default command
-            array(
+            [
                 '',
                 function (ApplicationConfig $config, $callback) {
                     $config
@@ -357,9 +357,9 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
                         ->end()
                     ;
                 },
-            ),
+            ],
             // Sub-command
-            array(
+            [
                 'server add',
                 function (ApplicationConfig $config, $callback) {
                     $config
@@ -370,9 +370,9 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
                         ->end()
                     ;
                 },
-            ),
+            ],
             // Option command
-            array(
+            [
                 'server --add',
                 function (ApplicationConfig $config, $callback) {
                     $config
@@ -383,9 +383,9 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
                         ->end()
                     ;
                 },
-            ),
+            ],
             // Default sub-command
-            array(
+            [
                 'server',
                 function (ApplicationConfig $config, $callback) {
                     $config
@@ -397,9 +397,9 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
                         ->end()
                     ;
                 },
-            ),
+            ],
             // Default option command
-            array(
+            [
                 'server',
                 function (ApplicationConfig $config, $callback) {
                     $config
@@ -411,8 +411,8 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase
                         ->end()
                     ;
                 },
-            ),
-        );
+            ],
+        ];
     }
 
     /**

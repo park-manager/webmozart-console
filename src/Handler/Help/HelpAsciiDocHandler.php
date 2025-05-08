@@ -55,7 +55,7 @@ class HelpAsciiDocHandler
      * @param ProcessLauncher  $processLauncher  The launcher for executing the
      *                                           "less" binary.
      */
-    public function __construct($path, ExecutableFinder $executableFinder = null, ProcessLauncher $processLauncher = null)
+    public function __construct($path, ?ExecutableFinder $executableFinder = null, ?ProcessLauncher $processLauncher = null)
     {
         Assert::file($path);
 
@@ -77,7 +77,7 @@ class HelpAsciiDocHandler
             if ($this->lessBinary) {
                 return $this->processLauncher->launchProcess(
                     escapeshellcmd($this->lessBinary).' %path%',
-                    array('path' => $this->path),
+                    ['path' => $this->path],
                     false
                 );
             }

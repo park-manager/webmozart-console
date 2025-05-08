@@ -23,7 +23,7 @@ use Webmozart\Console\UI\Component\LabeledParagraph;
  */
 class LabeledParagraphTest extends PHPUnit_Framework_TestCase
 {
-    const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt';
+    public const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt';
 
     /**
      * @var BufferedIO
@@ -105,10 +105,10 @@ class LabeledParagraphTest extends PHPUnit_Framework_TestCase
         $para->render($this->io);
 
         $expected = <<<'EOF'
-Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-       eirmod tempor invidunt
+            Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                   eirmod tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -119,10 +119,10 @@ EOF;
         $para->render($this->io, 4);
 
         $expected = <<<'EOF'
-    Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-           nonumy eirmod tempor invidunt
+                Label  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                       nonumy eirmod tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -133,10 +133,10 @@ EOF;
         $para->render($this->io);
 
         $expected = <<<'EOF'
-Label      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-           nonumy eirmod tempor invidunt
+            Label      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                       nonumy eirmod tempor invidunt
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }

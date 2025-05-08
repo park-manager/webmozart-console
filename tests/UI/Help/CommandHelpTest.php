@@ -60,26 +60,26 @@ class CommandHelpTest extends PHPUnit_Framework_TestCase
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-  test-bin command [--option] [<global-argument>] [<argument>]
+            USAGE
+              test-bin command [--option] [<global-argument>] [<argument>]
 
-  aliases: command-alias
+              aliases: command-alias
 
-ARGUMENTS
-  <global-argument>  Description of "global-argument"
-  <argument>         Description of "argument"
+            ARGUMENTS
+              <global-argument>  Description of "global-argument"
+              <argument>         Description of "argument"
 
-OPTIONS
-  --option           Description of "option"
+            OPTIONS
+              --option           Description of "option"
 
-GLOBAL OPTIONS
-  --global-option    Description of "global-option"
+            GLOBAL OPTIONS
+              --global-option    Description of "global-option"
 
-DESCRIPTION
-  Help of "command"
+            DESCRIPTION
+              Help of "command"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -97,14 +97,14 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-  test-bin command <argument>
+            USAGE
+              test-bin command <argument>
 
-ARGUMENTS
-  <argument>  Description of "argument"
+            ARGUMENTS
+              <argument>  Description of "argument"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -122,14 +122,14 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<EOF
-USAGE
-  test-bin command [--option{$this->nbsp}[<...>]]
+            USAGE
+              test-bin command [--option{$this->nbsp}[<...>]]
 
-OPTIONS
-  --option  Description of "option"
+            OPTIONS
+              --option  Description of "option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -147,14 +147,14 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<EOF
-USAGE
-  test-bin command [-o{$this->nbsp}[<...>]]
+            USAGE
+              test-bin command [-o{$this->nbsp}[<...>]]
 
-OPTIONS
-  -o (--option)  Description of "option"
+            OPTIONS
+              -o (--option)  Description of "option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -172,14 +172,14 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<EOF
-USAGE
-  test-bin command [--option{$this->nbsp}[<...>]]
+            USAGE
+              test-bin command [--option{$this->nbsp}[<...>]]
 
-OPTIONS
-  --option (-o)  Description of "option"
+            OPTIONS
+              --option (-o)  Description of "option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -197,14 +197,14 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<EOF
-USAGE
-  test-bin command [--option{$this->nbsp}<...>]
+            USAGE
+              test-bin command [--option{$this->nbsp}<...>]
 
-OPTIONS
-  --option  Description of "option"
+            OPTIONS
+              --option  Description of "option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -222,14 +222,14 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<EOF
-USAGE
-  test-bin command [--option{$this->nbsp}[<...>]]
+            USAGE
+              test-bin command [--option{$this->nbsp}[<...>]]
 
-OPTIONS
-  --option  Description of "option" (default: "Default")
+            OPTIONS
+              --option  Description of "option" (default: "Default")
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -247,14 +247,14 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<EOF
-USAGE
-  test-bin command [--option{$this->nbsp}[<value>]]
+            USAGE
+              test-bin command [--option{$this->nbsp}[<value>]]
 
-OPTIONS
-  --option  Description of "option"
+            OPTIONS
+              --option  Description of "option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -284,36 +284,36 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command [--option] [<argument>]
-  or: test-bin command add [-o] [--sub-option2] [<argument>] [<sub-argument1>]
-                           [<sub-argument2>]
-  or: test-bin command delete [<argument>]
+            USAGE
+                  test-bin command [--option] [<argument>]
+              or: test-bin command add [-o] [--sub-option2] [<argument>] [<sub-argument1>]
+                                       [<sub-argument2>]
+              or: test-bin command delete [<argument>]
 
-ARGUMENTS
-  <argument>            Description of "argument"
+            ARGUMENTS
+              <argument>            Description of "argument"
 
-COMMANDS
-  add
-    Description of "add"
+            COMMANDS
+              add
+                Description of "add"
 
-    <sub-argument1>     Description of "sub-argument1"
-    <sub-argument2>     Description of "sub-argument2"
+                <sub-argument1>     Description of "sub-argument1"
+                <sub-argument2>     Description of "sub-argument2"
 
-    -o (--sub-option1)  Description of "sub-option1"
-    --sub-option2       Description of "sub-option2"
+                -o (--sub-option1)  Description of "sub-option1"
+                --sub-option2       Description of "sub-option2"
 
-  delete
-    Description of "delete"
+              delete
+                Description of "delete"
 
-OPTIONS
-  --option              Description of "option"
+            OPTIONS
+              --option              Description of "option"
 
-GLOBAL OPTIONS
-  -g (--global-option)  Description of "global-option"
+            GLOBAL OPTIONS
+              -g (--global-option)  Description of "global-option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -333,21 +333,21 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command
-  or: test-bin command sub3
-  or: test-bin command sub1
-  or: test-bin command sub2
+            USAGE
+                  test-bin command
+              or: test-bin command sub3
+              or: test-bin command sub1
+              or: test-bin command sub2
 
-COMMANDS
-  sub1
+            COMMANDS
+              sub1
 
-  sub2
+              sub2
 
-  sub3
+              sub3
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -372,21 +372,21 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command [add] [<argument>]
-  or: test-bin command delete
+            USAGE
+                  test-bin command [add] [<argument>]
+              or: test-bin command delete
 
-COMMANDS
-  add
-    Description of "add"
+            COMMANDS
+              add
+                Description of "add"
 
-    <argument>  Description of "argument"
+                <argument>  Description of "argument"
 
-  delete
-    Description of "delete"
+              delete
+                Description of "delete"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -411,16 +411,16 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command [<argument>]
-  or: test-bin command delete
+            USAGE
+                  test-bin command [<argument>]
+              or: test-bin command delete
 
-COMMANDS
-  delete
-    Description of "delete"
+            COMMANDS
+              delete
+                Description of "delete"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -450,36 +450,36 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command [--option] [<argument>]
-  or: test-bin command -a [-o] [--sub-option2] [<argument>] [<sub-argument1>]
-                          [<sub-argument2>]
-  or: test-bin command --delete [<argument>]
+            USAGE
+                  test-bin command [--option] [<argument>]
+              or: test-bin command -a [-o] [--sub-option2] [<argument>] [<sub-argument1>]
+                                      [<sub-argument2>]
+              or: test-bin command --delete [<argument>]
 
-ARGUMENTS
-  <argument>            Description of "argument"
+            ARGUMENTS
+              <argument>            Description of "argument"
 
-COMMANDS
-  -a (--add)
-    Description of "add"
+            COMMANDS
+              -a (--add)
+                Description of "add"
 
-    <sub-argument1>     Description of "sub-argument1"
-    <sub-argument2>     Description of "sub-argument2"
+                <sub-argument1>     Description of "sub-argument1"
+                <sub-argument2>     Description of "sub-argument2"
 
-    -o (--sub-option1)  Description of "sub-option1"
-    --sub-option2       Description of "sub-option2"
+                -o (--sub-option1)  Description of "sub-option1"
+                --sub-option2       Description of "sub-option2"
 
-  --delete
-    Description of "delete"
+              --delete
+                Description of "delete"
 
-OPTIONS
-  --option              Description of "option"
+            OPTIONS
+              --option              Description of "option"
 
-GLOBAL OPTIONS
-  -g (--global-option)  Description of "global-option"
+            GLOBAL OPTIONS
+              -g (--global-option)  Description of "global-option"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -504,21 +504,21 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command [-a] [<argument>]
-  or: test-bin command --delete
+            USAGE
+                  test-bin command [-a] [<argument>]
+              or: test-bin command --delete
 
-COMMANDS
-  -a (--add)
-    Description of "add"
+            COMMANDS
+              -a (--add)
+                Description of "add"
 
-    <argument>  Description of "argument"
+                <argument>  Description of "argument"
 
-  --delete
-    Description of "delete"
+              --delete
+                Description of "delete"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -543,16 +543,16 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command [<argument>]
-  or: test-bin command --delete
+            USAGE
+                  test-bin command [<argument>]
+              or: test-bin command --delete
 
-COMMANDS
-  --delete
-    Description of "delete"
+            COMMANDS
+              --delete
+                Description of "delete"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -573,16 +573,16 @@ EOF;
         $help->render($this->io);
 
         $expected = <<<'EOF'
-USAGE
-      test-bin command
-  or: test-bin command --add
+            USAGE
+                  test-bin command
+              or: test-bin command --add
 
-COMMANDS
-  --add (-a)
-    Description of "add"
+            COMMANDS
+              --add (-a)
+                Description of "add"
 
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }

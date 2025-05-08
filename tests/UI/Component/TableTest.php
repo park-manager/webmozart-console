@@ -37,27 +37,27 @@ class TableTest extends PHPUnit_Framework_TestCase
     public function testRenderAsciiBorder()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-+---------------+--------------------------+------------------+
-| ISBN          | Title                    | Author           |
-+---------------+--------------------------+------------------+
-| 99921-58-10-7 | Divine Comedy            | Dante Alighieri  |
-| 9971-5-0210-0 | A Tale of Two Cities     | Charles Dickens  |
-| 960-425-059-0 | The Lord of the Rings    | J. R. R. Tolkien |
-| 80-902734-1-6 | And Then There Were None | Agatha Christie  |
-+---------------+--------------------------+------------------+
+            +---------------+--------------------------+------------------+
+            | ISBN          | Title                    | Author           |
+            +---------------+--------------------------+------------------+
+            | 99921-58-10-7 | Divine Comedy            | Dante Alighieri  |
+            | 9971-5-0210-0 | A Tale of Two Cities     | Charles Dickens  |
+            | 960-425-059-0 | The Lord of the Rings    | J. R. R. Tolkien |
+            | 80-902734-1-6 | And Then There Were None | Agatha Christie  |
+            +---------------+--------------------------+------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -73,27 +73,27 @@ EOF;
     public function testRenderSolidBorder()
     {
         $table = new Table(TableStyle::solidBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-┌───────────────┬──────────────────────────┬──────────────────┐
-│ ISBN          │ Title                    │ Author           │
-├───────────────┼──────────────────────────┼──────────────────┤
-│ 99921-58-10-7 │ Divine Comedy            │ Dante Alighieri  │
-│ 9971-5-0210-0 │ A Tale of Two Cities     │ Charles Dickens  │
-│ 960-425-059-0 │ The Lord of the Rings    │ J. R. R. Tolkien │
-│ 80-902734-1-6 │ And Then There Were None │ Agatha Christie  │
-└───────────────┴──────────────────────────┴──────────────────┘
+            ┌───────────────┬──────────────────────────┬──────────────────┐
+            │ ISBN          │ Title                    │ Author           │
+            ├───────────────┼──────────────────────────┼──────────────────┤
+            │ 99921-58-10-7 │ Divine Comedy            │ Dante Alighieri  │
+            │ 9971-5-0210-0 │ A Tale of Two Cities     │ Charles Dickens  │
+            │ 960-425-059-0 │ The Lord of the Rings    │ J. R. R. Tolkien │
+            │ 80-902734-1-6 │ And Then There Were None │ Agatha Christie  │
+            └───────────────┴──────────────────────────┴──────────────────┘
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -101,25 +101,25 @@ EOF;
     public function testRenderNoBorder()
     {
         $table = new Table(TableStyle::borderless());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-ISBN          Title                    Author
-============= ======================== ================
-99921-58-10-7 Divine Comedy            Dante Alighieri
-9971-5-0210-0 A Tale of Two Cities     Charles Dickens
-960-425-059-0 The Lord of the Rings    J. R. R. Tolkien
-80-902734-1-6 And Then There Were None Agatha Christie
+            ISBN          Title                    Author
+            ============= ======================== ================
+            99921-58-10-7 Divine Comedy            Dante Alighieri
+            9971-5-0210-0 A Tale of Two Cities     Charles Dickens
+            960-425-059-0 The Lord of the Rings    J. R. R. Tolkien
+            80-902734-1-6 And Then There Were None Agatha Christie
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -131,27 +131,27 @@ EOF;
         $style->setColumnAlignment(2, Alignment::RIGHT);
 
         $table = new Table($style);
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-+---------------+--------------------------+------------------+
-| ISBN          |          Title           |           Author |
-+---------------+--------------------------+------------------+
-| 99921-58-10-7 |      Divine Comedy       |  Dante Alighieri |
-| 9971-5-0210-0 |   A Tale of Two Cities   |  Charles Dickens |
-| 960-425-059-0 |  The Lord of the Rings   | J. R. R. Tolkien |
-| 80-902734-1-6 | And Then There Were None |  Agatha Christie |
-+---------------+--------------------------+------------------+
+            +---------------+--------------------------+------------------+
+            | ISBN          |          Title           |           Author |
+            +---------------+--------------------------+------------------+
+            | 99921-58-10-7 |      Divine Comedy       |  Dante Alighieri |
+            | 9971-5-0210-0 |   A Tale of Two Cities   |  Charles Dickens |
+            | 960-425-059-0 |  The Lord of the Rings   | J. R. R. Tolkien |
+            | 80-902734-1-6 | And Then There Were None |  Agatha Christie |
+            +---------------+--------------------------+------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -159,29 +159,29 @@ EOF;
     public function testRenderWithWordWrapping()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'Divine Comedy Divine Comedy Divine Comedy Divine Comedy Divine Comedy ', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'Divine Comedy Divine Comedy Divine Comedy Divine Comedy Divine Comedy ', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-+---------------+------------------------------------+-------------------------+
-| ISBN          | Title                              | Author                  |
-+---------------+------------------------------------+-------------------------+
-| 99921-58-10-7 | Divine Comedy Divine Comedy Divine | Dante Alighieri         |
-|               | Comedy Divine Comedy Divine Comedy |                         |
-| 9971-5-0210-0 | A Tale of Two Cities               | Charles Dickens Charles |
-|               |                                    | Dickens Charles Dickens |
-| 960-425-059-0 | The Lord of the Rings              | J. R. R. Tolkien        |
-| 80-902734-1-6 | And Then There Were None           | Agatha Christie         |
-+---------------+------------------------------------+-------------------------+
+            +---------------+------------------------------------+-------------------------+
+            | ISBN          | Title                              | Author                  |
+            +---------------+------------------------------------+-------------------------+
+            | 99921-58-10-7 | Divine Comedy Divine Comedy Divine | Dante Alighieri         |
+            |               | Comedy Divine Comedy Divine Comedy |                         |
+            | 9971-5-0210-0 | A Tale of Two Cities               | Charles Dickens Charles |
+            |               |                                    | Dickens Charles Dickens |
+            | 960-425-059-0 | The Lord of the Rings              | J. R. R. Tolkien        |
+            | 80-902734-1-6 | And Then There Were None           | Agatha Christie         |
+            +---------------+------------------------------------+-------------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -189,30 +189,30 @@ EOF;
     public function testRenderWithWordWrappingUtf8()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'Diviné Cömédy Diviné Cömédy Diviné Cömédy Diviné Cömédy Diviné Cömédy ', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'Diviné Cömédy Diviné Cömédy Diviné Cömédy Diviné Cömédy Diviné Cömédy ', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-+---------------+-----------------------------+-------------------------+
-| ISBN          | Title                       | Author                  |
-+---------------+-----------------------------+-------------------------+
-| 99921-58-10-7 | Diviné Cömédy Diviné Cömédy | Dante Alighieri         |
-|               | Diviné Cömédy Diviné Cömédy |                         |
-|               | Diviné Cömédy               |                         |
-| 9971-5-0210-0 | A Tale of Two Cities        | Charles Dickens Charles |
-|               |                             | Dickens Charles Dickens |
-| 960-425-059-0 | The Lord of the Rings       | J. R. R. Tolkien        |
-| 80-902734-1-6 | And Then There Were None    | Agatha Christie         |
-+---------------+-----------------------------+-------------------------+
+            +---------------+-----------------------------+-------------------------+
+            | ISBN          | Title                       | Author                  |
+            +---------------+-----------------------------+-------------------------+
+            | 99921-58-10-7 | Diviné Cömédy Diviné Cömédy | Dante Alighieri         |
+            |               | Diviné Cömédy Diviné Cömédy |                         |
+            |               | Diviné Cömédy               |                         |
+            | 9971-5-0210-0 | A Tale of Two Cities        | Charles Dickens Charles |
+            |               |                             | Dickens Charles Dickens |
+            | 960-425-059-0 | The Lord of the Rings       | J. R. R. Tolkien        |
+            | 80-902734-1-6 | And Then There Were None    | Agatha Christie         |
+            +---------------+-----------------------------+-------------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -220,31 +220,31 @@ EOF;
     public function testRenderWithMoreWordWrapping()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7 99921-58-10-7 99921-58-10-7 99921-58-10-7', 'Divine Comedy Divine Comedy Divine Comedy Divine Comedy Divine Comedy ', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7 99921-58-10-7 99921-58-10-7 99921-58-10-7', 'Divine Comedy Divine Comedy Divine Comedy Divine Comedy Divine Comedy ', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-+---------------+------------------------------------+-------------------------+
-| ISBN          | Title                              | Author                  |
-+---------------+------------------------------------+-------------------------+
-| 99921-58-10-7 | Divine Comedy Divine Comedy Divine | Dante Alighieri         |
-| 99921-58-10-7 | Comedy Divine Comedy Divine Comedy |                         |
-| 99921-58-10-7 |                                    |                         |
-| 99921-58-10-7 |                                    |                         |
-| 9971-5-0210-0 | A Tale of Two Cities               | Charles Dickens Charles |
-|               |                                    | Dickens Charles Dickens |
-| 960-425-059-0 | The Lord of the Rings              | J. R. R. Tolkien        |
-| 80-902734-1-6 | And Then There Were None           | Agatha Christie         |
-+---------------+------------------------------------+-------------------------+
+            +---------------+------------------------------------+-------------------------+
+            | ISBN          | Title                              | Author                  |
+            +---------------+------------------------------------+-------------------------+
+            | 99921-58-10-7 | Divine Comedy Divine Comedy Divine | Dante Alighieri         |
+            | 99921-58-10-7 | Comedy Divine Comedy Divine Comedy |                         |
+            | 99921-58-10-7 |                                    |                         |
+            | 99921-58-10-7 |                                    |                         |
+            | 9971-5-0210-0 | A Tale of Two Cities               | Charles Dickens Charles |
+            |               |                                    | Dickens Charles Dickens |
+            | 960-425-059-0 | The Lord of the Rings              | J. R. R. Tolkien        |
+            | 80-902734-1-6 | And Then There Were None           | Agatha Christie         |
+            +---------------+------------------------------------+-------------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -252,29 +252,29 @@ EOF;
     public function testRenderWithWordCuts()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'DivineComedyDivineComedyDivineComedyDivineComedyDivineComedy ', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'DivineComedyDivineComedyDivineComedyDivineComedyDivineComedy ', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-+---------------+----------------------------------+-------------------------+
-| ISBN          | Title                            | Author                  |
-+---------------+----------------------------------+-------------------------+
-| 99921-58-10-7 | DivineComedyDivineComedyDivineCo | Dante Alighieri         |
-|               | medyDivineComedyDivineComedy     |                         |
-| 9971-5-0210-0 | A Tale of Two Cities             | Charles Dickens Charles |
-|               |                                  | Dickens Charles Dickens |
-| 960-425-059-0 | The Lord of the Rings            | J. R. R. Tolkien        |
-| 80-902734-1-6 | And Then There Were None         | Agatha Christie         |
-+---------------+----------------------------------+-------------------------+
+            +---------------+----------------------------------+-------------------------+
+            | ISBN          | Title                            | Author                  |
+            +---------------+----------------------------------+-------------------------+
+            | 99921-58-10-7 | DivineComedyDivineComedyDivineCo | Dante Alighieri         |
+            |               | medyDivineComedyDivineComedy     |                         |
+            | 9971-5-0210-0 | A Tale of Two Cities             | Charles Dickens Charles |
+            |               |                                  | Dickens Charles Dickens |
+            | 960-425-059-0 | The Lord of the Rings            | J. R. R. Tolkien        |
+            | 80-902734-1-6 | And Then There Were None         | Agatha Christie         |
+            +---------------+----------------------------------+-------------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -282,30 +282,30 @@ EOF;
     public function testRenderWithWordWrappingAndIndentation()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58-10-7', 'Divine Comedy Divine Comedy Divine Comedy Divine Comedy Divine Comedy ', 'Dante Alighieri'),
-            array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'),
-            array('960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('80-902734-1-6', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58-10-7', 'Divine Comedy Divine Comedy Divine Comedy Divine Comedy Divine Comedy ', 'Dante Alighieri'],
+            ['9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens Charles Dickens Charles Dickens'],
+            ['960-425-059-0', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['80-902734-1-6', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io, 4);
 
         $expected = <<<'EOF'
-    +---------------+-----------------------------+-------------------------+
-    | ISBN          | Title                       | Author                  |
-    +---------------+-----------------------------+-------------------------+
-    | 99921-58-10-7 | Divine Comedy Divine Comedy | Dante Alighieri         |
-    |               | Divine Comedy Divine Comedy |                         |
-    |               | Divine Comedy               |                         |
-    | 9971-5-0210-0 | A Tale of Two Cities        | Charles Dickens Charles |
-    |               |                             | Dickens Charles Dickens |
-    | 960-425-059-0 | The Lord of the Rings       | J. R. R. Tolkien        |
-    | 80-902734-1-6 | And Then There Were None    | Agatha Christie         |
-    +---------------+-----------------------------+-------------------------+
+                +---------------+-----------------------------+-------------------------+
+                | ISBN          | Title                       | Author                  |
+                +---------------+-----------------------------+-------------------------+
+                | 99921-58-10-7 | Divine Comedy Divine Comedy | Dante Alighieri         |
+                |               | Divine Comedy Divine Comedy |                         |
+                |               | Divine Comedy               |                         |
+                | 9971-5-0210-0 | A Tale of Two Cities        | Charles Dickens Charles |
+                |               |                             | Dickens Charles Dickens |
+                | 960-425-059-0 | The Lord of the Rings       | J. R. R. Tolkien        |
+                | 80-902734-1-6 | And Then There Were None    | Agatha Christie         |
+                +---------------+-----------------------------+-------------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -313,39 +313,39 @@ EOF;
     public function testRenderUnwrappableAndVeryLong()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('99921-58', 'DivineComedyDivineDivine', 'Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante'),
-            array('9971-5', 'ATaleofTwoCitiesCities', 'Charles Dickens Charles Dickens Charles Dickens Charles Dickens Charles Dickens Charles Dickens Charles Dickens'),
-            array('960-425', 'TheLordoftheRingsRings', 'J. R. R. Tolkien J. R. R. Tolkien J. R. R. Tolkien J. R. R. Tolkien J. R. R. Tolkien'),
-            array('80-9027', 'AndThenThereWereNoneNone', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['99921-58', 'DivineComedyDivineDivine', 'Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante Alighieri Dante'],
+            ['9971-5', 'ATaleofTwoCitiesCities', 'Charles Dickens Charles Dickens Charles Dickens Charles Dickens Charles Dickens Charles Dickens Charles Dickens'],
+            ['960-425', 'TheLordoftheRingsRings', 'J. R. R. Tolkien J. R. R. Tolkien J. R. R. Tolkien J. R. R. Tolkien J. R. R. Tolkien'],
+            ['80-9027', 'AndThenThereWereNoneNone', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io, 0);
 
         $expected = <<<'EOF'
-+----------+--------------------------+---------------------------------------+
-| ISBN     | Title                    | Author                                |
-+----------+--------------------------+---------------------------------------+
-| 99921-58 | DivineComedyDivineDivine | Dante Alighieri Dante Alighieri Dante |
-|          |                          | Alighieri Dante Alighieri Dante       |
-|          |                          | Alighieri Dante Alighieri Dante       |
-|          |                          | Alighieri Dante Alighieri Dante       |
-|          |                          | Alighieri Dante Alighieri Dante       |
-|          |                          | Alighieri Dante Alighieri Dante       |
-|          |                          | Alighieri Dante Alighieri Dante       |
-|          |                          | Alighieri Dante                       |
-| 9971-5   | ATaleofTwoCitiesCities   | Charles Dickens Charles Dickens       |
-|          |                          | Charles Dickens Charles Dickens       |
-|          |                          | Charles Dickens Charles Dickens       |
-|          |                          | Charles Dickens                       |
-| 960-425  | TheLordoftheRingsRings   | J. R. R. Tolkien J. R. R. Tolkien J.  |
-|          |                          | R. R. Tolkien J. R. R. Tolkien J. R.  |
-|          |                          | R. Tolkien                            |
-| 80-9027  | AndThenThereWereNoneNone | Agatha Christie                       |
-+----------+--------------------------+---------------------------------------+
+            +----------+--------------------------+---------------------------------------+
+            | ISBN     | Title                    | Author                                |
+            +----------+--------------------------+---------------------------------------+
+            | 99921-58 | DivineComedyDivineDivine | Dante Alighieri Dante Alighieri Dante |
+            |          |                          | Alighieri Dante Alighieri Dante       |
+            |          |                          | Alighieri Dante Alighieri Dante       |
+            |          |                          | Alighieri Dante Alighieri Dante       |
+            |          |                          | Alighieri Dante Alighieri Dante       |
+            |          |                          | Alighieri Dante Alighieri Dante       |
+            |          |                          | Alighieri Dante Alighieri Dante       |
+            |          |                          | Alighieri Dante                       |
+            | 9971-5   | ATaleofTwoCitiesCities   | Charles Dickens Charles Dickens       |
+            |          |                          | Charles Dickens Charles Dickens       |
+            |          |                          | Charles Dickens Charles Dickens       |
+            |          |                          | Charles Dickens                       |
+            | 960-425  | TheLordoftheRingsRings   | J. R. R. Tolkien J. R. R. Tolkien J.  |
+            |          |                          | R. R. Tolkien J. R. R. Tolkien J. R.  |
+            |          |                          | R. Tolkien                            |
+            | 80-9027  | AndThenThereWereNoneNone | Agatha Christie                       |
+            +----------+--------------------------+---------------------------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -353,27 +353,27 @@ EOF;
     public function testRenderFormattedCells()
     {
         $table = new Table(TableStyle::asciiBorder());
-        $table->setHeaderRow(array('ISBN', 'Title', 'Author'));
-        $table->addRows(array(
-            array('<b>99921-58-10-7</b>', 'Divine Comedy', 'Dante Alighieri'),
-            array('<b>9971-5-0210-0</b>', 'A Tale of Two Cities', 'Charles Dickens'),
-            array('<b>960-425-059-0</b>', 'The Lord of the Rings', 'J. R. R. Tolkien'),
-            array('<b>80-902734-1-6</b>', 'And Then There Were None', 'Agatha Christie'),
-        ));
+        $table->setHeaderRow(['ISBN', 'Title', 'Author']);
+        $table->addRows([
+            ['<b>99921-58-10-7</b>', 'Divine Comedy', 'Dante Alighieri'],
+            ['<b>9971-5-0210-0</b>', 'A Tale of Two Cities', 'Charles Dickens'],
+            ['<b>960-425-059-0</b>', 'The Lord of the Rings', 'J. R. R. Tolkien'],
+            ['<b>80-902734-1-6</b>', 'And Then There Were None', 'Agatha Christie'],
+        ]);
 
         $table->render($this->io);
 
         $expected = <<<'EOF'
-+---------------+--------------------------+------------------+
-| ISBN          | Title                    | Author           |
-+---------------+--------------------------+------------------+
-| 99921-58-10-7 | Divine Comedy            | Dante Alighieri  |
-| 9971-5-0210-0 | A Tale of Two Cities     | Charles Dickens  |
-| 960-425-059-0 | The Lord of the Rings    | J. R. R. Tolkien |
-| 80-902734-1-6 | And Then There Were None | Agatha Christie  |
-+---------------+--------------------------+------------------+
+            +---------------+--------------------------+------------------+
+            | ISBN          | Title                    | Author           |
+            +---------------+--------------------------+------------------+
+            | 99921-58-10-7 | Divine Comedy            | Dante Alighieri  |
+            | 9971-5-0210-0 | A Tale of Two Cities     | Charles Dickens  |
+            | 960-425-059-0 | The Lord of the Rings    | J. R. R. Tolkien |
+            | 80-902734-1-6 | And Then There Were None | Agatha Christie  |
+            +---------------+--------------------------+------------------+
 
-EOF;
+            EOF;
 
         $this->assertSame($expected, $this->io->fetchOutput());
     }
@@ -384,8 +384,8 @@ EOF;
     public function testSetHeaderRowFailsIfTooManyCells()
     {
         $table = new Table();
-        $table->setRow(0, array('a', 'b', 'c'));
-        $table->setHeaderRow(array('a', 'b', 'c', 'd'));
+        $table->setRow(0, ['a', 'b', 'c']);
+        $table->setHeaderRow(['a', 'b', 'c', 'd']);
     }
 
     /**
@@ -394,8 +394,8 @@ EOF;
     public function testSetHeaderRowFailsIfMissingCells()
     {
         $table = new Table();
-        $table->setRow(0, array('a', 'b', 'c'));
-        $table->setHeaderRow(array('a', 'b'));
+        $table->setRow(0, ['a', 'b', 'c']);
+        $table->setHeaderRow(['a', 'b']);
     }
 
     /**
@@ -404,8 +404,8 @@ EOF;
     public function testSetRowFailsIfTooManyCells()
     {
         $table = new Table();
-        $table->setHeaderRow(array('a', 'b', 'c'));
-        $table->setRow(0, array('a', 'b', 'c', 'd'));
+        $table->setHeaderRow(['a', 'b', 'c']);
+        $table->setRow(0, ['a', 'b', 'c', 'd']);
     }
 
     /**
@@ -414,8 +414,8 @@ EOF;
     public function testSetRowFailsIfMissingCells()
     {
         $table = new Table();
-        $table->setHeaderRow(array('a', 'b', 'c'));
-        $table->setRow(0, array('a', 'b'));
+        $table->setHeaderRow(['a', 'b', 'c']);
+        $table->setRow(0, ['a', 'b']);
     }
 
     /**
@@ -424,8 +424,8 @@ EOF;
     public function testAddRowFailsIfTooManyCells()
     {
         $table = new Table();
-        $table->addRow(array('a', 'b', 'c'));
-        $table->addRow(array('a', 'b', 'c', 'd'));
+        $table->addRow(['a', 'b', 'c']);
+        $table->addRow(['a', 'b', 'c', 'd']);
     }
 
     /**
@@ -434,7 +434,7 @@ EOF;
     public function testAddRowFailsIfMissingCells()
     {
         $table = new Table();
-        $table->addRow(array('a', 'b', 'c'));
-        $table->addRow(array('a', 'b'));
+        $table->addRow(['a', 'b', 'c']);
+        $table->addRow(['a', 'b']);
     }
 }

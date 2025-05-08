@@ -33,7 +33,7 @@ class ArgsFormatInputDefinition extends InputDefinition
     /**
      * @var CommandName[]
      */
-    private $commandNames = array();
+    private $commandNames = [];
 
     /**
      * Creates a new adapter.

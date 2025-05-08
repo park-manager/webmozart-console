@@ -28,12 +28,12 @@ class CannotResolveCommandException extends RuntimeException
     /**
      * Code: The passed command name was not found.
      */
-    const NAME_NOT_FOUND = 1;
+    public const NAME_NOT_FOUND = 1;
 
     /**
      * Code: No command was passed and no default was configured.
      */
-    const NO_DEFAULT_COMMAND = 2;
+    public const NO_DEFAULT_COMMAND = 2;
 
     /**
      * Creates an exception for the code {@link NAME_NOT_FOUND}.
@@ -48,7 +48,7 @@ class CannotResolveCommandException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function nameNotFound($commandName, CommandCollection $commands, Exception $cause = null)
+    public static function nameNotFound($commandName, CommandCollection $commands, ?Exception $cause = null)
     {
         $message = sprintf('The command "%s" is not defined.', $commandName);
 
@@ -73,7 +73,7 @@ class CannotResolveCommandException extends RuntimeException
      *
      * @return static The created exception.
      */
-    public static function noDefaultCommand(Exception $cause = null)
+    public static function noDefaultCommand(?Exception $cause = null)
     {
         return new static('No default command is defined.', self::NO_DEFAULT_COMMAND, $cause);
     }

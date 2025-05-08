@@ -65,47 +65,47 @@ class Option extends AbstractOption
     /**
      * Flag: The option has no value.
      */
-    const NO_VALUE = 4;
+    public const NO_VALUE = 4;
 
     /**
      * Flag: The option has a required value.
      */
-    const REQUIRED_VALUE = 8;
+    public const REQUIRED_VALUE = 8;
 
     /**
      * Flag: The option has an optional value.
      */
-    const OPTIONAL_VALUE = 16;
+    public const OPTIONAL_VALUE = 16;
 
     /**
      * Flag: The option can be stated multiple times with different values.
      */
-    const MULTI_VALUED = 32;
+    public const MULTI_VALUED = 32;
 
     /**
      * Flag: The option value is parsed as string.
      */
-    const STRING = 128;
+    public const STRING = 128;
 
     /**
      * Flag: The option value is parsed as boolean.
      */
-    const BOOLEAN = 256;
+    public const BOOLEAN = 256;
 
     /**
      * Flag: The option value is parsed as integer.
      */
-    const INTEGER = 512;
+    public const INTEGER = 512;
 
     /**
      * Flag: The option value is parsed as float.
      */
-    const FLOAT = 1024;
+    public const FLOAT = 1024;
 
     /**
      * Flag: The option value "null" should be parsed as `null`.
      */
-    const NULLABLE = 2048;
+    public const NULLABLE = 2048;
 
     /**
      * @var mixed
@@ -247,7 +247,7 @@ class Option extends AbstractOption
 
         if ($this->isMultiValued()) {
             if (null === $defaultValue) {
-                $defaultValue = array();
+                $defaultValue = [];
             } elseif (!is_array($defaultValue)) {
                 throw new InvalidValueException(sprintf(
                     'The default value of a multi-valued option must be an '.

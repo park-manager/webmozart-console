@@ -120,19 +120,19 @@ class OptionTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidFlagCombinations()
     {
-        return array(
-            array(Option::NO_VALUE | Option::OPTIONAL_VALUE),
-            array(Option::NO_VALUE | Option::REQUIRED_VALUE),
-            array(Option::NO_VALUE | Option::MULTI_VALUED),
-            array(Option::OPTIONAL_VALUE | Option::MULTI_VALUED),
-            array(Option::PREFER_SHORT_NAME | Option::PREFER_LONG_NAME),
-            array(Option::STRING | Option::BOOLEAN),
-            array(Option::STRING | Option::INTEGER),
-            array(Option::STRING | Option::FLOAT),
-            array(Option::BOOLEAN | Option::INTEGER),
-            array(Option::BOOLEAN | Option::FLOAT),
-            array(Option::INTEGER | Option::FLOAT),
-        );
+        return [
+            [Option::NO_VALUE | Option::OPTIONAL_VALUE],
+            [Option::NO_VALUE | Option::REQUIRED_VALUE],
+            [Option::NO_VALUE | Option::MULTI_VALUED],
+            [Option::OPTIONAL_VALUE | Option::MULTI_VALUED],
+            [Option::PREFER_SHORT_NAME | Option::PREFER_LONG_NAME],
+            [Option::STRING | Option::BOOLEAN],
+            [Option::STRING | Option::INTEGER],
+            [Option::STRING | Option::FLOAT],
+            [Option::BOOLEAN | Option::INTEGER],
+            [Option::BOOLEAN | Option::FLOAT],
+            [Option::INTEGER | Option::FLOAT],
+        ];
     }
 
     public function testShortName()
@@ -244,18 +244,18 @@ class OptionTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($option->isValueRequired());
         $this->assertFalse($option->isValueOptional());
         $this->assertTrue($option->isMultiValued());
-        $this->assertSame(array(), $option->getDefaultValue());
+        $this->assertSame([], $option->getDefaultValue());
     }
 
     public function testMultiValuedWithDefaultValue()
     {
-        $option = new Option('option', null, Option::MULTI_VALUED, null, array('one', 'two'));
+        $option = new Option('option', null, Option::MULTI_VALUED, null, ['one', 'two']);
 
         $this->assertTrue($option->acceptsValue());
         $this->assertTrue($option->isValueRequired());
         $this->assertFalse($option->isValueOptional());
         $this->assertTrue($option->isMultiValued());
-        $this->assertSame(array('one', 'two'), $option->getDefaultValue());
+        $this->assertSame(['one', 'two'], $option->getDefaultValue());
     }
 
     /**
@@ -364,39 +364,39 @@ class OptionTest extends PHPUnit_Framework_TestCase
 
     public function getValidParseValueTests()
     {
-        return array(
-            array(0, '', ''),
-            array(0, 'string', 'string'),
-            array(0, '1', '1'),
-            array(0, '1.23', '1.23'),
-            array(0, 'null', 'null'),
-            array(Option::NULLABLE, 'null', null),
-            array(0, 'true', 'true'),
-            array(0, 'false', 'false'),
+        return [
+            [0, '', ''],
+            [0, 'string', 'string'],
+            [0, '1', '1'],
+            [0, '1.23', '1.23'],
+            [0, 'null', 'null'],
+            [Option::NULLABLE, 'null', null],
+            [0, 'true', 'true'],
+            [0, 'false', 'false'],
 
-            array(Option::STRING, '', ''),
-            array(Option::STRING, 'string', 'string'),
-            array(Option::STRING, '1', '1'),
-            array(Option::STRING, '1.23', '1.23'),
-            array(Option::STRING, 'null', 'null'),
-            array(Option::STRING | Option::NULLABLE, 'null', null),
-            array(Option::STRING, 'true', 'true'),
-            array(Option::STRING, 'false', 'false'),
+            [Option::STRING, '', ''],
+            [Option::STRING, 'string', 'string'],
+            [Option::STRING, '1', '1'],
+            [Option::STRING, '1.23', '1.23'],
+            [Option::STRING, 'null', 'null'],
+            [Option::STRING | Option::NULLABLE, 'null', null],
+            [Option::STRING, 'true', 'true'],
+            [Option::STRING, 'false', 'false'],
 
-            array(Option::BOOLEAN, 'true', true),
-            array(Option::BOOLEAN, 'false', false),
-            array(Option::BOOLEAN | Option::NULLABLE, 'null', null),
+            [Option::BOOLEAN, 'true', true],
+            [Option::BOOLEAN, 'false', false],
+            [Option::BOOLEAN | Option::NULLABLE, 'null', null],
 
-            array(Option::INTEGER, '1', 1),
-            array(Option::INTEGER, '1.23', 1),
-            array(Option::INTEGER, '0', 0),
-            array(Option::INTEGER | Option::NULLABLE, 'null', null),
+            [Option::INTEGER, '1', 1],
+            [Option::INTEGER, '1.23', 1],
+            [Option::INTEGER, '0', 0],
+            [Option::INTEGER | Option::NULLABLE, 'null', null],
 
-            array(Option::FLOAT, '1', 1.0),
-            array(Option::FLOAT, '1.23', 1.23),
-            array(Option::FLOAT, '0', 0.0),
-            array(Option::FLOAT | Option::NULLABLE, 'null', null),
-        );
+            [Option::FLOAT, '1', 1.0],
+            [Option::FLOAT, '1.23', 1.23],
+            [Option::FLOAT, '0', 0.0],
+            [Option::FLOAT | Option::NULLABLE, 'null', null],
+        ];
     }
 
     /**
@@ -412,10 +412,10 @@ class OptionTest extends PHPUnit_Framework_TestCase
 
     public function getInvalidParseValueTests()
     {
-        return array(
-            array(Option::BOOLEAN, 'null'),
-            array(Option::INTEGER, 'null'),
-            array(Option::FLOAT, 'null'),
-        );
+        return [
+            [Option::BOOLEAN, 'null'],
+            [Option::INTEGER, 'null'],
+            [Option::FLOAT, 'null'],
+        ];
     }
 }

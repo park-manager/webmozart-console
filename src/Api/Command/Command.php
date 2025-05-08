@@ -67,7 +67,7 @@ class Command
     /**
      * @var string[]
      */
-    private $aliases = array();
+    private $aliases = [];
 
     /**
      * @var CommandConfig
@@ -118,7 +118,7 @@ class Command
      *
      * @throws LogicException If the name of the command configuration is not set.
      */
-    public function __construct(CommandConfig $config, Application $application = null, Command $parentCommand = null)
+    public function __construct(CommandConfig $config, ?Application $application = null, ?Command $parentCommand = null)
     {
         if (!$config->getName()) {
             throw new LogicException('The name of the command config must be set.');

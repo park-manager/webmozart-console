@@ -38,7 +38,7 @@ class ArgvArgs implements RawArgs
      * @param array $argv The contents of the "argv" variable or `null` to read
      *                    the global "argv" variable.
      */
-    public function __construct(array $argv = null)
+    public function __construct(?array $argv = null)
     {
         if (null === $argv) {
             $argv = $_SERVER['argv'];

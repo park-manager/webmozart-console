@@ -23,17 +23,17 @@ final class Alignment
     /**
      * Alignment: Align a cell to the left.
      */
-    const LEFT = 0;
+    public const LEFT = 0;
 
     /**
      * Alignment: Align a cell to the right.
      */
-    const RIGHT = 1;
+    public const RIGHT = 1;
 
     /**
      * Alignment: Align a cell to the center.
      */
-    const CENTER = 2;
+    public const CENTER = 2;
 
     /**
      * Returns all possible alignments.
@@ -42,11 +42,11 @@ final class Alignment
      */
     public static function all()
     {
-        return array(
+        return [
             self::LEFT,
             self::RIGHT,
             self::CENTER,
-        );
+        ];
     }
 
     private function __construct()

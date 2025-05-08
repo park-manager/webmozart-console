@@ -23,35 +23,35 @@ class ArgvArgsTest extends PHPUnit_Framework_TestCase
 {
     public function testCreate()
     {
-        $_SERVER['argv'] = array('console', 'server', 'add', '--port', '80', 'localhost');
+        $_SERVER['argv'] = ['console', 'server', 'add', '--port', '80', 'localhost'];
 
         $args = new ArgvArgs();
 
         $this->assertSame('console', $args->getScriptName());
-        $this->assertSame(array('server', 'add', '--port', '80', 'localhost'), $args->getTokens());
+        $this->assertSame(['server', 'add', '--port', '80', 'localhost'], $args->getTokens());
     }
 
     public function testCreateWithCustomTokens()
     {
-        $_SERVER['argv'] = array('console', 'server', 'add', 'localhost');
+        $_SERVER['argv'] = ['console', 'server', 'add', 'localhost'];
 
-        $args = new ArgvArgs(array('other', 'server', 'add', '--port', '80', 'localhost'));
+        $args = new ArgvArgs(['other', 'server', 'add', '--port', '80', 'localhost']);
 
         $this->assertSame('other', $args->getScriptName());
-        $this->assertSame(array('server', 'add', '--port', '80', 'localhost'), $args->getTokens());
+        $this->assertSame(['server', 'add', '--port', '80', 'localhost'], $args->getTokens());
     }
 
     public function testCreateNoArgs()
     {
-        $args = new ArgvArgs(array());
+        $args = new ArgvArgs([]);
 
         $this->assertNull($args->getScriptName());
-        $this->assertSame(array(), $args->getTokens());
+        $this->assertSame([], $args->getTokens());
     }
 
     public function testHasToken()
     {
-        $args = new ArgvArgs(array('console', 'server', 'add', '--port', '80', 'localhost'));
+        $args = new ArgvArgs(['console', 'server', 'add', '--port', '80', 'localhost']);
 
         $this->assertTrue($args->hasToken('server'));
         $this->assertTrue($args->hasToken('--port'));
@@ -62,7 +62,7 @@ class ArgvArgsTest extends PHPUnit_Framework_TestCase
 
     public function testToString()
     {
-        $args = new ArgvArgs(array('console', 'server', 'add', '--port', '80', 'localhost'));
+        $args = new ArgvArgs(['console', 'server', 'add', '--port', '80', 'localhost']);
 
         $this->assertSame('console server add --port 80 localhost', $args->toString());
         $this->assertSame('console server add --port 80 localhost', $args->toString(true));
